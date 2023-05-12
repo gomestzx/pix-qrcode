@@ -5,7 +5,7 @@ import Home from "./page";
 describe("App", () => {
   test("should render properly", () => {
     const { getByText } = render(<Home />);
-    const element = getByText("Get started by editing");
+    const element = getByText("Fala dev");
     expect(element).toBeDefined();
   });
 });
