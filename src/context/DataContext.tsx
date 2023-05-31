@@ -1,55 +1,54 @@
-"use client"
-import { createContext, useState, ReactNode, Dispatch, SetStateAction } from 'react';
+'use client';
+import { createContext, useState } from 'react';
 
 interface IDataContext {
   chave: string;
-  setChave: Dispatch<SetStateAction<string>>;
+  setChave(e: any): void;
   cidade: string;
-  setCidade: Dispatch<SetStateAction<string>>;
+  setCidade(e: any): void;
   recebedor: string;
-  setRecebedor: Dispatch<SetStateAction<string>>;
+  setRecebedor(e: any): void;
   valor: string;
-  setValor: Dispatch<SetStateAction<string>>;
+  setValor(e: any): void;
   identificador: string;
-  setIdentificador: Dispatch<SetStateAction<string>>;
+  setIdentificador(e: any): void;
   mensagem: string;
-  setMensagem: Dispatch<SetStateAction<string>>;
+  setMensagem(e: any): void;
   cep: string;
-  setCep: Dispatch<SetStateAction<string>>;
+  setCep(e: any): void;
 }
 
-interface IProviderProps {
-  children: ReactNode;
+interface IProvider {
+  children: React.ReactNode;
 }
 
 export const DataContext = createContext({} as IDataContext);
 
-export function DataProvider({ children }: IProviderProps) {
-  const [chave, setChave] = useState<string>('');
-  const [cidade, setCidade] = useState<string>('');
-  const [recebedor, setRecebedor] = useState<string>('');
-  const [valor, setValor] = useState<string>('');
-  const [identificador, setIdentificador] = useState<string>('');
-  const [mensagem, setMensagem] = useState<string>('');
-  const [cep, setCep] = useState<string>('');
-
+export function DataProvider({ children }: IProvider) {
+  const [chave, setChave] = useState('');
+  const [cidade, setCidade] = useState('')
+  const [recebedor, setRecebedor] = useState('')
+  const [valor, setValor] = useState('')
+  const [identificador, setIdentificador] = useState('')
+  const [mensagem, setMensagem] = useState('')
+  const [cep, setCep] = useState('')
   return (
     <DataContext.Provider
       value={{
-        chave,
+        chave: chave,
         setChave,
-        cidade,
+        cidade: cidade,
         setCidade,
-        recebedor,
+        recebedor: recebedor,
         setRecebedor,
-        valor,
+        valor: valor,
         setValor,
         identificador,
         setIdentificador,
         mensagem,
         setMensagem,
         cep,
-        setCep,
+        setCep
       }}
     >
       {children}

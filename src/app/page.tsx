@@ -10,10 +10,10 @@ function App(): JSX.Element {
     async function generateDynamicPix() {
       const qrCodePix = QrCodePix({
         version: '01',
-        key: 'felipematheusdev@gmail.com', 
+        key: 'felipematheusdev@gmail.com',
         name: 'Test',
         city: 'SAO PAULO',
-        transactionId: 'Test', 
+        transactionId: 'Test',
         message: 'Test',
         cep: '68750000',
         value: 15,
@@ -31,6 +31,7 @@ function App(): JSX.Element {
 
   return (
     <>
+      <h1>QR Code pix</h1>
       <img src={qrCode} alt={'QR Code PIX'} />
       <p>{rawPix}</p>
     </>
