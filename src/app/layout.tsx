@@ -1,4 +1,4 @@
-import { DataProvider } from './context/DataContext'
+import { DataProvider } from '../context/DataContext'
 import './globals.css'
 import { Inter } from 'next/font/google'
 
