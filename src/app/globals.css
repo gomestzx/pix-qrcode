@@ -10,8 +10,6 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-
-
 body {
   min-height: 100vh;
   color: rgb(var(--foreground-rgb));

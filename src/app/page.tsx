@@ -31,11 +31,10 @@ function App(): JSX.Element {
       const qrCodePix = QrCodePix({
         version: '01',
         key: chave,
-        value: valor,
         name: nome,
         city: cidade,
         transactionId: identificador,
-        message: mensagem,
+        value: valor ?? 0,
       });
 
       const rawPixStr = qrCodePix.payload();
@@ -48,13 +47,9 @@ function App(): JSX.Element {
     void generateDynamicPix();
   }, [chave, nome, cidade, identificador, mensagem, valor]);
 
-  function formatCurrency(value) {
-    return parseFloat(value).toFixed(2);
-  }
-
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     const inputValue = e.target.value;
-    const formattedValue = formatCurrency(inputValue);
+    const formattedValue = parseFloat(inputValue).toFixed(2);
     const numberValue = parseFloat(formattedValue);
     setValor(numberValue);
   };
@@ -72,7 +67,7 @@ function App(): JSX.Element {
           />
           <NumberInput
             onChange={handleChange}
-            value={valor}
+            value={valor === 0 ? undefined : valor}
             label='Valor'
             placeholder='Digite o valor'
           />

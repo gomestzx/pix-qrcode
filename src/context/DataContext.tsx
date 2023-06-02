@@ -29,7 +29,7 @@ export function DataProvider({ children }: IProvider) {
   const [cidade, setCidade] = useState('')
   const [nome, setNome] = useState('')
   const [valor, setValor] = useState<number>(0)
-  const [identificador, setIdentificador] = useState('')
+  const [identificador, setIdentificador] = useState('PGMTO123')
   const [mensagem, setMensagem] = useState('')
   const [cep, setCep] = useState('')
   return (
