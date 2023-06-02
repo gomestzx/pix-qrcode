@@ -5,7 +5,7 @@ import Home from "./page";
 describe("App", () => {
   test("should render properly", () => {
     const { getByText } = render(<Home />);
-    const element = getByText("QR Code PIX");
+    const element = getByText("QR Code pix");
     expect(element).toBeDefined();
   });
 });

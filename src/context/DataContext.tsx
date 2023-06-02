@@ -6,9 +6,9 @@ interface IDataContext {
   setChave(e: any): void;
   cidade: string;
   setCidade(e: any): void;
-  recebedor: string;
-  setRecebedor(e: any): void;
-  valor: string;
+  nome: string;
+  setNome(e: any): void;
+  valor: number;
   setValor(e: any): void;
   identificador: string;
   setIdentificador(e: any): void;
@@ -27,8 +27,8 @@ export const DataContext = createContext({} as IDataContext);
 export function DataProvider({ children }: IProvider) {
   const [chave, setChave] = useState('');
   const [cidade, setCidade] = useState('')
-  const [recebedor, setRecebedor] = useState('')
-  const [valor, setValor] = useState('')
+  const [nome, setNome] = useState('')
+  const [valor, setValor] = useState<number>(0)
   const [identificador, setIdentificador] = useState('')
   const [mensagem, setMensagem] = useState('')
   const [cep, setCep] = useState('')
@@ -39,8 +39,8 @@ export function DataProvider({ children }: IProvider) {
         setChave,
         cidade: cidade,
         setCidade,
-        recebedor: recebedor,
-        setRecebedor,
+        nome: nome,
+        setNome,
         valor: valor,
         setValor,
         identificador,
