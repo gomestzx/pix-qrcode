@@ -68,6 +68,10 @@ function App(): JSX.Element {
   return (
     <div>
       <Header />
+      <div className='p-4'>
+        <h1 className=" text-4xl lg:text-5xl text-emerald-400 text-center mt-6 font-bold">Gere seu QR Code PIX</h1>
+        <p className='text-center text-md text-gray-600'>Crie um QR Code para sua chave PIX 100% grátis</p>
+      </div>
       <div className='flex flex-wrap-reverse justify-center align-middle md:p-8'>
         <div className='w-full p-4 md:p-0 md:w-3/6 flex flex-col items-center'>
           <TextInput
@@ -107,7 +111,7 @@ function App(): JSX.Element {
             placeholder='Digite uma mensagem'
           />
 
-          <button className='w-full md:w-9/12 rounded p-3 text-white font-normal bg-emerald-400' onClick={openModal}>
+          <button className='w-full md:w-9/12 rounded p-3 text-white font-normal bg-emerald-600' onClick={openModal}>
             Gerar QR Code
           </button>
         </div>
