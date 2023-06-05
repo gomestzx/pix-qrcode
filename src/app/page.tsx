@@ -7,6 +7,7 @@ import Image from 'next/image';
 import 'tailwindcss/tailwind.css';
 import Header from '@/components/Header/Header';
 import NumberInput from '@/components/NumberInput/NumberInput';
+import Modal from 'react-modal';
 
 function App(): JSX.Element {
   const [qrCode, setQrCode] = useState<string>('');
@@ -54,11 +55,21 @@ function App(): JSX.Element {
     setValor(numberValue);
   };
 
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
   return (
     <div>
       <Header />
       <div className='flex flex-wrap-reverse justify-center align-middle md:p-8'>
-        <div className='w-full p-8 md:p-0 md:w-3/6'>
+        <div className='w-full p-4 md:p-0 md:w-3/6 flex flex-col items-center'>
           <TextInput
             value={chave}
             onChange={(e) => setChave(e.target.value)}
@@ -95,9 +106,23 @@ function App(): JSX.Element {
             label='Mensagem (opicional)'
             placeholder='Digite uma mensagem'
           />
+
+          <button className='w-full md:w-9/12 rounded p-3 text-white font-normal bg-emerald-400' onClick={openModal}>
+            Gerar QR Code
+          </button>
         </div>
+
         <div>
-          <Image src={qrCode} width={300} height={300} alt='' />
+          <Modal
+            isOpen={modalIsOpen}
+            onRequestClose={closeModal}
+            contentLabel='Example Modal'
+          >
+            <button onClick={closeModal}>x</button>
+            <div>
+              <Image src={qrCode} width={300} height={300} alt='' />
+            </div>
+          </Modal>
         </div>
       </div>
     </div>
