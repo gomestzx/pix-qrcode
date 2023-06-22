@@ -55,7 +55,7 @@ export default function Home() {
                 navbar ? 'block' : 'hidden'
               }`}
             >
-              <ul className='items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0'>
+              <ul className='items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0 text-gray-500'>
                 <li className=''>
                   <Link href='/'>Perguntas frenquentes</Link>
                 </li>

@@ -1,13 +1,7 @@
 import React from 'react';
+import { INumberInput } from './types';
 
-interface ITextInput {
-  label?: string;
-  onChange(e: any): void;
-  value?: number;
-  placeholder?: string;
-}
-
-const NumberInput = (props: ITextInput) => {
+const NumberInput = (props: INumberInput) => {
   return (
     <>
       <div className='w-full lg:w-9/12 block mb-2 text-md text-gray-600'>{props.label}</div>
@@ -17,6 +11,7 @@ const NumberInput = (props: ITextInput) => {
         value={props.value}
         type='number'
         placeholder={props.placeholder}
+        required={props.required}
       />
     </>
   );

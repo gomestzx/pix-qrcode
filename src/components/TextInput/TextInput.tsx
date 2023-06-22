@@ -1,11 +1,6 @@
 import React from 'react';
+import { ITextInput } from './types';
 
-interface ITextInput {
-  label?: string;
-  onChange(e: any): void;
-  value: string;
-  placeholder?: string;
-}
 
 const TextInput = (props: ITextInput) => {
   return (
@@ -17,6 +12,7 @@ const TextInput = (props: ITextInput) => {
         onChange={props.onChange}
         value={props.value}
         placeholder={props.placeholder}
+        required={props.required}
       />
     </>
   );
