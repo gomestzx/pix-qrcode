@@ -16,6 +16,10 @@ interface IDataContext {
   setMensagem(e: any): void;
   cep: string;
   setCep(e: any): void;
+  qrCode: string;
+  setQrCode(e: any): void;
+  rawPix: string;
+  setRawPix(e: any): void;
 }
 
 interface IProvider {
@@ -32,6 +36,8 @@ export function DataProvider({ children }: IProvider) {
   const [identificador, setIdentificador] = useState('PGMTO123')
   const [mensagem, setMensagem] = useState('')
   const [cep, setCep] = useState('')
+  const [qrCode, setQrCode] = useState<string>('');
+  const [rawPix, setRawPix] = useState<string>('');
   return (
     <DataContext.Provider
       value={{
@@ -48,7 +54,11 @@ export function DataProvider({ children }: IProvider) {
         mensagem,
         setMensagem,
         cep,
-        setCep
+        setCep,
+        qrCode,
+        setQrCode,
+        rawPix,
+        setRawPix
       }}
     >
       {children}
