@@ -2,16 +2,7 @@ import React, { useRef, useState } from 'react';
 import Modal from 'react-modal';
 import Image from 'next/image';
 import { downloadQRCode } from '@/utils/DownloadQRCode';
-
-interface IModalComponentProps {
-  isOpen: boolean;
-  qrCode: string;
-  chave: string;
-  nome: string;
-  cidade: string;
-  valor?: number;
-  closeModal(e: any): void;
-}
+import { IModalComponentProps } from './types';
 
 const ModalComponent = (props: IModalComponentProps) => {
   const qrCodeImageRef = useRef<HTMLImageElement>(null);
