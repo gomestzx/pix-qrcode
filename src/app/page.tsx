@@ -9,6 +9,8 @@ import NumberInput from '@/components/NumberInput/NumberInput';
 import { Button } from '@/components/Button/Button';
 import ModalComponent from '@/components/ModalComponent/ModalComponent';
 import Title from '@/components/Title/Title';
+import { generateDynamicPix } from '@/utils/GenerateQRCode';
+
 
 
 function App(): JSX.Element {
@@ -28,21 +30,12 @@ function App(): JSX.Element {
   } = useData();
 
   useEffect(() => {
-    async function generateDynamicPix() {
-      const qrCodePix = QrCodePix({
-        version: '01',
-        key: chave,
-        name: nome,
-        city: cidade,
-        transactionId: identificador,
-        value: valor ?? 0,
-      });
-
-      const qrCodeBase64 = await qrCodePix.base64();
+    async function fetchDynamicPix() {
+      const qrCodeBase64 = await generateDynamicPix(chave, nome, cidade, identificador, valor);
       setQrCode(qrCodeBase64);
     }
 
-    void generateDynamicPix();
+    void fetchDynamicPix();
   }, [chave, nome, cidade, identificador, valor]);
 
   const handleNumberValue = (e: any) => {
