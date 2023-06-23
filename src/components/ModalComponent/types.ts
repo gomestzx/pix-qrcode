@@ -5,5 +5,5 @@ export interface IModalComponentProps {
   nome: string;
   cidade: string;
   valor?: number;
-  closeModal(e: any): void;
+  closeModal: () => void;
 }

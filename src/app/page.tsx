@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { QrCodePix } from 'qrcode-pix';
+import { ChangeEvent } from 'react';
 import { useData } from '@/hooks/useData';
 import TextInput from '@/components/TextInput/TextInput';
 import 'tailwindcss/tailwind.css';
@@ -38,7 +38,7 @@ function App(): JSX.Element {
     void fetchDynamicPix();
   }, [chave, nome, cidade, identificador, valor]);
 
-  const handleNumberValue = (e: any) => {
+  const handleNumberValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     const formattedValue = parseFloat(inputValue).toFixed(2);
     const numberValue = parseFloat(formattedValue);
@@ -58,22 +58,22 @@ function App(): JSX.Element {
       <div className='flex flex-wrap-reverse justify-center'>
         <div className='w-full p-4 md:p-0 md:w-3/6 flex flex-col items-center'>
           <TextInput
-            onChange={(e: any) => setChave(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setChave(e.target.value)}
             label='Chave PIX'
             placeholder='Digite a chave'
           />
           <TextInput
-            onChange={(e: any) => setNome(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setNome(e.target.value)}
             label='Nome do beneficiario'
             placeholder='Digite o nome'
           />
           <TextInput
-            onChange={(e: any) => setCidade(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setCidade(e.target.value)}
             label='Cidade do beneficiário ou da transação'
             placeholder='Digite a cidade'
           />
           <TextInput
-            onChange={(e: any) => setIdentificador(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setIdentificador(e.target.value)}
             label='Código da transferência (opicional)'
             placeholder='PGMTO123'
           />

@@ -1,53 +1,54 @@
-'use client';
-import { createContext, useState } from 'react';
+"use client"
+import { createContext, ReactNode, useState, Dispatch, SetStateAction } from 'react';
 
 interface IDataContext {
   chave: string;
-  setChave(e: any): void;
+  setChave: Dispatch<SetStateAction<string>>;
   cidade: string;
-  setCidade(e: any): void;
+  setCidade: Dispatch<SetStateAction<string>>;
   nome: string;
-  setNome(e: any): void;
+  setNome: Dispatch<SetStateAction<string>>;
   valor: number;
-  setValor(e: any): void;
+  setValor: Dispatch<SetStateAction<number>>;
   identificador: string;
-  setIdentificador(e: any): void;
+  setIdentificador: Dispatch<SetStateAction<string>>;
   mensagem: string;
-  setMensagem(e: any): void;
+  setMensagem: Dispatch<SetStateAction<string>>;
   cep: string;
-  setCep(e: any): void;
+  setCep: Dispatch<SetStateAction<string>>;
   qrCode: string;
-  setQrCode(e: any): void;
+  setQrCode: Dispatch<SetStateAction<string>>;
   rawPix: string;
-  setRawPix(e: any): void;
+  setRawPix: Dispatch<SetStateAction<string>>;
 }
 
 interface IProvider {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
-export const DataContext = createContext({} as IDataContext);
+export const DataContext = createContext<IDataContext>({} as IDataContext);
 
 export function DataProvider({ children }: IProvider) {
   const [chave, setChave] = useState('');
-  const [cidade, setCidade] = useState('')
-  const [nome, setNome] = useState('')
-  const [valor, setValor] = useState<number>(0)
-  const [identificador, setIdentificador] = useState('PGMTO123')
-  const [mensagem, setMensagem] = useState('')
-  const [cep, setCep] = useState('')
+  const [cidade, setCidade] = useState('');
+  const [nome, setNome] = useState('');
+  const [valor, setValor] = useState<number>(0);
+  const [identificador, setIdentificador] = useState('PGMTO123');
+  const [mensagem, setMensagem] = useState('');
+  const [cep, setCep] = useState('');
   const [qrCode, setQrCode] = useState<string>('');
   const [rawPix, setRawPix] = useState<string>('');
+
   return (
     <DataContext.Provider
       value={{
-        chave: chave,
+        chave,
         setChave,
-        cidade: cidade,
+        cidade,
         setCidade,
-        nome: nome,
+        nome,
         setNome,
-        valor: valor,
+        valor,
         setValor,
         identificador,
         setIdentificador,
