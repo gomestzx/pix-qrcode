@@ -14,17 +14,6 @@ interface IModalComponentProps {
 }
 
 const ModalComponent = (props: IModalComponentProps) => {
-
-  const customStyles = {
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      transform: 'translate(-50%, -50%)',
-    },
-  };
-
   const qrCodeImageRef = useRef<HTMLImageElement>(null);
 
   function HandleDownloadQRCode() {
@@ -37,13 +26,21 @@ const ModalComponent = (props: IModalComponentProps) => {
         isOpen={props.isOpen}
         onRequestClose={props.closeModal}
         contentLabel='Example Modal'
-        style={customStyles}
+        className='fixed inset-0 flex items-center justify-center'
+        style={{
+          overlay: {
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          },
+        }}
       >
-        <div className='flex flex-col items-center justify-center'>
-          <button onClick={props.closeModal} className='w-full text-right text-2xl'>
+        <div className='bg-white p-6 rounded-lg max-w-md w-full md:max-w-screen-md md:w-auto'>
+          <button
+            onClick={props.closeModal}
+            className='text-right text-2xl w-full'
+          >
             x
           </button>
-          <div id='qrCode'>
+          <div id='qrCode' className='flex items-center justify-center'>
             <Image
               ref={qrCodeImageRef}
               src={props.qrCode}
@@ -54,12 +51,12 @@ const ModalComponent = (props: IModalComponentProps) => {
           </div>
 
           <button
-            className='w-full md:w-9/12 rounded p-3 text-white font-normal bg-emerald-600'
+            className='w-full rounded p-3 text-white font-normal bg-emerald-600'
             onClick={HandleDownloadQRCode}
           >
             Baixar QR CODE
           </button>
-          <div className='flex items-start justify-center flex-col mt-4 mx-6 w-full md:w-9/12'>
+          <div className='flex items-start justify-center flex-col mt-4 w-full md:w-9/12'>
             <p className='w-full'>
               <span className='font-semibold'>Chave:</span> {props.chave}
             </p>
@@ -71,7 +68,7 @@ const ModalComponent = (props: IModalComponentProps) => {
             </p>
             {props.valor ? (
               <p className='w-full'>
-                <span className='font-semibold'>Cidade:</span> {props.valor}
+                <span className='font-semibold'>Valor:</span> {props.valor}
               </p>
             ) : (
               <></>
