@@ -4,16 +4,16 @@ import { useState } from 'react';
 export default function Navbar() {
   const [navbar, setNavbar] = useState(false);
   return (
-    <nav className='w-full shadow'>
-      <div className='justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8'>
+    <nav className='w-full border-b-4 border-emerald-400 bg-neutral-800 '>
+      <div className='justify-around px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8'>
         <div>
           <div className='flex items-center justify-between py-3 md:py-5 md:block'>
             <a href='#'>
-              <h2 className='text-2xl font-bold'>QR code PIX</h2>
+              <img src="/logo.png" alt="logo" style={{width: '100px'}} />
             </a>
             <div className='md:hidden'>
               <button
-                className='p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border'
+                className='p-2 text-white rounded-md outline-none focus:border-gray-400 focus:border'
                 onClick={() => setNavbar(!navbar)}
               >
                 {navbar ? (
@@ -21,7 +21,7 @@ export default function Navbar() {
                     xmlns='http://www.w3.org/2000/svg'
                     className='w-6 h-6 text-white'
                     viewBox='0 0 20 20'
-                    fill='#000'
+                    fill='#fff'
                   >
                     <path
                       fillRule='evenodd'
@@ -35,7 +35,7 @@ export default function Navbar() {
                     className='w-6 h-6 text-white'
                     fill='none'
                     viewBox='0 0 24 24'
-                    stroke='#000'
+                    stroke='#fff'
                     strokeWidth={2}
                   >
                     <path
@@ -55,9 +55,9 @@ export default function Navbar() {
               navbar ? 'block' : 'hidden'
             }`}
           >
-            <ul className='items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0 text-gray-500'>
+            <ul className='items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0 text-gray-300'>
               <li className=''>
-                <Link href='/'>Perguntas frenquentes</Link>
+                <Link href='#perguntas-frequentes'>Perguntas frenquentes</Link>
               </li>
               <li className=''>
                 <Link href='/blogs'>Blog</Link>

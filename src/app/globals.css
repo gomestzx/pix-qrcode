@@ -15,6 +15,7 @@ body {
   min-height: 100vh;
   color: rgb(var(--foreground-rgb));
   font-family: 'Poppins', sans-serif !important;
+  background-color: #F9F9F9;
 }
 
 h1 {

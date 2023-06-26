@@ -11,18 +11,6 @@ const Title = () => {
           Crie um QR Code para sua chave PIX 100% grátis
         </p>
       </div>
-      <img
-        src='/img2.png'
-        alt='Imagem'
-        className='fixed top-1/4 right-20 hidden xl:block '
-        style={{ width: '320px' }}
-      />
-      <img
-        src='/img1.png'
-        alt='Imagem'
-        className='fixed top-1/4 left-20 hidden xl:block'
-        style={{ width: '320px' }}
-      />
     </>
   );
 };
