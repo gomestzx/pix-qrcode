@@ -142,7 +142,11 @@ function App(): JSX.Element {
             id='QRcode'
             className=' bg-white w-full md:w-2/6 px-4 flex-col justify-center md:flex hidden'
           >
-            <div className='w-ful flex justify-center items-center relative py-4 px-4' ref={qrCodeImageRef}>
+            <div
+              className='w-ful flex justify-center items-center p-4 relative'
+              ref={qrCodeImageRef}
+            >
+              
               <QRCodeSVG
                 value={rawPix}
                 size={190}
@@ -151,19 +155,25 @@ function App(): JSX.Element {
                 level={'L'}
                 includeMargin={false}
                 imageSettings={{
-                  src: '',
+                  src: '/pix.png',
                   x: undefined,
                   y: undefined,
-                  height: 28,
-                  width: 28,
+                  height: 26,
+                  width: 26,
                   excavate: true,
                 }}
               />
-              <Image src='/pix.png' alt='' width={28} height={28} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded"/>
+              <Image
+                src='/pix.png'
+                alt=''
+                width={28}
+                height={28}
+                className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded'
+              />
+              
             </div>
 
             <div className='mt-2'>
-              {/* <Accordion title='Design' content='' /> */}
               <Accordion
                 title='Color'
                 content={
@@ -192,7 +202,7 @@ function App(): JSX.Element {
           chave={chave}
           qrCode={qrCode}
           isOpen={modalIsOpen}
-        /> 
+        />
       </div>
       <div
         className='w-full md:w-4/6 mx-auto mt-8 flex justify-center md:justify-between flex-wrap'

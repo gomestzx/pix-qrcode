@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { ReactNode } from 'react';
 import { IAccordionProps } from './types';
 
 const Accordion = (props: IAccordionProps) => {
@@ -12,7 +11,7 @@ const Accordion = (props: IAccordionProps) => {
   return (
     <div>
       <button
-        className="flex items-center justify-between w-full px-4 py-4 bg-gray-200 hover:bg-gray-300"
+        className="flex items-center justify-between w-full px-4 py-3 bg-gray-200 hover:bg-gray-300 mt-2 rounded"
         onClick={toggleAccordion}
       >
         <span>{props.title}</span>
