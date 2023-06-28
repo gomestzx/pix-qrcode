@@ -17,6 +17,10 @@ import { QRCodeSVG } from 'qrcode.react';
 import ColorButton from '@/components/ColorButton/ColorButton';
 import { downloadQRCode } from '@/utils/DownloadQRCode';
 import Image from 'next/image';
+import { openPDF } from '@/utils/OpenPDF';
+
+
+
 
 function App(): JSX.Element {
   const {
@@ -175,7 +179,7 @@ function App(): JSX.Element {
 
             <div className='mt-2'>
               <Accordion
-                title='Color'
+                title='Cor'
                 content={
                   <div className='flex'>
                     <ColorButton defaultChecked value='000000' />
@@ -192,6 +196,7 @@ function App(): JSX.Element {
               onClick={HandleDownloadQRCode}
               isDisabled={!chave || !nome || !cidade}
             />
+            <Button label='Criar Placa Pix' isDisabled={!chave || !nome || !cidade} onClick={() => openPDF(qrCodeImageRef, chave, nome)} />
           </div>
         </div>
         <ModalComponent
