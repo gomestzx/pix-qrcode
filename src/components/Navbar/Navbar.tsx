@@ -4,8 +4,8 @@ import { useState } from 'react';
 export default function Navbar() {
   const [navbar, setNavbar] = useState(false);
   return (
-    <nav className='w-full border-b-4 border-emerald-400 bg-neutral-800 '>
-      <div className='justify-around px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8'>
+    <nav className='w-full border-b-4  border-emerald-400 bg-neutral-800 '>
+      <div className='justify-between md:w-4/6  px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8'>
         <div>
           <div className='flex items-center justify-between py-3 md:py-5 md:block'>
             <a href='#'>

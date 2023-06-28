@@ -1,7 +1,6 @@
 import { useState } from 'react';
+import { ReactNode } from 'react';
 import { IAccordionProps } from './types';
-
-
 
 const Accordion = (props: IAccordionProps) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,15 +20,16 @@ const Accordion = (props: IAccordionProps) => {
           className={`w-4 h-4 transform ${isOpen ? 'rotate-180' : 'rotate-0'}`}
           viewBox="0 0 20 20"
         >
-          <path
-            fill="currentColor"
-            d="M6 6L10 10L14 6H6Z"
-          />
+          <path fill="currentColor" d="M6 6L10 10L14 6H6Z" />
         </svg>
       </button>
       {isOpen && (
         <div className="p-4 bg-gray-100">
-          <p>{props.content}</p>
+          {typeof props.content === 'string' ? (
+            <p>{props.content}</p>
+          ) : (
+            props.content
+          )}
         </div>
       )}
     </div>

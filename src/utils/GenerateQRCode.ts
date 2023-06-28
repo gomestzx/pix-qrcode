@@ -6,7 +6,7 @@ export async function generateDynamicPix(
   cidade: string,
   identificador: string,
   valor?: number
-): Promise<string> {
+): Promise<{ qrCodeBase64: string, rawQrCode: string }> {
   const qrCodePix = QrCodePix({
     version: '01',
     key: chave,
@@ -17,5 +17,10 @@ export async function generateDynamicPix(
   });
 
   const qrCodeBase64 = await qrCodePix.base64();
-  return qrCodeBase64;
+  const rawQrCode = qrCodePix.payload();
+
+  return {
+    qrCodeBase64,
+    rawQrCode
+  };
 }

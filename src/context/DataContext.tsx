@@ -1,5 +1,11 @@
-"use client"
-import { createContext, ReactNode, useState, Dispatch, SetStateAction } from 'react';
+'use client';
+import {
+  createContext,
+  ReactNode,
+  useState,
+  Dispatch,
+  SetStateAction,
+} from 'react';
 
 interface IDataContext {
   chave: string;
@@ -20,6 +26,10 @@ interface IDataContext {
   setQrCode: Dispatch<SetStateAction<string>>;
   rawPix: string;
   setRawPix: Dispatch<SetStateAction<string>>;
+  colorQrCode: string;
+  setColorQrCode: Dispatch<SetStateAction<string>>;
+  designQrCode: string;
+  setDesignQrCode: Dispatch<SetStateAction<string>>;
 }
 
 interface IProvider {
@@ -36,8 +46,10 @@ export function DataProvider({ children }: IProvider) {
   const [identificador, setIdentificador] = useState('PGMTO123');
   const [mensagem, setMensagem] = useState('');
   const [cep, setCep] = useState('');
-  const [qrCode, setQrCode] = useState<string>('');
-  const [rawPix, setRawPix] = useState<string>('');
+  const [qrCode, setQrCode] = useState('');
+  const [rawPix, setRawPix] = useState('');
+  const [colorQrCode, setColorQrCode] = useState('000000');
+  const [designQrCode, setDesignQrCode] = useState('');
 
   return (
     <DataContext.Provider
@@ -59,7 +71,11 @@ export function DataProvider({ children }: IProvider) {
         qrCode,
         setQrCode,
         rawPix,
-        setRawPix
+        setRawPix,
+        colorQrCode,
+        setColorQrCode,
+        designQrCode,
+        setDesignQrCode,
       }}
     >
       {children}

@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { ChangeEvent } from 'react';
 import { useData } from '@/hooks/useData';
 import TextInput from '@/components/TextInput/TextInput';
@@ -13,6 +13,10 @@ import { generateDynamicPix } from '@/utils/GenerateQRCode';
 import Accordion from '@/components/Accordion/Accordion';
 import Card from '@/components/Card/Card';
 import Footer from '@/components/Footer/Footer';
+import { QRCodeSVG } from 'qrcode.react';
+import ColorButton from '@/components/ColorButton/ColorButton';
+import { downloadQRCode } from '@/utils/DownloadQRCode';
+import Image from 'next/image';
 
 function App(): JSX.Element {
   const {
@@ -28,11 +32,16 @@ function App(): JSX.Element {
     setIdentificador,
     qrCode,
     setQrCode,
+    rawPix,
+    setRawPix,
+    colorQrCode,
   } = useData();
+
+  const qrCodeImageRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     async function fetchDynamicPix() {
-      const qrCodeBase64 = await generateDynamicPix(
+      const { qrCodeBase64, rawQrCode } = await generateDynamicPix(
         chave,
         nome,
         cidade,
@@ -40,6 +49,7 @@ function App(): JSX.Element {
         valor,
       );
       setQrCode(qrCodeBase64);
+      setRawPix(rawQrCode);
     }
 
     void fetchDynamicPix();
@@ -76,51 +86,103 @@ function App(): JSX.Element {
     },
   ];
 
+  function HandleDownloadQRCode() {
+    downloadQRCode(qrCodeImageRef);
+  }
+
   return (
     <div>
       <Navbar />
       <Title />
-      <div className='flex flex-wrap-reverse justify-around'>
-        <div className='w-full p-4 md:p-2 md:py-8 md:w-3/6 rounded flex flex-col items-center shadow-md bg-white'>
-          <TextInput
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setChave(e.target.value)
-            }
-            label='Chave PIX'
-            placeholder='Digite a chave'
-          />
-          <TextInput
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setNome(e.target.value)
-            }
-            label='Nome do beneficiario'
-            placeholder='Digite o nome'
-          />
-          <TextInput
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setCidade(e.target.value)
-            }
-            label='Cidade do beneficiário ou da transação'
-            placeholder='Digite a cidade'
-          />
-          <TextInput
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setIdentificador(e.target.value)
-            }
-            label='Código da transferência (opicional)'
-            placeholder='PGMTO123'
-          />
-          <NumberInput
-            onChange={handleNumberValue}
-            value={valor === 0 ? undefined : valor}
-            label='Valor (opcional)'
-            placeholder='Digite o valor'
-          />
-          <Button
-            label='Gerar QR Code'
-            onClick={handleModal}
-            isDisabled={!chave || !nome || !cidade}
-          />
+      <div className='flex flex-wrap-reverse justify-center'>
+        <div className='w-full p-4 md:px-8 md:py-8 md:w-4/6 rounded flex flex-wrap items-center shadow-lg bg-white'>
+          <div id='inputs' className='md:w-4/6 w-full'>
+            <TextInput
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                setChave(e.target.value)
+              }
+              label='Chave PIX'
+              placeholder='Digite sua chave'
+            />
+            <TextInput
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                setNome(e.target.value)
+              }
+              label='Nome do beneficiario'
+              placeholder='Digite seu nome'
+            />
+            <TextInput
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                setCidade(e.target.value)
+              }
+              label='Cidade do beneficiário ou da transação'
+              placeholder='Digite sua cidade'
+            />
+            <TextInput
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                setIdentificador(e.target.value)
+              }
+              label='Código da transferência (opicional)'
+              placeholder='PGMTO123'
+            />
+            <NumberInput
+              onChange={handleNumberValue}
+              value={valor === 0 ? undefined : valor}
+              label='Valor (opcional)'
+              placeholder='Digite o valor'
+            />
+            <Button
+              label='Gerar QR Code'
+              onClick={handleModal}
+              isDisabled={!chave || !nome || !cidade}
+              mobile
+            />
+          </div>
+          <div
+            id='QRcode'
+            className=' bg-white w-full md:w-2/6 px-4 flex-col justify-center md:flex hidden'
+          >
+            <div className='w-ful flex justify-center items-center relative py-4 px-4' ref={qrCodeImageRef}>
+              <QRCodeSVG
+                value={rawPix}
+                size={190}
+                bgColor={'#ffffff'}
+                fgColor={colorQrCode}
+                level={'L'}
+                includeMargin={false}
+                imageSettings={{
+                  src: '',
+                  x: undefined,
+                  y: undefined,
+                  height: 28,
+                  width: 28,
+                  excavate: true,
+                }}
+              />
+              <Image src='/pix.png' alt='' width={28} height={28} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded"/>
+            </div>
+
+            <div className='mt-2'>
+              {/* <Accordion title='Design' content='' /> */}
+              <Accordion
+                title='Color'
+                content={
+                  <div className='flex'>
+                    <ColorButton defaultChecked value='000000' />
+                    <ColorButton value='547896' />
+                    <ColorButton value='2FBCAD' />
+                    <ColorButton value='FF0060' />
+                    <ColorButton value='1D267D' />
+                  </div>
+                }
+              />
+            </div>
+            <Button
+              label='Download PNG'
+              onClick={HandleDownloadQRCode}
+              isDisabled={!chave || !nome || !cidade}
+            />
+          </div>
         </div>
         <ModalComponent
           closeModal={handleModal}
@@ -130,10 +192,10 @@ function App(): JSX.Element {
           chave={chave}
           qrCode={qrCode}
           isOpen={modalIsOpen}
-        />
+        /> 
       </div>
       <div
-        className='w-full md:w-3/6 mx-auto mt-8 flex justify-center md:justify-between flex-wrap'
+        className='w-full md:w-4/6 mx-auto mt-8 flex justify-center md:justify-between flex-wrap'
         id='perguntas-frequentes'
       >
         <Card
@@ -152,7 +214,10 @@ function App(): JSX.Element {
           conteudo='Não armazenamos nenhum dado'
         />
       </div>
-      <div className='w-full md:w-3/6 mx-auto mt-8 py-4' id='perguntas-frequentes'>
+      <div
+        className='w-full md:w-4/6 mx-auto mt-8 py-4'
+        id='perguntas-frequentes'
+      >
         <h2 className='my-4 text-2xl text-md text-gray-600 p-4 md:p-0'>
           Perguntas frequentes
         </h2>

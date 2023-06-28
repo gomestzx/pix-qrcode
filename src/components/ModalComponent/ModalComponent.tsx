@@ -3,6 +3,10 @@ import Modal from 'react-modal';
 import Image from 'next/image';
 import { downloadQRCode } from '@/utils/DownloadQRCode';
 import { IModalComponentProps } from './types';
+import { QRCodeSVG } from 'qrcode.react';
+import { useData } from '@/hooks/useData';
+import Accordion from '../Accordion/Accordion';
+import ColorButton from '../ColorButton/ColorButton';
 
 const ModalComponent = (props: IModalComponentProps) => {
   const qrCodeImageRef = useRef<HTMLImageElement>(null);
@@ -10,6 +14,8 @@ const ModalComponent = (props: IModalComponentProps) => {
   function HandleDownloadQRCode() {
     downloadQRCode(qrCodeImageRef);
   }
+
+  const { colorQrCode, rawPix } = useData();
 
   return (
     <>
@@ -31,18 +37,52 @@ const ModalComponent = (props: IModalComponentProps) => {
           >
             x
           </button>
-          <div id='qrCode' className='flex items-center justify-center'>
+          <div
+            id='qrCode'
+            className='flex items-center justify-center relative p-4'
+          >
+            <QRCodeSVG
+              value={rawPix}
+              size={190}
+              bgColor={'#ffffff'}
+              fgColor={colorQrCode}
+              level={'L'}
+              includeMargin={false}
+              imageSettings={{
+                src: '',
+                x: undefined,
+                y: undefined,
+                height: 28,
+                width: 28,
+                excavate: true,
+              }}
+            />
             <Image
-              ref={qrCodeImageRef}
-              src={props.qrCode}
-              width={300}
-              height={300}
+              src='/pix.png'
               alt=''
+              width={28}
+              height={28}
+              className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded'
+            />
+          </div>
+          <div className='mt-2'>
+            {/* <Accordion title='Design' content='' /> */}
+            <Accordion
+              title='Color'
+              content={
+                <div className='flex'>
+                  <ColorButton defaultChecked value='000000' />
+                  <ColorButton value='547896' />
+                  <ColorButton value='2FBCAD' />
+                  <ColorButton value='FF0060' />
+                  <ColorButton value='1D267D' />
+                </div>
+              }
             />
           </div>
 
           <button
-            className='w-full rounded p-3 text-white font-normal bg-emerald-600'
+            className='w-full rounded p-3 text-white font-normal bg-emerald-400 mt-4'
             onClick={HandleDownloadQRCode}
           >
             Baixar QR CODE
