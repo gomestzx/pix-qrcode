@@ -15,7 +15,7 @@ export function openPDF(qrCodeImageRef: React.RefObject<HTMLImageElement>, chave
       doc.setFontSize(12)
 
       doc.text(`chave: ${chave}`, 70, 135);
-      doc.text(`beneficiário: ${chave}`, 70, 142);
+      doc.text(`beneficiário: ${nome}`, 70, 142);
       
 
       const pdfContent = doc.output('datauristring');
