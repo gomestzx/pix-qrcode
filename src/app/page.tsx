@@ -153,7 +153,7 @@ function App(): JSX.Element {
               
               <QRCodeSVG
                 value={rawPix}
-                size={190}
+                size={220}
                 bgColor={'#ffffff'}
                 fgColor={colorQrCode}
                 level={'L'}

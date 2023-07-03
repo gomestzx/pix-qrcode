@@ -4,12 +4,12 @@ import { useState } from 'react';
 export default function Navbar() {
   const [navbar, setNavbar] = useState(false);
   return (
-    <nav className='w-full border-b-4  border-emerald-400 bg-neutral-800 '>
+    <nav className='w-full border-b-4 border-teal-500 bg-neutral-800 '>
       <div className='justify-between md:w-4/6  px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8'>
         <div>
           <div className='flex items-center justify-between py-3 md:py-5 md:block'>
             <a href='#'>
-              <img src="/logo.png" alt="logo" style={{width: '100px'}} />
+              <img src="/logo.png" alt="logo" style={{width: '50px'}} />
             </a>
             <div className='md:hidden'>
               <button
@@ -60,10 +60,10 @@ export default function Navbar() {
                 <Link href='#perguntas-frequentes'>Perguntas frenquentes</Link>
               </li>
               <li className=''>
-                <Link href='/blogs'>Blog</Link>
+                <Link href=''>Blog</Link>
               </li>
               <li className=''>
-                <Link href='/about'>Contato</Link>
+                <Link href='mailto:contato@qr-code-pix.com.br'>Contato</Link>
               </li>
             </ul>
           </div>
