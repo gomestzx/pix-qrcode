@@ -99,8 +99,8 @@ function App(): JSX.Element {
       <Navbar />
       <Title />
       <div className='flex flex-wrap-reverse justify-center'>
-        <div className='w-full p-4 md:px-8 md:py-8 md:w-4/6 rounded flex flex-wrap items-center shadow-lg bg-white'>
-          <div id='inputs' className='md:w-4/6 w-full'>
+        <div className='w-full p-4 md:px-8 md:py-8 lg:w-4/6 rounded flex flex-wrap items-center shadow-lg bg-white'>
+          <div id='inputs' className='lg:w-4/6 w-full'>
             <TextInput
               onChange={(e: ChangeEvent<HTMLInputElement>) =>
                 setChave(e.target.value)
@@ -144,7 +144,7 @@ function App(): JSX.Element {
           </div>
           <div
             id='QRcode'
-            className=' bg-white w-full md:w-2/6 px-4 flex-col justify-center md:flex hidden'
+            className=' bg-white w-full lg:w-2/6 px-4 flex-col justify-center lg:flex hidden'
           >
             <div
               className='w-ful flex justify-center items-center p-4 relative'
