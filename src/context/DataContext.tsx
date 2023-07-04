@@ -48,7 +48,7 @@ export function DataProvider({ children }: IProvider) {
   const [cep, setCep] = useState('');
   const [qrCode, setQrCode] = useState('');
   const [rawPix, setRawPix] = useState('');
-  const [colorQrCode, setColorQrCode] = useState('000000');
+  const [colorQrCode, setColorQrCode] = useState('#000000');
   const [designQrCode, setDesignQrCode] = useState('');
 
   return (
