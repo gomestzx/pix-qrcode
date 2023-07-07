@@ -18,6 +18,8 @@ import ColorButton from '@/components/ColorButton/ColorButton';
 import { downloadQRCode } from '@/utils/DownloadQRCode';
 import Image from 'next/image';
 import { openPDF } from '@/utils/OpenPDF';
+import DropdownWithInput from '@/components/DropdownWithInput/DropdownWithInput';
+
 
 function App(): JSX.Element {
   const {
@@ -80,13 +82,7 @@ function App(): JSX.Element {
       <div className='flex flex-wrap-reverse justify-center'>
         <div className='w-full p-4 md:px-8 md:py-8 lg:w-4/6 rounded flex flex-wrap items-center shadow-lg bg-white'>
           <div id='inputs' className='lg:w-4/6 w-full'>
-            <TextInput
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                setChave(e.target.value)
-              }
-              label='Chave PIX'
-              placeholder='Digite sua chave'
-            />
+            <DropdownWithInput />
             <TextInput
               onChange={(e: ChangeEvent<HTMLInputElement>) =>
                 setNome(e.target.value)
