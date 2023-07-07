@@ -19,9 +19,6 @@ import { downloadQRCode } from '@/utils/DownloadQRCode';
 import Image from 'next/image';
 import { openPDF } from '@/utils/OpenPDF';
 
-
-
-
 function App(): JSX.Element {
   const {
     chave,
@@ -71,24 +68,6 @@ function App(): JSX.Element {
   function handleModal() {
     setIsOpen((prevIsOpen) => !prevIsOpen);
   }
-
-  const dataAccordion = [
-    {
-      title: 'O que é Pix?',
-      content:
-        'O Pix é um sistema revolucionário de pagamentos instantâneos no Brasil, desenvolvido pelo Banco Central. Com o Pix, você pode transferir dinheiro de forma rápida, segura e disponível 24 horas por dia, todos os dias da semana, diretamente para a conta do destinatário. Com sua praticidade, é possível realizar pagamentos usando chaves cadastradas, como número de telefone celular, CPF, CNPJ ou e-mail, além de poder utilizar aplicativos de bancos, carteiras digitais e até mesmo ler QR codes. Simplifique suas transações financeiras com o Pix e aproveite a conveniência de transferências instantâneas.',
-    },
-    {
-      title: 'Como funciona o gerador de QR Code Pix?',
-      content:
-        'Um gerador de QR Code Pix é uma ferramenta que permite criar códigos QR personalizados para receber pagamentos por meio do sistema Pix. Ao fornecer as informações necessárias, como o valor e a descrição da transação, o gerador cria um código QR único. Ao escanear esse código com um aplicativo compatível, o pagador pode confirmar e autorizar o pagamento, que é transferido instantaneamente da conta do pagador para a do recebedor. Com sua praticidade e segurança, o gerador de QR Code Pix simplifica o processo de receber pagamentos, eliminando a necessidade de compartilhar dados bancários e agilizando as transações.',
-    },
-    {
-      title: 'O QR Code Pix é gratuito?',
-      content:
-        'O QR Code Pix é 100% gratuito. Você pode utilizá-lo quantas vezes quiser.',
-    },
-  ];
 
   function HandleDownloadQRCode() {
     downloadQRCode(qrCodeImageRef);
@@ -150,7 +129,6 @@ function App(): JSX.Element {
               className='w-ful flex justify-center items-center p-4 relative'
               ref={qrCodeImageRef}
             >
-              
               <QRCodeSVG
                 value={rawPix}
                 size={210}
@@ -174,7 +152,6 @@ function App(): JSX.Element {
                 height={28}
                 className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded'
               />
-              
             </div>
 
             <div className='mt-2'>
@@ -196,7 +173,11 @@ function App(): JSX.Element {
               onClick={HandleDownloadQRCode}
               isDisabled={!chave || !nome || !cidade}
             />
-            <Button label='Criar Placa Pix' isDisabled={!chave || !nome || !cidade} onClick={() => openPDF(qrCodeImageRef, chave, nome)} />
+            <Button
+              label='Criar Placa Pix'
+              isDisabled={!chave || !nome || !cidade}
+              onClick={() => openPDF(qrCodeImageRef, chave, nome)}
+            />
           </div>
         </div>
         <ModalComponent
@@ -236,9 +217,18 @@ function App(): JSX.Element {
         <h2 className='my-4 text-2xl text-md text-gray-600 p-4 md:p-0'>
           Perguntas frequentes
         </h2>
-        {dataAccordion.map((item, index) => (
-          <Accordion key={index} title={item.title} content={item.content} />
-        ))}
+        <Accordion
+          title='O que é Pix?'
+          content='O Pix é um sistema revolucionário de pagamentos instantâneos no Brasil, desenvolvido pelo Banco Central. Com o Pix, você pode transferir dinheiro de forma rápida, segura e disponível 24 horas por dia, todos os dias da semana, diretamente para a conta do destinatário. Com sua praticidade, é possível realizar pagamentos usando chaves cadastradas, como número de telefone celular, CPF, CNPJ ou e-mail, além de poder utilizar aplicativos de bancos, carteiras digitais e até mesmo ler QR codes. Simplifique suas transações financeiras com o Pix e aproveite a conveniência de transferências instantâneas.'
+        />
+        <Accordion
+          title='Como funciona o gerador de QR Code Pix?'
+          content='Um gerador de QR Code Pix é uma ferramenta que permite criar códigos QR personalizados para receber pagamentos por meio do sistema Pix. Ao fornecer as informações necessárias, como o valor e a descrição da transação, o gerador cria um código QR único. Ao escanear esse código com um aplicativo compatível, o pagador pode confirmar e autorizar o pagamento, que é transferido instantaneamente da conta do pagador para a do recebedor. Com sua praticidade e segurança, o gerador de QR Code Pix simplifica o processo de receber pagamentos, eliminando a necessidade de compartilhar dados bancários e agilizando as transações.'
+        />
+        <Accordion
+          title='O QR Code Pix é gratuito?'
+          content='O Pix é um sistema revolucionário de pagamentos instantâneos no Brasil, desenvolvido pelo Banco Central. Com o Pix, você pode transferir dinheiro de forma rápida, segura e disponível 24 horas por dia, todos os dias da semana, diretamente para a conta do destinatário. Com sua praticidade, é possível realizar pagamentos usando chaves cadastradas, como número de telefone celular, CPF, CNPJ ou e-mail, além de poder utilizar aplicativos de bancos, carteiras digitais e até mesmo ler QR codes. Simplifique suas transações financeiras com o Pix e aproveite a conveniência de transferências instantâneas.'
+        />
       </div>
       <Footer />
     </div>
