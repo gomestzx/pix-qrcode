@@ -6,4 +6,5 @@ export interface ITextInput {
   value?: string;
   placeholder?: string;
   required?: boolean;
+  maxLength?: number;
 }

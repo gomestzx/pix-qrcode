@@ -16,6 +16,7 @@ const TextInput = (props: ITextInput) => {
         value={props.value}
         placeholder={props.placeholder}
         required={props.required}
+        maxLength={props.maxLength}
       />
     </>
   );

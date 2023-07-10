@@ -25,6 +25,7 @@ const DropdownWithInput: React.FC<DropdownWithInputProps> = () => {
           }
           placeholder='Digite seu telefone'
           value={maskPhone(chave)}
+          maxLength={15}
         />
       );
       break;
@@ -46,6 +47,7 @@ const DropdownWithInput: React.FC<DropdownWithInputProps> = () => {
           }
           placeholder='Digite seu CPF'
           value={maskCPF(chave)}
+          maxLength={14}
         />
       );
       break;
@@ -57,6 +59,7 @@ const DropdownWithInput: React.FC<DropdownWithInputProps> = () => {
           }
           value={maskCNPJ(chave)}
           placeholder='Digite seu CNPJ'
+          maxLength={18}
         />
       );
       break;
@@ -80,7 +83,7 @@ const DropdownWithInput: React.FC<DropdownWithInputProps> = () => {
       <div className='w-full block mb-2 text-md text-gray-600'>Chave PIX</div>
       <div className='w-full flex items-center justify-center'>
         <select
-          className='w-24 mr-2 py-2 mb-3'
+          className='w-24 mr-2 py-2 mb-3 text-md text-gray-600'
           value={selectedOption}
           onChange={handleOptionChange}
         >
