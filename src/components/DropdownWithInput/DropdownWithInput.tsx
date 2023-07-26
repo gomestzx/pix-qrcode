@@ -10,6 +10,7 @@ const DropdownWithInput: React.FC<DropdownWithInputProps> = () => {
 
   const handleOptionChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setSelectedOption(event.target.value);
+    setChave('');
   };
 
   let componenteRenderizado: JSX.Element | null = null;
@@ -36,6 +37,7 @@ const DropdownWithInput: React.FC<DropdownWithInputProps> = () => {
             setChave(e.target.value)
           }
           placeholder='Digite seu email'
+          value={chave}
         />
       );
       break;
@@ -70,6 +72,7 @@ const DropdownWithInput: React.FC<DropdownWithInputProps> = () => {
             setChave(e.target.value)
           }
           placeholder='Digite sua chave'
+          value={chave}
         />
       );
       break;
