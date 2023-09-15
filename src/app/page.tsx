@@ -132,21 +132,6 @@ function App(): JSX.Element {
                 fgColor={colorQrCode}
                 level={'L'}
                 includeMargin={false}
-                imageSettings={{
-                  src: '/pix.png',
-                  x: undefined,
-                  y: undefined,
-                  height: 26,
-                  width: 26,
-                  excavate: true,
-                }}
-              />
-              <Image
-                src='/pix.png'
-                alt=''
-                width={28}
-                height={28}
-                className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded'
               />
             </div>
 
