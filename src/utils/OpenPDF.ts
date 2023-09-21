@@ -9,7 +9,7 @@ export function openPDF(qrCodeImageRef: React.RefObject<HTMLImageElement>, chave
       const doc = new jsPDF();
 
       doc.addImage('/logo-pdf.png', 'PNG', 65, 30, 80, 30);
-      doc.addImage(image, 'PNG', 79, 62, 55, 55);
+      doc.addImage(image, 'PNG', 79, 62, 58, 58);
 
       doc.setFont('Helvetica');
       doc.setFontSize(12)

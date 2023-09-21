@@ -122,10 +122,8 @@ function App(): JSX.Element {
           >
             <div
               className='w-ful flex justify-center items-center p-4 relative'
-
             >
-              <div ref={qrCodeImageRef}
-                id='QRcode'>
+              <div className='p-1' ref={qrCodeImageRef} id='QRcode'>
                 <QRCodeSVG
                   value={rawPix}
                   size={210}
@@ -134,7 +132,7 @@ function App(): JSX.Element {
                   level={'L'}
                   includeMargin={false}
                 />
-                <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-1'>
+                {/* <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-1'>
                 <Image
                   src='/pix.png'
                   alt=''
@@ -142,8 +140,8 @@ function App(): JSX.Element {
                   height={28}
                   className=''
                 />
-                </div>
-                
+                </div> */}
+
               </div>
 
             </div>
