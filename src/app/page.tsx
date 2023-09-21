@@ -134,6 +134,16 @@ function App(): JSX.Element {
                   level={'L'}
                   includeMargin={false}
                 />
+                <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-1'>
+                <Image
+                  src='/pix.png'
+                  alt=''
+                  width={28}
+                  height={28}
+                  className=''
+                />
+                </div>
+                
               </div>
 
             </div>
