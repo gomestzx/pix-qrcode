@@ -9,13 +9,13 @@ export function openPDF(qrCodeImageRef: React.RefObject<HTMLImageElement>, chave
       const doc = new jsPDF();
 
       doc.addImage('/logo-pdf.png', 'PNG', 65, 30, 80, 30);
-      doc.addImage(image, 'PNG', 63, 60, 85, 70);
+      doc.addImage(image, 'PNG', 79, 62, 55, 55);
 
       doc.setFont('Helvetica');
       doc.setFontSize(12)
 
-      doc.text(`chave: ${chave}`, 70, 135);
-      doc.text(`beneficiário: ${nome}`, 70, 142);
+      doc.text(`chave: ${chave}`, 70, 128);
+      doc.text(`beneficiário: ${nome}`, 70, 136);
       
 
       const pdfContent = doc.output('datauristring');

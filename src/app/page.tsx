@@ -118,21 +118,24 @@ function App(): JSX.Element {
             />
           </div>
           <div
-            id='QRcode'
             className=' bg-white w-full lg:w-2/6 px-4 flex-col justify-center lg:flex hidden'
           >
             <div
               className='w-ful flex justify-center items-center p-4 relative'
-              ref={qrCodeImageRef}
+
             >
-              <QRCodeSVG
-                value={rawPix}
-                size={210}
-                bgColor={'#ffffff'}
-                fgColor={colorQrCode}
-                level={'L'}
-                includeMargin={false}
-              />
+              <div ref={qrCodeImageRef}
+                id='QRcode'>
+                <QRCodeSVG
+                  value={rawPix}
+                  size={210}
+                  bgColor={'#ffffff'}
+                  fgColor={colorQrCode}
+                  level={'L'}
+                  includeMargin={false}
+                />
+              </div>
+
             </div>
 
             <div className='mt-2'>
