@@ -13,73 +13,60 @@ const DropdownWithInput: React.FC<DropdownWithInputProps> = () => {
     setChave('');
   };
 
-  let componenteRenderizado: JSX.Element | null = null;
-
   const { setChave, chave } = useData();
 
-  switch (selectedOption) {
-    case 'Telefone':
-      componenteRenderizado = (
-        <TextInput
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setChave(unmask(e.target.value))
-          }
-          placeholder='Digite seu telefone'
-          value={maskPhone(chave)}
-          maxLength={15}
-        />
-      );
-      break;
-    case 'Email':
-      componenteRenderizado = (
-        <TextInput
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setChave(e.target.value)
-          }
-          placeholder='Digite seu email'
-          value={chave}
-        />
-      );
-      break;
-    case 'CPF':
-      componenteRenderizado = (
-        <TextInput
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setChave(unmask(e.target.value))
-          }
-          placeholder='Digite seu CPF'
-          value={maskCPF(chave)}
-          maxLength={14}
-        />
-      );
-      break;
-    case 'CNPJ':
-      componenteRenderizado = (
-        <TextInput
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setChave(unmask(e.target.value))
-          }
-          value={maskCNPJ(chave)}
-          placeholder='Digite seu CNPJ'
-          maxLength={18}
-        />
-      );
-      break;
-    case 'Outro':
-      componenteRenderizado = (
-        <TextInput
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setChave(e.target.value)
-          }
-          placeholder='Digite sua chave'
-          value={chave}
-        />
-      );
-      break;
-    default:
-      componenteRenderizado = null;
-      break;
-  }
+  const optionsMap: { [key: string]: JSX.Element } = {
+    Telefone: (
+      <TextInput
+        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+          setChave(unmask(e.target.value))
+        }
+        placeholder='Digite seu telefone'
+        value={maskPhone(chave)}
+        maxLength={15}
+      />
+    ),
+    Email: (
+      <TextInput
+        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+          setChave(e.target.value)
+        }
+        placeholder='Digite seu email'
+        value={chave}
+      />
+    ),
+    CPF: (
+      <TextInput
+        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+          setChave(unmask(e.target.value))
+        }
+        placeholder='Digite seu CPF'
+        value={maskCPF(chave)}
+        maxLength={14}
+      />
+    ),
+    CNPJ: (
+      <TextInput
+        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+          setChave(unmask(e.target.value))
+        }
+        value={maskCNPJ(chave)}
+        placeholder='Digite seu CNPJ'
+        maxLength={18}
+      />
+    ),
+    Outro: (
+      <TextInput
+        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+          setChave(e.target.value)
+        }
+        placeholder='Digite sua chave'
+        value={chave}
+      />
+    ),
+  };
+
+  const componenteRenderizado = optionsMap[selectedOption] || null;
 
   return (
     <>
@@ -90,11 +77,11 @@ const DropdownWithInput: React.FC<DropdownWithInputProps> = () => {
           value={selectedOption}
           onChange={handleOptionChange}
         >
-          <option value='Telefone'>Telefone</option>
-          <option value='Email'>Email</option>
-          <option value='CPF'>CPF</option>
-          <option value='CNPJ'>CNPJ</option>
-          <option value='Outro'>Outro</option>
+          {Object.keys(optionsMap).map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
         </select>
 
         {componenteRenderizado}
