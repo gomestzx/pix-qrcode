@@ -69,26 +69,26 @@ function Privacidade() {
                     <br />
                     <h3 className='text-start text-lg font-semibold'>  Seus Direitos</h3>
                     <br />
-                    
+
                     <p>
-                    Você tem o direito de acessar, corrigir ou excluir suas informações pessoais a qualquer momento. Além disso, você pode optar por não receber comunicações de marketing direto da nossa parte.
+                        Você tem o direito de acessar, corrigir ou excluir suas informações pessoais a qualquer momento. Além disso, você pode optar por não receber comunicações de marketing direto da nossa parte.
                     </p>
 
                     <br />
                     <h3 className='text-start text-lg font-semibold'>   Alterações nesta Política de Privacidade</h3>
                     <br />
-                   
+
                     <p>Esta Política de Privacidade pode ser atualizada periodicamente. Quaisquer alterações serão publicadas nesta página, e a data de vigência será atualizada. Recomendamos que você reveja esta política periodicamente para se manter informado sobre como suas informações estão sendo protegidas e usadas.</p>
 
-                    
+
                     <br />
                     <h3 className='text-start text-lg font-semibold'>   Contato</h3>
                     <br />
-                   <p>
-                   Se você tiver dúvidas, preocupações ou solicitações relacionadas a esta Política de Privacidade, entre em contato conosco pelo seguinte endereço de e-mail: contato@pix-qr-code.com.
-                    <br />
-Obrigado por escolher o pix-qr-code.com! Estamos empenhados em proteger sua privacidade e proporcionar uma experiência segura e eficiente ao utilizar nossos serviços.
-                   </p>
+                    <p>
+                        Se você tiver dúvidas, preocupações ou solicitações relacionadas a esta Política de Privacidade, entre em contato conosco pelo seguinte endereço de e-mail: contato@pix-qr-code.com.
+                        <br />
+                        Obrigado por escolher o pix-qr-code.com! Estamos empenhados em proteger sua privacidade e proporcionar uma experiência segura e eficiente ao utilizar nossos serviços.
+                    </p>
                 </div>
             </div>
 

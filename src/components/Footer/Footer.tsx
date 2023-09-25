@@ -8,10 +8,10 @@ const Footer = () => {
         <Link href='/privacidade' className='text-white m-2'>
           Privacidade
         </Link>
-        <Link href='' className='text-white m-2'>
+        <Link href='/termos-de-servico' className='text-white m-2'>
           Termos de Serviço
         </Link>
-        <Link href='' className='text-white m-2'>
+        <Link href='mailto:contato@qr-code-pix.com.br' className='text-white m-2'>
           Contato
         </Link>
       </div>
