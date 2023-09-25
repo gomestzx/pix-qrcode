@@ -1,3 +1,4 @@
+'use client'
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -8,7 +9,7 @@ export default function Navbar() {
       <div className='justify-between md:w-4/6  px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8'>
         <div>
           <div className='flex items-center justify-between py-3 md:py-5 md:block'>
-            <a href='#'>
+            <a href='/'>
               <img src="/logo.png" alt="logo" style={{width: '50px'}} />
             </a>
             <div className='md:hidden'>

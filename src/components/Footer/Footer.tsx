@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div className='w-full border-t-4 border-teal-500 bg-neutral-800 p-10 flex-wrap'>
       <div className='flex justify-center'>
-        <Link href='' className='text-white m-2'>
+        <Link href='/privacidade' className='text-white m-2'>
           Privacidade
         </Link>
         <Link href='' className='text-white m-2'>
