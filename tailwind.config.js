@@ -18,6 +18,9 @@ module.exports = {
         'y-90': '30rem',
         'y-100': '35rem',
       },
+      height: {
+        '100': '30rem',
+      }
     },
   },
   plugins: [],

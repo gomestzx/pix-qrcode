@@ -212,8 +212,8 @@ function App(): JSX.Element {
               <div
                 className=' bg-white w-full lg:w-3/6 px-4 flex-col justify-center flex'
               >
-                <h3 className='mb-2'>Escolha o template</h3>
-                <div className=' bg-gray-100 p-2 overflow-x-auto flex flex-wrap justify-center '>
+                <h3 className='mb-2 mt-4 lg:mt-0'>Escolha o template</h3>
+                <div className=' bg-gray-100 p-2 overflow-x-auto flex flex-wrap justify-center h-100'>
                   <button className='p-2'  onClick={() => setTemplate('1')}>
                     <Image src='/previews/default.png' width={150} height={150} alt='' />
                   </button>
