@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { IAccordionProps } from './types';
 
 const Accordion = (props: IAccordionProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(props.open);
 
   const toggleAccordion = () => {
     setIsOpen(!isOpen);

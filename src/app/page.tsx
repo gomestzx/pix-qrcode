@@ -38,9 +38,14 @@ function App(): JSX.Element {
     rawPix,
     setRawPix,
     colorQrCode,
+    template,
+    openTemplate,
+    setOpenTemplate,
+    setTemplate
   } = useData();
 
   const qrCodeImageRef = useRef<HTMLImageElement>(null);
+  const placaPixImageRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     async function fetchDynamicPix() {
@@ -75,103 +80,184 @@ function App(): JSX.Element {
     downloadQRCode(qrCodeImageRef);
   }
 
+  function HandleDownloadPlacaPix() {
+    downloadQRCode(placaPixImageRef);
+  }
+
   return (
     <div>
       <Navbar />
-      <Title />
+      {!openTemplate && <Title />}
+
       <div className='flex flex-wrap-reverse justify-center'>
-        <div className='w-full p-4 md:px-8 md:py-8 lg:w-4/6 rounded flex flex-wrap items-center shadow-lg bg-white'>
-          <div id='inputs' className='lg:w-4/6 w-full'>
-            <DropdownWithInput />
-            <TextInput
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                setNome(e.target.value)
-              }
-              label='Nome do beneficiario'
-              placeholder='Digite seu nome'
-            />
-            <TextInput
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                setCidade(e.target.value)
-              }
-              label='Cidade do beneficiário ou da transação'
-              placeholder='Digite sua cidade'
-            />
-            <TextInput
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                setIdentificador(e.target.value)
-              }
-              label='Código da transferência (opicional)'
-              placeholder='PGMTO123'
-            />
-            <NumberInput
-              onChange={handleNumberValue}
-              value={valor === 0 ? undefined : valor}
-              label='Valor (opcional)'
-              placeholder='Digite o valor'
-            />
-            <Button
-              label='Gerar QR Code'
-              onClick={handleModal}
-              isDisabled={!chave || !nome || !cidade}
-              mobile
-            />
-          </div>
-          <div
-            className=' bg-white w-full lg:w-2/6 px-4 flex-col justify-center lg:flex hidden'
-          >
+        {!openTemplate &&
+          <div className='w-full p-4 md:px-8 md:py-8 lg:w-4/6 rounded flex flex-wrap items-center shadow-lg bg-white'>
+            <div id='inputs' className='lg:w-4/6 w-full'>
+              <DropdownWithInput />
+              <TextInput
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  setNome(e.target.value)
+                }
+                label='Nome do beneficiario'
+                placeholder='Digite seu nome'
+                value={nome}
+              />
+              <TextInput
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  setCidade(e.target.value)
+                }
+                label='Cidade do beneficiário ou da transação'
+                placeholder='Digite sua cidade'
+                value={cidade}
+              />
+              <TextInput
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  setIdentificador(e.target.value)
+                }
+                label='Código da transferência (opicional)'
+                placeholder='PGMTO123'
+                value={identificador === 'PGMTO123' ? '' : identificador}
+              />
+              <NumberInput
+                onChange={handleNumberValue}
+                value={valor === 0 ? undefined : valor}
+                label='Valor (opcional)'
+                placeholder='Digite o valor'
+              />
+              <Button
+                label='Gerar QR Code'
+                onClick={handleModal}
+                isDisabled={!chave || !nome || !cidade}
+                mobile
+              />
+            </div>
             <div
-              className='w-ful flex justify-center items-center p-4 relative'
+              className=' bg-white w-full lg:w-2/6 px-4 flex-col justify-center lg:flex hidden'
             >
-              <div className='p-1' ref={qrCodeImageRef} id='QRcode'>
-                <QRCodeSVG
-                  value={rawPix}
-                  size={210}
-                  bgColor={'#ffffff'}
-                  fgColor={colorQrCode}
-                  level={'L'}
-                  includeMargin={false}
-                />
-                {/* <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-1'>
-                <Image
-                  src='/pix.png'
-                  alt=''
-                  width={28}
-                  height={28}
-                  className=''
-                />
-                </div> */}
+              <div
+                className='w-ful flex justify-center items-center p-4 relative'
+              >
+                <div className='p-1' ref={qrCodeImageRef} id='QRcode'>
+                  <QRCodeSVG
+                    value={rawPix}
+                    size={210}
+                    bgColor={'#ffffff'}
+                    fgColor={colorQrCode}
+                    level={'L'}
+                    includeMargin={false}
+                  />
+
+                </div>
 
               </div>
 
-            </div>
-
-            <div className='mt-2'>
-              <Accordion
-                title='Cor'
-                content={
-                  <div className='flex'>
-                    <ColorButton defaultChecked value='000000' />
-                    <ColorButton value='547896' />
-                    <ColorButton value='2FBCAD' />
-                    <ColorButton value='FF0060' />
-                    <ColorButton value='1D267D' />
-                  </div>
-                }
+              <div className='mt-2'>
+                <Accordion
+                  title='Cor'
+                  content={
+                    <div className='flex'>
+                      <ColorButton defaultChecked value='000000' />
+                      <ColorButton value='547896' />
+                      <ColorButton value='2FBCAD' />
+                      <ColorButton value='FF0060' />
+                      <ColorButton value='1D267D' />
+                    </div>
+                  }
+                />
+              </div>
+              <Button
+                label='Download PNG'
+                onClick={HandleDownloadQRCode}
+                isDisabled={!chave || !nome || !cidade}
+              />
+              <Button
+                label='Criar Placa Pix'
+                isDisabled={!chave || !nome || !cidade}
+                onClick={() => setOpenTemplate(true)}
               />
             </div>
-            <Button
-              label='Download PNG'
-              onClick={HandleDownloadQRCode}
-              isDisabled={!chave || !nome || !cidade}
-            />
-            <Button
-              label='Criar Placa Pix'
-              isDisabled={!chave || !nome || !cidade}
-              onClick={() => openPDF(qrCodeImageRef, chave, nome)}
-            />
-          </div>
-        </div>
+          </div>}
+
+        {openTemplate &&
+          <div className='mt-4 w-full p-4 md:px-8 md:py-8 lg:w-4/6 rounded  shadow-lg bg-white'>
+            <button className=' flex items-start justify-start mb-4' onClick={() => setOpenTemplate(false)}>
+              <Image src='/voltar.png' width={20} height={20} alt='voltar' />
+              <span className=' text-teal-500' >Voltar ao início</span>
+            </button>
+
+            <div className='flex flex-wrap items-start'>
+              <div className='lg:w-3/6 w-full flex items-center justify-center'>
+                <div className=' relative' id='placa-pix' ref={placaPixImageRef}>
+                  <Image src={`/templates/${template}.png`} width={465} height={700} alt='template' />
+                  <div className="absolute inset-x-0 inset-y-0 flex items-center justify-center">
+                    <div className='p-2 bg-white'>
+                    <QRCodeSVG
+                      value={rawPix}
+                      size={210}
+                      bgColor={'#ffffff'}
+                      fgColor={colorQrCode}
+                      level={'L'}
+                      includeMargin={false}
+                    />
+                    </div>
+                    
+                  </div>
+                  <div className="p-0 absolute inset-x-0 inset-y-100 flex items-center justify-center">
+                    <h3 style={{ wordBreak: 'break-word' }} className='max-w-[80%] text-cente flex items-center justify-center break-words'>{chave}</h3>
+                  </div>
+                </div>
+
+              </div>
+
+              <div
+                className=' bg-white w-full lg:w-3/6 px-4 flex-col justify-center flex'
+              >
+                <h3 className='mb-2'>Escolha o template</h3>
+                <div className=' bg-gray-100 p-2 overflow-x-auto flex flex-wrap justify-center '>
+                  <button className='p-2'  onClick={() => setTemplate('1')}>
+                    <Image src='/previews/default.png' width={150} height={150} alt='' />
+                  </button>
+                  <button className='p-2' onClick={() => setTemplate('2')}>
+                    <Image src='/previews/blue.png' width={150} height={150} alt='' />
+                  </button>
+                  <button className='p-2' onClick={() => setTemplate('3')}>
+                    <Image src='/previews/logos.png' width={150} height={150} alt='' />
+                  </button>
+                  <button className='p-2' onClick={() => setTemplate('4')}>
+                    <Image src='/previews/pink.png' width={150} height={150} alt='' />
+                  </button>
+                  <button className='p-2' onClick={() => setTemplate('5')}>
+                    <Image src='/previews/pinkandblue.png' width={150} height={150} alt='' />
+                  </button>
+                  <button className='p-2' onClick={() => setTemplate('6')}>
+                    <Image src='/previews/paper.png' width={150} height={150} alt='' />
+                  </button>
+                  
+                </div>
+
+                <div className='mb-2'>
+                  <Accordion
+                    title='Cor'
+                    content={
+                      <div className='flex'>
+                        <ColorButton defaultChecked value='000000' />
+                        <ColorButton value='547896' />
+                        <ColorButton value='2FBCAD' />
+                        <ColorButton value='FF0060' />
+                        <ColorButton value='1D267D' />
+                      </div>
+                    }
+                  />
+                </div>
+                <Button
+                  label='Download Placa Pix'
+                  onClick={HandleDownloadPlacaPix}
+                />
+              </div>
+            </div>
+
+          </div>}
+
         <ModalComponent
           closeModal={handleModal}
           valor={valor ?? 0}

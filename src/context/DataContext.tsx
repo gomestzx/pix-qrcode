@@ -28,8 +28,10 @@ interface IDataContext {
   setRawPix: Dispatch<SetStateAction<string>>;
   colorQrCode: string;
   setColorQrCode: Dispatch<SetStateAction<string>>;
-  designQrCode: string;
-  setDesignQrCode: Dispatch<SetStateAction<string>>;
+  openTemplate: boolean;
+  setOpenTemplate: Dispatch<SetStateAction<boolean>>;
+  template: string;
+  setTemplate: Dispatch<SetStateAction<string>>;
 }
 
 interface IProvider {
@@ -39,7 +41,7 @@ interface IProvider {
 export const DataContext = createContext<IDataContext>({} as IDataContext);
 
 export function DataProvider({ children }: IProvider) {
-  const [chave, setChave] = useState('');
+  const [chave, setChave] = useState('sua chave');
   const [cidade, setCidade] = useState('');
   const [nome, setNome] = useState('');
   const [valor, setValor] = useState<number>(0);
@@ -49,7 +51,8 @@ export function DataProvider({ children }: IProvider) {
   const [qrCode, setQrCode] = useState('');
   const [rawPix, setRawPix] = useState('');
   const [colorQrCode, setColorQrCode] = useState('#000000');
-  const [designQrCode, setDesignQrCode] = useState('');
+  const [openTemplate, setOpenTemplate] = useState(false);
+  const [template, setTemplate] = useState('1');
 
   return (
     <DataContext.Provider
@@ -74,8 +77,10 @@ export function DataProvider({ children }: IProvider) {
         setRawPix,
         colorQrCode,
         setColorQrCode,
-        designQrCode,
-        setDesignQrCode,
+        openTemplate,
+        setOpenTemplate,
+        template,
+        setTemplate,
       }}
     >
       {children}
