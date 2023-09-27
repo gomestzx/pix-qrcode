@@ -130,6 +130,12 @@ function App(): JSX.Element {
                 isDisabled={!chave || !nome || !cidade}
                 mobile
               />
+              <Button
+                label='Criar Placa Pix'
+                isDisabled={!chave || !nome || !cidade}
+                onClick={() => setOpenTemplate(true)}
+                mobile
+              />
             </div>
             <div
               className=' bg-white w-full lg:w-2/6 px-4 flex-col justify-center lg:flex hidden'
