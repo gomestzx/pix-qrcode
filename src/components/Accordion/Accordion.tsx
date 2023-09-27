@@ -9,9 +9,9 @@ const Accordion = (props: IAccordionProps) => {
   };
 
   return (
-    <div>
+    <div className='w-full'>
       <button
-        className="flex items-center justify-between w-full px-4 py-3 bg-gray-200 hover:bg-gray-300 mt-2 rounded"
+        className="flex items-center justify-between w-full px-4 py-2 mt-2 rounded"
         onClick={toggleAccordion}
       >
         <span>{props.title}</span>
@@ -23,7 +23,7 @@ const Accordion = (props: IAccordionProps) => {
         </svg>
       </button>
       {isOpen && (
-        <div className="p-4 bg-gray-100">
+        <div className="p-4">
           {typeof props.content === 'string' ? (
             <p>{props.content}</p>
           ) : (

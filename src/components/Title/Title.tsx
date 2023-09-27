@@ -4,7 +4,7 @@ const Title = () => {
   return (
     <>
       <div className='p-4'>
-        <h1 className=' text-4xl lg:text-5xl text-teal-500 text-center mt-6 font-bold'>
+        <h1 className='text-4xl lg:text-5xl text-teal-500 text-center mt-6 font-bold'>
           Gere seu QR Code PIX
         </h1>
         <p className='text-center text-md text-gray-600'>

@@ -266,6 +266,9 @@ function App(): JSX.Element {
 
           </div>}
 
+
+
+
         <ModalComponent
           closeModal={handleModal}
           valor={valor ?? 0}
@@ -276,8 +279,46 @@ function App(): JSX.Element {
           isOpen={modalIsOpen}
         />
       </div>
+
+      <div className='w-full md:w-4/6 mx-auto mt-8 flex justify-center md:justify-between flex-wrap'>
+        <div className='flex flex-wrap items-center'>
+          <div className='lg:w-3/6 w-full flex items-center justify-center'>
+
+            <Image src='/preview_placas.png' width={1080} height={1080} alt='preview_placas_pix' />
+
+          </div>
+
+          <div
+            className='w-full lg:w-3/6 px-4 flex-col justify-center items-center flex'
+          >
+            <h1 className='text-4xl lg:text-5xl text-teal-500 text-center font-bold mb-2'>Crie placas personalizadas <br /> para sua chave PIX</h1>
+            <Accordion
+              open
+              title='Como criar minha placa?'
+              content={
+              <div> <p className='mb-2'>Basta adicionar os dados obrigatórios: </p> 
+                <ul>
+                  <li className='text-teal-700 text-bold'>1 - Chave PIX</li>
+                  <li className='text-teal-700'>2 - Nome</li>
+                  <li className='text-teal-700'>3 - Cidade</li>
+                </ul>
+               <p className='mt-2'> e clicar no botão "Criar Placa Pix" </p></div>}
+            />
+            <Accordion
+              title='Como mudar o design?'
+              content='Disponiblizamos vários tipos de design para que possam atender a sua demanda. Para escolher, basta clicar no design desejado.'
+            />
+            <Accordion
+              title='O gerador de placa é gratuito?'
+              content='Todas as ferramentas do nosso site são 100% gratuitas'
+            />
+
+          </div>
+        </div>
+
+      </div>
       <div
-        className='w-full md:w-4/6 mx-auto mt-8 flex justify-center md:justify-between flex-wrap'
+        className='w-full md:w-4/6 mx-auto mt-8 flex justify-center md:justify-between flex-wrap mb-4'
         id='perguntas-frequentes'
       >
         <Card
@@ -287,33 +328,13 @@ function App(): JSX.Element {
         />
         <Card
           img='/img2.png'
-          titulo='Desing'
+          titulo='Design'
           conteudo='Melhore sua forma de pagamentos via Pix'
         />
         <Card
           img='/img3.png'
           titulo='Seguro'
           conteudo='Não armazenamos nenhum dado'
-        />
-      </div>
-      <div
-        className='w-full md:w-4/6 mx-auto mt-8 py-4'
-        id='perguntas-frequentes'
-      >
-        <h2 className='my-4 text-2xl text-md text-gray-600 p-4 md:p-0'>
-          Perguntas frequentes
-        </h2>
-        <Accordion
-          title='O que é Pix?'
-          content='O Pix é um sistema revolucionário de pagamentos instantâneos no Brasil, desenvolvido pelo Banco Central. Com o Pix, você pode transferir dinheiro de forma rápida, segura e disponível 24 horas por dia, todos os dias da semana, diretamente para a conta do destinatário. Com sua praticidade, é possível realizar pagamentos usando chaves cadastradas, como número de telefone celular, CPF, CNPJ ou e-mail, além de poder utilizar aplicativos de bancos, carteiras digitais e até mesmo ler QR codes. Simplifique suas transações financeiras com o Pix e aproveite a conveniência de transferências instantâneas.'
-        />
-        <Accordion
-          title='Como funciona o gerador de QR Code Pix?'
-          content='Um gerador de QR Code Pix é uma ferramenta que permite criar códigos QR personalizados para receber pagamentos por meio do sistema Pix. Ao fornecer as informações necessárias, como o valor e a descrição da transação, o gerador cria um código QR único. Ao escanear esse código com um aplicativo compatível, o pagador pode confirmar e autorizar o pagamento, que é transferido instantaneamente da conta do pagador para a do recebedor. Com sua praticidade e segurança, o gerador de QR Code Pix simplifica o processo de receber pagamentos, eliminando a necessidade de compartilhar dados bancários e agilizando as transações.'
-        />
-        <Accordion
-          title='O QR Code Pix é gratuito?'
-          content='O Pix é um sistema revolucionário de pagamentos instantâneos no Brasil, desenvolvido pelo Banco Central. Com o Pix, você pode transferir dinheiro de forma rápida, segura e disponível 24 horas por dia, todos os dias da semana, diretamente para a conta do destinatário. Com sua praticidade, é possível realizar pagamentos usando chaves cadastradas, como número de telefone celular, CPF, CNPJ ou e-mail, além de poder utilizar aplicativos de bancos, carteiras digitais e até mesmo ler QR codes. Simplifique suas transações financeiras com o Pix e aproveite a conveniência de transferências instantâneas.'
         />
       </div>
       <Footer />
