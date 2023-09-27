@@ -134,6 +134,7 @@ function App(): JSX.Element {
                 label='Criar Placa Pix'
                 isDisabled={!chave || !nome || !cidade}
                 onClick={() => setOpenTemplate(true)}
+                background='bg-purple-600'
                 mobile
               />
             </div>
@@ -180,6 +181,7 @@ function App(): JSX.Element {
                 label='Criar Placa Pix'
                 isDisabled={!chave || !nome || !cidade}
                 onClick={() => setOpenTemplate(true)}
+                background='bg-purple-600'
               />
             </div>
           </div>}

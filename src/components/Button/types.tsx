@@ -5,4 +5,5 @@ export interface IButtonProps {
   onClick?: MouseEventHandler<HTMLButtonElement>;
   isDisabled?: boolean;
   mobile?: boolean;
+  background?: string;
 }
