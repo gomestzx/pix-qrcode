@@ -194,14 +194,14 @@ function App(): JSX.Element {
             </button>
 
             <div className='flex flex-wrap items-start'>
-              <div className='lg:w-3/6 w-full flex items-center justify-center'>
-                <div className=' relative' id='placa-pix' ref={placaPixImageRef}>
-                  <Image src={`/templates/${template}.png`} width={465} height={700} alt='template' />
+              <div className='lg:w-3/6 w-full flex items-center justify-center flex-wrap'>
+                <div className='relative' id='placa-pix' ref={placaPixImageRef}>
+                  <img src={`/templates/${template}.png`} alt="" />
                   <div className="absolute inset-x-0 inset-y-0 flex items-center justify-center">
                     <div className='p-2 bg-white'>
                       <QRCodeSVG
                         value={rawPix}
-                        size={210}
+                        size={190}
                         bgColor={'#ffffff'}
                         fgColor={colorQrCode}
                         level={'L'}
@@ -210,8 +210,8 @@ function App(): JSX.Element {
                     </div>
 
                   </div>
-                  <div className="p-0 absolute inset-x-0 inset-y-100 flex items-center justify-center">
-                    <h3 style={{ wordBreak: 'break-word' }} className='max-w-[80%] text-cente flex items-center justify-center break-words'>{chave}</h3>
+                  <div className="absolute inset-x-0 bottom-0 mb-14 flex items-center justify-center">
+                    <h3 style={{ wordBreak: 'break-word' }} className="max-w-[80%] text-center flex items-center justify-center break-words">{chave}</h3>
                   </div>
                 </div>
 
@@ -296,13 +296,13 @@ function App(): JSX.Element {
               open
               title='Como criar minha placa?'
               content={
-              <div> <p className='mb-2'>Basta adicionar os dados obrigatórios: </p> 
-                <ul>
-                  <li className='text-teal-700 text-bold'>1 - Chave PIX</li>
-                  <li className='text-teal-700'>2 - Nome</li>
-                  <li className='text-teal-700'>3 - Cidade</li>
-                </ul>
-               <p className='mt-2'> e clicar no botão "Criar Placa Pix" </p></div>}
+                <div> <p className='mb-2'>Basta adicionar os dados obrigatórios: </p>
+                  <ul>
+                    <li className='text-teal-700 text-bold'>1 - Chave PIX</li>
+                    <li className='text-teal-700'>2 - Nome</li>
+                    <li className='text-teal-700'>3 - Cidade</li>
+                  </ul>
+                  <p className='mt-2'> e clicar no botão "Criar Placa Pix" </p></div>}
             />
             <Accordion
               title='Como mudar o design?'
