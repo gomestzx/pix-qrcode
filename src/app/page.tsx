@@ -18,6 +18,7 @@ import ColorButton from '@/components/ColorButton/ColorButton';
 import { downloadQRCode } from '@/utils/DownloadQRCode';
 import Image from 'next/image';
 import DropdownWithInput from '@/components/DropdownWithInput/DropdownWithInput';
+import QRCode from '@/components/QRCode/QRCode';
 
 
 
@@ -198,19 +199,9 @@ function App(): JSX.Element {
                 <div className='relative' id='placa-pix' ref={placaPixImageRef}>
                   <img src={`/templates/${template}.png`} alt="" />
                   <div className="absolute inset-x-0 inset-y-0 flex items-center justify-center">
-                    <div className='p-2 bg-white'>
-                      <QRCodeSVG
-                        value={rawPix}
-                        size={190}
-                        bgColor={'#ffffff'}
-                        fgColor={colorQrCode}
-                        level={'L'}
-                        includeMargin={false}
-                      />
-                    </div>
-
+                    <QRCode value={rawPix} color={colorQrCode} />
                   </div>
-                  <div className="absolute inset-x-0 bottom-0 mb-14 flex items-center justify-center">
+                  <div className="absolute inset-x-0 bottom-0 mb-18 md:mb-28 lg:mb-14 xl:mb-20 md:text-xl lg:text-sm xl:text-lg text-base flex items-center justify-center">
                     <h3 style={{ wordBreak: 'break-word' }} className="max-w-[80%] text-center flex items-center justify-center break-words">{chave}</h3>
                   </div>
                 </div>

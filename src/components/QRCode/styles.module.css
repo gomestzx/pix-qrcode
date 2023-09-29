@@ -1,0 +1,39 @@
+.qrcode {
+    height: auto;
+}
+
+@media (max-width: 420px) {
+    .qrcode {
+        width: 150px;
+    }
+}
+
+@media (min-width: 420px) and (max-width: 768px) {
+    .qrcode {
+        width: 190px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .qrcode {
+        width: 300px;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1200px) {
+    .qrcode {
+        width: 130px;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1400px) {
+    .qrcode {
+        width: 160px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .qrcode {
+        width: 210px;
+    }
+}

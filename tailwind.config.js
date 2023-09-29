@@ -20,6 +20,9 @@ module.exports = {
       },
       height: {
         '100': '30rem',
+      },
+      margin: {
+        '18': '4.5rem'
       }
     },
   },
