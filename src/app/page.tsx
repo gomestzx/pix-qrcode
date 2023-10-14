@@ -72,6 +72,7 @@ function App(): JSX.Element {
   };
 
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [imagemCarregada, setImagemCarregada] = useState(false);
 
   function handleModal() {
     setIsOpen((prevIsOpen) => !prevIsOpen);
@@ -197,10 +198,13 @@ function App(): JSX.Element {
             <div className='flex flex-wrap items-start'>
               <div className='lg:w-3/6 w-full flex items-center justify-center flex-wrap'>
                 <div className='relative' id='placa-pix' ref={placaPixImageRef}>
-                  <img src={`/templates/${template}.png`} alt="" />
-                  <div className="absolute inset-x-0 inset-y-0 flex items-center justify-center">
-                    <QRCode value={rawPix} color={colorQrCode} />
-                  </div>
+                  <img src={`/templates/${template}.png`} alt="" onLoad={() => setImagemCarregada(true)} />
+                  {
+                    imagemCarregada && <div className="absolute inset-x-0 inset-y-0 flex items-center justify-center">
+                      <QRCode value={rawPix} color={colorQrCode} />
+                    </div>
+                  }
+
                   <div className="absolute inset-x-0 bottom-0 mb-18 md:mb-28 lg:mb-14 xl:mb-20 md:text-xl lg:text-sm xl:text-lg text-base flex items-center justify-center">
                     <h3 style={{ wordBreak: 'break-word' }} className="max-w-[80%] text-center flex items-center justify-center break-words">{chave}</h3>
                   </div>
