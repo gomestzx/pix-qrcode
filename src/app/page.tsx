@@ -308,7 +308,7 @@ function App(): JSX.Element {
 
             <Accordion
               open
-              title='Como criar minha placa?'
+              title='Como criar minha placa personalizada?'
               content={
                 <div> <p className='mb-2'>Basta adicionar os dados obrigatórios: </p>
                   <ul>
@@ -323,7 +323,7 @@ function App(): JSX.Element {
               content='Disponiblizamos vários tipos de design para que possam atender a sua demanda. Para escolher, basta clicar no design desejado.'
             />
             <Accordion
-              title='O gerador de placa é gratuito?'
+              title='O gerador de placa personalizada é gratuito?'
               content='Todas as ferramentas do nosso site são 100% gratuitas'
             />
 
