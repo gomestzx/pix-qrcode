@@ -61,7 +61,7 @@ export default function Navbar() {
                 <Link href='#perguntas-frequentes'>Perguntas frenquentes</Link>
               </li>
               <li className=''>
-                <Link href=''>Blog</Link>
+                <Link href='#blog'>Blog</Link>
               </li>
               <li className=''>
                 <Link href='mailto:contato@qr-code-pix.com.br'>Contato</Link>

@@ -11,7 +11,7 @@ const Accordion = (props: IAccordionProps) => {
   return (
     <div className='w-full'>
       <button
-        className="flex items-center justify-between w-full px-4 py-2 mt-2 rounded"
+        className="flex items-center justify-between w-full px-4 py-2 mt-2 rounded border border-slate-300 rounded-md shadow-sm bg-white"
         onClick={toggleAccordion}
       >
         <span>{props.title}</span>

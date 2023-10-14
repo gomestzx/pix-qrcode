@@ -19,6 +19,7 @@ import { downloadQRCode } from '@/utils/DownloadQRCode';
 import Image from 'next/image';
 import DropdownWithInput from '@/components/DropdownWithInput/DropdownWithInput';
 import QRCode from '@/components/QRCode/QRCode';
+import PostPreview from '@/components/Posts/PostPreview';
 
 
 
@@ -275,18 +276,17 @@ function App(): JSX.Element {
         />
       </div>
 
-      <div className='w-full md:w-4/6 mx-auto mt-8 flex justify-center md:justify-between flex-wrap'>
+      <div className='w-full md:w-4/6 mx-auto mt-8 flex justify-center md:justify-between flex-wrap' id='perguntas-frequentes'>
+        <h1 className='text-4xl mb-6 font-semibold'>Placas personalizadas <br /> para sua chave PIX</h1>
         <div className='flex flex-wrap items-center'>
           <div className='lg:w-3/6 w-full flex items-center justify-center'>
-
             <Image src='/preview_placas.png' width={1080} height={1080} alt='preview_placas_pix' />
-
           </div>
 
           <div
             className='w-full lg:w-3/6 px-4 flex-col justify-center items-center flex'
           >
-            <h1 className='text-4xl lg:text-5xl text-teal-500 text-center font-bold mb-2'>Crie placas personalizadas <br /> para sua chave PIX</h1>
+
             <Accordion
               open
               title='Como criar minha placa?'
@@ -312,9 +312,20 @@ function App(): JSX.Element {
         </div>
 
       </div>
+
+      <div className='w-full md:w-4/6 mx-auto mt-8 flex justify-center md:justify-between flex-wrap mb-4' id='blog'>
+        <h1 className='text-4xl mb-6 font-semibold'>Blog</h1>
+        <br />
+        <div className='flex flex-wrap'>
+          <PostPreview title='PIX: Entenda como funciona' slug='pix-entenda-como-funciona' img='1.png' />
+          <PostPreview title='Passos para gerar um QR Code para sua chave PIX' slug='passos-para-gerar-qr-code-pix' img='2.png?version=2' />
+          <PostPreview title='Passos para gerar uma placa personalizada para sua chave PIX' slug='passos-para-gerar-placa-pix' img='3.png?version=' />
+          <PostPreview title='Aprenda como escanear um QR Code Pix' subtitle='test' slug='como-escanear-qr-code-pix' img='4.png' />
+        </div>
+      </div>
+
       <div
         className='w-full md:w-4/6 mx-auto mt-8 flex justify-center md:justify-between flex-wrap mb-4'
-        id='perguntas-frequentes'
       >
         <Card
           img='/img1.png'
@@ -332,6 +343,7 @@ function App(): JSX.Element {
           conteudo='Não armazenamos nenhum dado'
         />
       </div>
+
       <Footer />
     </div>
   );
