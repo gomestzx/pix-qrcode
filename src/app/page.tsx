@@ -276,8 +276,27 @@ function App(): JSX.Element {
         />
       </div>
 
+      <div
+        className='w-full md:w-4/6 mx-auto mt-8 flex justify-center md:justify-between flex-wrap mb-4'
+      >
+        <Card
+          img='/img1.png'
+          titulo='Grátis'
+          conteudo='Crie quantos QR Codes quiser!'
+        />
+        <Card
+          img='/img2.png'
+          titulo='Design'
+          conteudo='Melhore sua forma de pagamentos via Pix'
+        />
+        <Card
+          img='/img3.png'
+          titulo='Seguro'
+          conteudo='Não armazenamos nenhum dado'
+        />
+      </div>
+
       <div className='w-full md:w-4/6 mx-auto mt-8 flex justify-center md:justify-between flex-wrap' id='perguntas-frequentes'>
-        <h1 className='text-4xl mb-6 font-semibold'>Placas personalizadas <br /> para sua chave PIX</h1>
         <div className='flex flex-wrap items-center'>
           <div className='lg:w-3/6 w-full flex items-center justify-center'>
             <Image src='/preview_placas.png' width={1080} height={1080} alt='preview_placas_pix' />
@@ -314,7 +333,6 @@ function App(): JSX.Element {
       </div>
 
       <div className='w-full md:w-4/6 mx-auto mt-8 flex justify-center md:justify-between flex-wrap mb-4' id='blog'>
-        <h1 className='text-4xl mb-6 font-semibold'>Blog</h1>
         <br />
         <div className='flex flex-wrap'>
           <PostPreview title='PIX: Entenda como funciona' slug='pix-entenda-como-funciona' img='1.png' />
@@ -324,25 +342,7 @@ function App(): JSX.Element {
         </div>
       </div>
 
-      <div
-        className='w-full md:w-4/6 mx-auto mt-8 flex justify-center md:justify-between flex-wrap mb-4'
-      >
-        <Card
-          img='/img1.png'
-          titulo='Grátis'
-          conteudo='Crie quantos QR Codes quiser!'
-        />
-        <Card
-          img='/img2.png'
-          titulo='Design'
-          conteudo='Melhore sua forma de pagamentos via Pix'
-        />
-        <Card
-          img='/img3.png'
-          titulo='Seguro'
-          conteudo='Não armazenamos nenhum dado'
-        />
-      </div>
+      
 
       <Footer />
     </div>
