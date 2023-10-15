@@ -338,7 +338,7 @@ function App(): JSX.Element {
           <PostPreview title='PIX: Entenda como funciona' slug='pix-entenda-como-funciona' img='1.png' />
           <PostPreview title='Passos para gerar um QR Code para sua chave PIX' slug='passos-para-gerar-qr-code-pix' img='2.png?version=2' />
           <PostPreview title='Passos para gerar uma placa personalizada para sua chave PIX' slug='passos-para-gerar-placa-pix' img='3.png?version=' />
-          <PostPreview title='Aprenda como escanear um QR Code Pix' subtitle='test' slug='como-escanear-qr-code-pix' img='4.png' />
+          <PostPreview title='Aprenda como escanear um QR Code Pix' slug='como-escanear-qr-code-pix' img='4.png' />
         </div>
       </div>
 
