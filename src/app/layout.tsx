@@ -7,8 +7,8 @@ import 'tailwindcss/tailwind.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Gerar QR Code e Placa PIX',
-  description: 'Crie seu QR Code e Placa PIX 100% grátis',
+  title: 'QR Code Pix e Placa Personalizada | Pix QR Code',
+  description: 'Crie seu QR Code Pix e Placa Personalizada',
 }
 
 export default function RootLayout({
