@@ -23,7 +23,13 @@ module.exports = {
       },
       margin: {
         '18': '4.5rem'
-      }
+      },
+      fontFamily: {
+        // 👇 Add CSS variables
+        sans: ["var(--font-opensans)"],
+        mono: ["var(--font-roboto-mono)"],
+        montserrat: ["var(--font-montserrat)"],
+      },
     },
   },
   plugins: [],

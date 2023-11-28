@@ -88,11 +88,11 @@ function App(): JSX.Element {
   }
 
   return (
-    <div>
+    <div className='font-montserrat'>
       <Navbar />
       {!openTemplate && <Title />}
 
-      <div className='flex flex-wrap-reverse justify-center'>
+      <div className='flex flex-wrap-reverse justify-center font-medium'>
         {!openTemplate &&
           <div className='w-full p-4 md:px-8 md:py-8 lg:w-4/6 rounded flex flex-wrap items-center shadow-lg bg-white'>
             <div id='inputs' className='lg:w-4/6 w-full'>
@@ -101,7 +101,7 @@ function App(): JSX.Element {
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   setNome(e.target.value)
                 }
-                label='Nome do beneficiario'
+                label='Nome do beneficiario*'
                 placeholder='Digite seu nome'
                 value={nome}
               />
@@ -109,7 +109,7 @@ function App(): JSX.Element {
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   setCidade(e.target.value)
                 }
-                label='Cidade do beneficiário ou da transação'
+                label='Cidade do beneficiário ou da transação*'
                 placeholder='Digite sua cidade'
                 value={cidade}
               />

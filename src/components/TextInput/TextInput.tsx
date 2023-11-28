@@ -5,7 +5,7 @@ const TextInput = (props: ITextInput) => {
   return (
     <>
       {props.label && (
-        <div className='w-full block mb-2 text-md text-gray-600'>
+        <div className='w-full block mb-2 text-md text-gray-600 font-medium'>
           {props.label}
         </div>
       )}

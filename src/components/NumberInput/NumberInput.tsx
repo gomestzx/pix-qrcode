@@ -4,7 +4,7 @@ import { INumberInput } from './types';
 const NumberInput = (props: INumberInput) => {
   return (
     <>
-      <div className='w-full block mb-2 text-md text-gray-600'>
+      <div className='w-full block mb-2 text-md text-gray-600 font-medium'>
         {props.label}
       </div>
       <input

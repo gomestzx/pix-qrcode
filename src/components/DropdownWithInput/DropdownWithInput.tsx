@@ -70,10 +70,10 @@ const DropdownWithInput: React.FC<DropdownWithInputProps> = () => {
 
   return (
     <>
-      <div className='w-full block mb-2 text-md text-gray-600'>Chave PIX</div>
+      <div className='w-full block mb-2 text-md text-gray-600 font-medium'>Chave PIX*</div>
       <div className='w-full flex items-center justify-center'>
         <select
-          className='w-24 mr-2 py-2 mb-3 text-md text-gray-600 bg-white focus:outline-none focus:ring-0 cursor-pointer'
+          className='w-24 mr-2 py-2 mb-3 text-md text-gray-600 bg-white focus:outline-none focus:ring-0 cursor-pointer font-medium'
           value={selectedOption}
           onChange={handleOptionChange}
         >

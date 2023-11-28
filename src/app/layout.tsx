@@ -1,10 +1,13 @@
 import { DataProvider } from '../context/DataContext'
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { Open_Sans, Roboto_Mono, Montserrat } from "next/font/google";
 import 'tailwindcss/tailwind.css'
 
-
-const inter = Inter({ subsets: ['latin'] })
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-montserrat',
+})
 
 export const metadata = {
   title: 'QR Code Pix e Placa Personalizada | Pix QR Code',
@@ -24,7 +27,7 @@ export default function RootLayout({
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2529229033686497"
           crossOrigin="anonymous"></script>
       </head>
-      <body className={inter.className}>
+      <body className={`${montserrat.variable} font-sans`}>
         <DataProvider>
           {children}
         </DataProvider>
