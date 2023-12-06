@@ -10,7 +10,7 @@ const montserrat = Montserrat({
 })
 
 export const metadata = {
-  title: 'QR Code Pix e Placa Personalizada | Pix QR Code',
+  title: 'Gerar QR Code Pix e Placa Personalizada | Pix QR Code',
   description: 'Crie seu QR Code Pix e Placa Personalizada',
 }
 
