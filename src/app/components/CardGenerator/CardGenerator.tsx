@@ -1,5 +1,4 @@
 'use client'
-'use client'
 import React, { useRef } from 'react'
 import ModalComponent from '../ModalComponent/ModalComponent'
 import Accordion from '../ui/Accordion/Accordion'
