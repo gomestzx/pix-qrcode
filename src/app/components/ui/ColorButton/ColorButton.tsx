@@ -1,4 +1,4 @@
-import { useData } from '@/hooks/useData';
+import { useData } from '@/app/hooks/useData';
 import React from 'react';
 import { IColorButtonProps } from './types';
 

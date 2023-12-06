@@ -32,6 +32,10 @@ interface IDataContext {
   setOpenTemplate: Dispatch<SetStateAction<boolean>>;
   template: string;
   setTemplate: Dispatch<SetStateAction<string>>;
+  modalIsOpen: boolean;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
+  imagemCarregada: boolean;
+  setImagemCarregada: Dispatch<SetStateAction<boolean>>;
 }
 
 interface IProvider {
@@ -53,6 +57,8 @@ export function DataProvider({ children }: IProvider) {
   const [colorQrCode, setColorQrCode] = useState('#000000');
   const [openTemplate, setOpenTemplate] = useState(false);
   const [template, setTemplate] = useState('1');
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [imagemCarregada, setImagemCarregada] = useState(false);
 
   return (
     <DataContext.Provider
@@ -81,6 +87,10 @@ export function DataProvider({ children }: IProvider) {
         setOpenTemplate,
         template,
         setTemplate,
+        modalIsOpen,
+        setIsOpen,
+        imagemCarregada,
+        setImagemCarregada
       }}
     >
       {children}

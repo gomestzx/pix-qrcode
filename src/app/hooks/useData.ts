@@ -1,4 +1,4 @@
-import { DataContext } from "@/context/DataContext";
+import { DataContext } from "@/app/context/DataContext";
 import { useContext } from "react";
 
 

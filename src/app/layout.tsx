@@ -1,4 +1,4 @@
-import { DataProvider } from '../context/DataContext'
+import { DataProvider } from './context/DataContext'
 import './globals.css'
 import { Open_Sans, Roboto_Mono, Montserrat } from "next/font/google";
 import 'tailwindcss/tailwind.css'

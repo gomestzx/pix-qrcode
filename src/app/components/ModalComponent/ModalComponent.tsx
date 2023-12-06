@@ -1,12 +1,12 @@
 import React, { useRef, useState } from 'react';
 import Modal from 'react-modal';
 import Image from 'next/image';
-import { downloadQRCode } from '@/utils/DownloadQRCode';
+import { downloadQRCode } from '@/app/utils/DownloadQRCode';
 import { IModalComponentProps } from './types';
 import { QRCodeSVG } from 'qrcode.react';
-import { useData } from '@/hooks/useData';
-import Accordion from '../Accordion/Accordion';
-import ColorButton from '../ColorButton/ColorButton';
+import { useData } from '@/app/hooks/useData';
+import Accordion from '../ui/Accordion/Accordion';
+import ColorButton from '../ui/ColorButton/ColorButton';
 
 const ModalComponent = (props: IModalComponentProps) => {
   const qrCodeImageRef = useRef<HTMLImageElement>(null);

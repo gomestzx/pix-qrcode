@@ -1,9 +1,9 @@
 import fs from "fs";
 import Markdown from "markdown-to-jsx";
 import matter from "gray-matter";
-import getPostMetadata from "@/components/Posts/getPostMetadata";
-import Navbar from "@/components/Navbar/Navbar";
-import Footer from "@/components/Footer/Footer";
+import getPostMetadata from "@/app/components/Posts/getPostMetadata";
+import Navbar from "@/app/components/Navbar/Navbar";
+import Footer from "@/app/components/Footer/Footer";
 
 
 const getPostContent = (slug: string) => {
