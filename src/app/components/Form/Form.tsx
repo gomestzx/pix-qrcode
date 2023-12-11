@@ -30,7 +30,7 @@ const Form = () => {
         colorQrCode,
         openTemplate,
         setOpenTemplate,
-        setIsOpen
+        setModalIsOpen
     } = useData();
 
     useEffect(() => {
@@ -56,13 +56,6 @@ const Form = () => {
         setValor(numberValue);
     };
 
-    function handleModal() {
-        setIsOpen((prevIsOpen) => !prevIsOpen);
-    }
-
-    function HandleDownloadQRCode() {
-        downloadQRCode(qrCodeImageRef);
-    }
     return (
         <>
             {!openTemplate &&
@@ -101,7 +94,7 @@ const Form = () => {
                         />
                         <Button
                             label='Gerar QR Code'
-                            onClick={handleModal}
+                            onClick={() => setModalIsOpen((prev) => !prev)}
                             isDisabled={!chave || !nome || !cidade}
                             mobile
                         />
@@ -137,7 +130,7 @@ const Form = () => {
                             <Accordion
                                 title='Cor'
                                 content={
-                                    <div className='flex'>
+                                    <div className='flex flex-wrap gap-1'>
                                         <ColorButton defaultChecked value='000000' />
                                         <ColorButton value='547896' />
                                         <ColorButton value='2FBCAD' />
@@ -149,7 +142,7 @@ const Form = () => {
                         </div>
                         <Button
                             label='Download PNG'
-                            onClick={HandleDownloadQRCode}
+                            onClick={() =>downloadQRCode(qrCodeImageRef)}
                             isDisabled={!chave || !nome || !cidade}
                         />
                         <Button

@@ -20,8 +20,6 @@ interface IDataContext {
   setIdentificador: Dispatch<SetStateAction<string>>;
   mensagem: string;
   setMensagem: Dispatch<SetStateAction<string>>;
-  cep: string;
-  setCep: Dispatch<SetStateAction<string>>;
   qrCode: string;
   setQrCode: Dispatch<SetStateAction<string>>;
   rawPix: string;
@@ -33,7 +31,7 @@ interface IDataContext {
   template: string;
   setTemplate: Dispatch<SetStateAction<string>>;
   modalIsOpen: boolean;
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
+  setModalIsOpen: Dispatch<SetStateAction<boolean>>;
   imagemCarregada: boolean;
   setImagemCarregada: Dispatch<SetStateAction<boolean>>;
 }
@@ -51,13 +49,12 @@ export function DataProvider({ children }: IProvider) {
   const [valor, setValor] = useState<number>(0);
   const [identificador, setIdentificador] = useState('PGMTO123');
   const [mensagem, setMensagem] = useState('');
-  const [cep, setCep] = useState('');
   const [qrCode, setQrCode] = useState('');
   const [rawPix, setRawPix] = useState('');
   const [colorQrCode, setColorQrCode] = useState('#000000');
   const [openTemplate, setOpenTemplate] = useState(false);
   const [template, setTemplate] = useState('1');
-  const [modalIsOpen, setIsOpen] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const [imagemCarregada, setImagemCarregada] = useState(false);
 
   return (
@@ -75,8 +72,6 @@ export function DataProvider({ children }: IProvider) {
         setIdentificador,
         mensagem,
         setMensagem,
-        cep,
-        setCep,
         qrCode,
         setQrCode,
         rawPix,
@@ -88,7 +83,7 @@ export function DataProvider({ children }: IProvider) {
         template,
         setTemplate,
         modalIsOpen,
-        setIsOpen,
+        setModalIsOpen,
         imagemCarregada,
         setImagemCarregada
       }}

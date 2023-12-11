@@ -66,11 +66,10 @@ const ModalComponent = (props: IModalComponentProps) => {
             />
           </div>
           <div className='mt-2'>
-            {/* <Accordion title='Design' content='' /> */}
             <Accordion
               title='Color'
               content={
-                <div className='flex'>
+                <div className='flex flex-wrap gap-1'>
                   <ColorButton defaultChecked value='000000' />
                   <ColorButton value='547896' />
                   <ColorButton value='2FBCAD' />
@@ -82,7 +81,7 @@ const ModalComponent = (props: IModalComponentProps) => {
           </div>
 
           <button
-            className='w-full rounded p-3 text-white font-normal bg-emerald-400 mt-4'
+            className='w-full rounded p-3 text-white font-normal bg-teal-500 mt-4'
             onClick={HandleDownloadQRCode}
           >
             Baixar QR CODE

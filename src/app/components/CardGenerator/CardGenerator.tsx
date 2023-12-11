@@ -25,18 +25,11 @@ const CardGenerator = () => {
     setOpenTemplate,
     setTemplate,
     modalIsOpen,
-    setIsOpen,
+    setModalIsOpen,
     imagemCarregada,
     setImagemCarregada
   } = useData();
 
-  function handleModal() {
-    setIsOpen((prevIsOpen) => !prevIsOpen);
-  }
-
-  function HandleDownloadPlacaPix() {
-    downloadQRCode(placaPixImageRef);
-  }
   return (
     <>
       {openTemplate &&
@@ -90,7 +83,7 @@ const CardGenerator = () => {
                 <Accordion
                   title='Cor'
                   content={
-                    <div className='flex'>
+                    <div className='flex flex-wrap gap-1'>
                       <ColorButton defaultChecked value='000000' />
                       <ColorButton value='547896' />
                       <ColorButton value='2FBCAD' />
@@ -102,13 +95,13 @@ const CardGenerator = () => {
               </div>
               <Button
                 label='Download Placa Pix'
-                onClick={HandleDownloadPlacaPix}
+                onClick={() => downloadQRCode(placaPixImageRef)}
               />
             </div>
           </div>
         </div>}
       <ModalComponent
-        closeModal={handleModal}
+        closeModal={() => setModalIsOpen((prev) => !prev)}
         valor={valor ?? 0}
         nome={nome}
         cidade={cidade}
