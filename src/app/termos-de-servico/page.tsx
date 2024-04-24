@@ -10,14 +10,6 @@ function TermosDeServico() {
                 <div className='w-full p-4 md:px-8 md:py-8 lg:w-4/6 rounded flex flex-wrap  shadow-lg bg-white flex-col'>
                     <h1 className=' text-3xl font-bold'>Termos de Serviço</h1>
                     <br />
-
-                    <span>
-                        Data de vigência: 25 de setembro de 2023
-                    </span>
-
-                    <br />
-
-
                     <p>
                         Bem-vindo ao pix-qr-code.com! Estamos comprometidos em proteger a privacidade dos nossos usuários. Esta Política de Privacidade foi criada para explicar como coletamos, usamos, divulgamos e protegemos suas informações pessoais. Leia atentamente o seguinte documento para entender nossas práticas em relação aos seus dados.
                     </p>

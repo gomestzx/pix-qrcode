@@ -6,18 +6,25 @@ import Card from '@/app/components/ui/Card/Card';
 import Footer from '@/app/components/Footer/Footer';
 import Image from 'next/image';
 import PostPreview from '@/app/components/Posts/PostPreview';
-import Form from './components/Form/Form';
-import CardGenerator from './components/CardGenerator/CardGenerator';
+import PlateGenerator from '@/app/components/PlateGenerator/PlateGenerator';
 
+export const metadata = {
+  title: 'Gerar Placa Personalizada para PIX',
+  description: 'O Pix QR Code é uma ferramenta online que gera QR Codes e placas personalizadas que facilitam o recebimento de pagamentos no sistema Pix.',
+  keywords: ['QR Code PIX', 'Placa PIX', 'QR Code pix', 'Chave PIX QR Code', 'Criar QR Code pix'],
+  openGraph: {
+    title: 'Gerar QRCode PIX',
+    url: 'https://www.pix-qr-code.com.br'
+  }
+}
 
-function App(): JSX.Element {
+function PlateGeneratorPage(): JSX.Element {
   return (
     <div className='font-montserrat'>
       <Navbar />
-      <Title title='Gere seu QR Code PIX' description='Crie um QR Code para sua chave PIX 100% grátis' />
+      <Title title='Gere sua placa PIX' description='Crie uma placa personalizada para sua chave PIX 100% grátis' />
       <div className='flex flex-wrap-reverse justify-center font-medium'>
-        <Form />
-        <CardGenerator />
+        <PlateGenerator />
       </div>
       <div
         className='w-full md:w-4/6 mx-auto mt-8 flex justify-center md:justify-between flex-wrap mb-4'
@@ -89,4 +96,4 @@ function App(): JSX.Element {
   );
 }
 
-export default App;
+export default PlateGeneratorPage;
