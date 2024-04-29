@@ -49,7 +49,7 @@ const PostPage = (props: any) => {
         <meta name="description" content={data.description} />
         <meta name="keywords" content={data.keywords} />
       </Head>
-      <div>
+      <div className='font-montserrat'>
         <Navbar />
         <div className="flex justify-center">
           <div className="w-full p-4 md:px-8 md:py-8 lg:w-4/6 rounded flex flex-wrap shadow-lg bg-white flex-col">
