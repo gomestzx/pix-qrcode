@@ -8,6 +8,8 @@ import Image from 'next/image';
 import PostPreview from '@/app/components/Posts/PostPreview';
 import Form from './components/Form/Form';
 import CardGenerator from './components/CardGenerator/CardGenerator';
+import Banner from './components/Banner/Banner';
+import Faq from './components/Faq/Faq';
 
 
 function App(): JSX.Element {
@@ -39,41 +41,8 @@ function App(): JSX.Element {
         />
       </div>
 
-      <div className='w-full md:w-4/6 mx-auto mt-8 flex justify-center md:justify-between flex-wrap' id='perguntas-frequentes'>
-        <div className='flex flex-wrap items-center'>
-          <div className='lg:w-3/6 w-full flex items-center justify-center'>
-            <Image src='/preview_placas.png' width={1080} height={1080} alt='preview_placas_pix' />
-          </div>
-
-          <div
-            className='w-full lg:w-3/6 px-4 flex-col justify-center items-center flex'
-          >
-
-            <Accordion
-              open
-              title='Como criar minha placa personalizada?'
-              content={
-                <div> <p className='mb-2'>Basta adicionar os dados obrigatórios: </p>
-                  <ul>
-                    <li className='text-teal-700 text-bold'>1 - Chave PIX</li>
-                    <li className='text-teal-700'>2 - Nome</li>
-                    <li className='text-teal-700'>3 - Cidade</li>
-                  </ul>
-                  <p className='mt-2'> e clicar no botão "Criar Placa Pix" </p></div>}
-            />
-            <Accordion
-              title='Como mudar o design?'
-              content='Disponiblizamos vários tipos de design para que possam atender a sua demanda. Para escolher, basta clicar no design desejado.'
-            />
-            <Accordion
-              title='O gerador de placa personalizada é gratuito?'
-              content='Todas as ferramentas do nosso site são 100% gratuitas'
-            />
-
-          </div>
-        </div>
-
-      </div>
+      <Banner />
+      <Faq />
 
       <div className='w-full md:w-4/6 mx-auto mt-8 flex justify-center md:justify-between flex-wrap mb-4' id='blog'>
         <br />
