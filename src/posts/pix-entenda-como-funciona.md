@@ -1,6 +1,7 @@
 ---
 title: "PIX: Entenda como funciona"
-date: "13-10-2023"
+description: "Confira o guia para aprender sobre o sistema Pix"
+keywords: "escanear QR Code, QR Code Pix, pagamento Pix, tutorial QR Code, usar Pix"
 ---
 
 O Pix é um sistema de pagamento eletrônico brasileiro que revolucionou a forma como as transações financeiras são realizadas no país. Lançado em novembro de 2020 pelo Banco Central do Brasil, o Pix tornou-se uma alternativa eficiente e conveniente aos métodos tradicionais de pagamento, como boletos e transferências bancárias. Neste artigo, exploraremos como o Pix funciona e por que ele se tornou tão popular.

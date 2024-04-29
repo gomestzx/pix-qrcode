@@ -1,10 +1,28 @@
-import fs from "fs";
-import Markdown from "markdown-to-jsx";
-import matter from "gray-matter";
+import Markdown from 'markdown-to-jsx';
+import Head from 'next/head';
+import fs from 'fs';
+import matter from 'gray-matter';
 import getPostMetadata from "@/app/components/Posts/getPostMetadata";
 import Navbar from "@/app/components/Navbar/Navbar";
 import Footer from "@/app/components/Footer/Footer";
+import Banner from "@/app/components/Banner/Banner";
 
+const markdownOptions = {
+  overrides: {
+    h2: {
+      component: 'h2',
+      props: {
+        style: { fontWeight: 'bold', fontSize: 24 }
+      }
+    },
+    a: {
+      component: 'a',
+      props: {
+        style: { color: '#0053DC' }
+      }
+    }
+  }
+} as any; 
 
 const getPostContent = (slug: string) => {
   const folder = "src/posts/";
@@ -22,25 +40,32 @@ export const generateStaticParams = async () => {
 };
 
 const PostPage = (props: any) => {
-  const slug = props.params.slug;
-  const post = getPostContent(slug);
+  const { slug } = props.params;
+  const { content, data } = getPostContent(slug);
   return (
-    <div>
-      <Navbar />
-      <div className="flex justify-center">
-      <div className="w-full p-4 md:px-8 md:py-8 lg:w-4/6 rounded flex flex-wrap  shadow-lg bg-white flex-col">
-        <div className="my-12 text-center">
-          <h1 className="text-2xl text-slate-600 ">{post.data.title}</h1>
-          <p className="text-slate-400 mt-2">{post.data.date}</p>
+    <>
+      <Head>
+        <title>{data.title}</title>
+        <meta name="description" content={data.description} />
+        <meta name="keywords" content={data.keywords} />
+      </Head>
+      <div>
+        <Navbar />
+        <div className="flex justify-center">
+          <div className="w-full p-4 md:px-8 md:py-8 lg:w-4/6 rounded flex flex-wrap shadow-lg bg-white flex-col">
+            <div className="my-12 text-center">
+              <h1 className="text-4xl font-semibold text-slate-600">{data.title}</h1>
+              <p className="text-slate-500">{data.description}</p>
+              <Banner />
+            </div>
+            <article>
+              <Markdown options={markdownOptions}>{content}</Markdown>
+            </article>
+          </div>
         </div>
-
-        <article className="">
-          <Markdown>{post.content}</Markdown>
-        </article>
+        <Footer />
       </div>
-      </div>
-      <Footer />
-    </div>
+    </>
   );
 };
 

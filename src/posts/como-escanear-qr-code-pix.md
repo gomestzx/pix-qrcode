@@ -1,5 +1,7 @@
 ---
 title: "Aprenda como escanear um QR Code Pix"
+description: "Aprenda passo a passo como escanear um QR Code Pix usando seu smartphone e um aplicativo de banco ou carteira digital. Facilite suas transações financeiras com esta tecnologia inovadora"
+keywords: "QR Code Pix, escanear QR Code, pagamento Pix, transferência Pix, aplicativo de banco, carteira digital"
 ---
 
 O QR Code Pix é uma tecnologia inovadora que torna as transações financeiras mais fáceis e rápidas. Com o Pix, você pode fazer pagamentos e transferências de forma simples, bastando escanear um QR Code com seu dispositivo móvel. Neste guia, explicaremos como escanear um QR Code Pix passo a passo.
