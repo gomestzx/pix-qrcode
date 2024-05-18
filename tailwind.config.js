@@ -25,11 +25,9 @@ module.exports = {
         '18': '4.5rem'
       },
       fontFamily: {
-        sans: ["var(--font-opensans)"],
-        mono: ["var(--font-roboto-mono)"],
-        poppins: ["var(--font-poppins)"],
+       
         mulish: ["var(--font-mulish)"],
-        dmSans: ["var(--font-dm-sans)"]
+       
       },
       colors: {
         'purple': {

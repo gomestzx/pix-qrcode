@@ -24,9 +24,9 @@ export default function Navbar() {
                 {navbar ? (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="w-6 h-6 text-white"
+                    className="w-6 h-6 text-black"
                     viewBox="0 0 20 20"
-                    fill="#fff"
+                    fill="#000"
                   >
                     <path
                       fillRule="evenodd"
@@ -37,10 +37,10 @@ export default function Navbar() {
                 ) : (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="w-6 h-6 text-white"
+                    className="w-6 h-6 text-black"
                     fill="none"
                     viewBox="0 0 24 24"
-                    stroke="#fff"
+                    stroke="#000"
                     strokeWidth={2}
                   >
                     <path
@@ -56,7 +56,7 @@ export default function Navbar() {
         </div>
         <div>
           <div
-            className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
+            className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 h-screen md:h-auto ${
               navbar ? "block" : "hidden"
             }`}
           >

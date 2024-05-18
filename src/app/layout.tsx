@@ -1,34 +1,14 @@
 import { DataProvider } from './context/DataContext'
 import './globals.css'
-import { DM_Sans, Montserrat, Mulish, Open_Sans, Poppins, Roboto_Mono } from "next/font/google";
+import { Mulish } from "next/font/google";
 import 'tailwindcss/tailwind.css'
 
-const openSans = Open_Sans({
-  subsets: ['latin'],
-  display: 'swap',
-  //👇 Add variable to our object
-  variable: '--font-opensans',
-})
-
-const poppins = Poppins({
-  subsets: ['latin'],
-  display: 'swap',
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'], // Adicione todos os pesos
-  variable: '--font-poppins',
-});
 
 const mulish = Mulish({
   subsets: ['latin'],
   display: 'swap',
   weight: ['400', '500', '600', '700', '800', '900'], 
   variable: '--font-mulish',
-});
-
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  display: 'swap',
-  weight: ['400', '500', '700'], 
-  variable: '--font-dm-sans',
 });
 
 export const metadata = {
@@ -54,7 +34,7 @@ export default function RootLayout({
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2529229033686497"
           crossOrigin="anonymous"></script>
       </head>
-      <body className={`${openSans.variable} ${poppins.variable} ${mulish.variable} ${dmSans.variable} font-mulish`}>
+      <body className={`${mulish.variable} font-mulish`}>
         <DataProvider>
           {children}
         </DataProvider>
