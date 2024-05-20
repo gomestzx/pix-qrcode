@@ -60,16 +60,23 @@ export default function Navbar() {
               navbar ? "block" : "hidden"
             }`}
           >
-            <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0 text-gray-600 font-semibold text-lg">
+            <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0 text-gray-600 font-semibold text-md">
               <li className="">
-                <Link href="#blog">Blog</Link>
-              </li>
-              <li className="">
-                <Link href="mailto:contato@qr-code-pix.com.br">Contato</Link>
+                <Link href="#blog" className=" hover:text-blue-600">
+                  Blog
+                </Link>
               </li>
               <li className="">
                 <Link
-                  className=" bg-blue-600 p-4 px-6 rounded-full text-white font-dmSans"
+                  href="mailto:contato@qr-code-pix.com.br"
+                  className=" hover:text-blue-600"
+                >
+                  Contato
+                </Link>
+              </li>
+              <li className="">
+                <Link
+                  className=" bg-blue-600 hover:bg-blue-700 p-4 px-6 rounded-full text-white font-dmSans"
                   href="/placa-pix"
                 >
                   Gerar Placa Pix
