@@ -118,7 +118,7 @@ const Form = () => {
               label="Criar Placa Pix"
               isDisabled={!chave || !nome || !cidade}
               onClick={() => setOpenTemplate(true)}
-              background="bg-purple-600"
+              background="bg-blue-600"
               mobile
             />
           </div>

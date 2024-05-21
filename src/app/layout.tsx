@@ -31,6 +31,7 @@ export default function RootLayout({
       <head>
         <meta name="google-site-verification" content="WqHTkzhivweFQ5xC1QkGB6WMtfWnD-6528idvU6J7dk" />
         <meta name="google-adsense-account" content="ca-pub-2529229033686497" />
+        <script type="text/javascript" src="https://player.viads.com/tag/load-107836.js" async charSet="UTF-8"></script>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2529229033686497"
           crossOrigin="anonymous"></script>
       </head>
