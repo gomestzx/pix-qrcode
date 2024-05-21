@@ -1,15 +1,13 @@
 import React, { ChangeEvent, useRef, useState } from "react";
 import Modal from "react-modal";
-import Image from "next/image";
 import { downloadQRCode } from "@/app/utils/DownloadQRCode";
 import { IModalComponentProps } from "./types";
-import { QRCodeCanvas, QRCodeSVG } from "qrcode.react";
+import { QRCodeCanvas } from "qrcode.react";
 import { useData } from "@/app/hooks/useData";
-import Accordion from "../ui/Accordion/Accordion";
-import ColorButton from "../ui/ColorButton/ColorButton";
 import { HiPlus } from "react-icons/hi";
 import { FaFileImage, FaXmark } from "react-icons/fa6";
 import Link from "next/link";
+import ColorButton from "../ui/ColorButton/ColorButton";
 
 const ModalComponent = (props: IModalComponentProps) => {
   const [showColorPicker, setShowColorPicker] = useState(false);
@@ -55,28 +53,26 @@ const ModalComponent = (props: IModalComponentProps) => {
           >
             <FaXmark />
           </button>
-          <div className=" flex justify-end mt-6">
+          <div className="m-4 flex justify-end relative">
             <input
               type="file"
               accept="image/*"
               onChange={handleLogoUpload}
               id="fileInput"
-              className="hidden"
+              className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
             />
-            <label htmlFor="fileInput">
-              <span className="flex justify-center items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-600 text-sm">
-                <FaFileImage />
-                Upload Logo
-              </span>
+            <label htmlFor="fileInput" className="flex justify-center items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-700 text-sm">
+              <FaFileImage />
+              Upload Logo
             </label>
           </div>
           <div
             id="qrCode"
-            className="flex items-center justify-center relative p-4 "
+            className="flex items-center justify-center relative p-4"
           >
             <QRCodeCanvas
               value={rawPix}
-              size={190}
+              size={210}
               bgColor={"#ffffff"}
               fgColor={colorQrCode}
               level={"L"}
@@ -106,7 +102,7 @@ const ModalComponent = (props: IModalComponentProps) => {
                   showColorPicker ? "block" : "hidden"
                 }`}
                 style={{ zIndex: 10 }}
-                onBlur={() => setShowColorPicker(false)} // Hide on blur
+                onBlur={() => setShowColorPicker(false)} 
               />
               <label htmlFor="colorPicker">
                 <span
@@ -119,7 +115,7 @@ const ModalComponent = (props: IModalComponentProps) => {
             </div>
           </div>
 
-          <div className=" flex flex-col gap-2">
+          <div className="flex flex-col gap-2">
             <button
               className="w-full rounded p-3 text-white font-normal bg-teal-500 mt-4"
               onClick={HandleDownloadQRCode}
@@ -149,9 +145,7 @@ const ModalComponent = (props: IModalComponentProps) => {
               <p className="w-full">
                 <span className="font-semibold">Valor:</span> {props.valor}
               </p>
-            ) : (
-              <></>
-            )}
+            ) : null}
           </div>
         </div>
       </Modal>
