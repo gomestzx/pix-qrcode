@@ -1,17 +1,14 @@
+import Banner from "@/components/Banner/Banner";
+import Faq from "@/components/Faq/Faq";
+import FormContainer from "@/components/FormContainer/FormContainer";
+import PostPreview from "@/components/Posts/PostPreview";
+import Card from "@/components/ui/Card/Card";
+import Title from "@/components/ui/Title/Title";
 import "tailwindcss/tailwind.css";
-import Navbar from "@/app/components/Navbar/Navbar";
-import Title from "@/app/components/ui/Title/Title";
-import Card from "@/app/components/ui/Card/Card";
-import Footer from "@/app/components/Footer/Footer";
-import PostPreview from "@/app/components/Posts/PostPreview";
-import Banner from "./components/Banner/Banner";
-import Faq from "./components/Faq/Faq";
-import FormContainer from "./components/FormContainer/FormContainer";
 
 function App(): JSX.Element {
   return (
     <div className="">
-      <Navbar />
       <Title
         title={
           <>
@@ -29,7 +26,6 @@ function App(): JSX.Element {
                   id="Layer copy"
                   className="s0"
                   stroke="#eab308"
-                  
                   d="m127.6 4.7c-25.6 0.5-58.5 6.5-81.1 15l-5.3 2c-15 5.6-21.3 9.2-22.6 12.7-0.5 1.4-0.4 1.6 1.4 2.1 2.6 0.8 3 0.7 5.4-1.4 2.4-2.2 5.8-3.7 16.4-7.6 35.4-12.7 56.1-17.4 88.4-19.6 6.3-0.4 19.2-0.2 21 0.4 2.4 0.7 2.5 3.3 0.6 8.4-2.4 6.4-2.8 10.6-1 11.6 3 1.6 9 2.8 13.5 2.7 2.5 0 2.9-0.1 11.1-1.6 23.3-4.1 40-6.2 65.6-8 38.9-2.8 66.5-3.7 122.6-4 20.2-0.1 21.1-0.2 22.8-0.9 0.6-0.2-2.5-1.3-4.5-1.5-5.1-0.7-7.3-0.7-24.8-0.6-58.5 0.3-87.1 1.2-124.2 3.9-19.5 1.4-27.7 2.2-39.9 3.9-8.4 1.2-29.4 4.5-32 5.1-1.4 0.4-0.9-2.9 1.2-8.1 2.7-6.7 1.7-8.5-6.1-11-8.7-2.9-15.4-3.7-28.5-3.5z"
                 />
               </svg>
@@ -102,7 +98,6 @@ function App(): JSX.Element {
           />
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

@@ -1,13 +1,13 @@
 import React, { ChangeEvent, useRef, useState } from "react";
 import Modal from "react-modal";
-import { downloadQRCode } from "@/app/utils/DownloadQRCode";
+import { downloadQRCode } from "@/utils/DownloadQRCode";
 import { IModalComponentProps } from "./types";
 import { QRCodeCanvas } from "qrcode.react";
 import { HiPlus } from "react-icons/hi";
 import { FaFileImage, FaXmark } from "react-icons/fa6";
 import Link from "next/link";
 import ColorButton from "../ui/ColorButton/ColorButton";
-import { useQRCode } from "@/app/hooks/useQRCode";
+import { useQRCode } from "@/hooks/useQRCode";
 
 const ModalComponent = (props: IModalComponentProps) => {
   const [showColorPicker, setShowColorPicker] = useState(false);

@@ -1,6 +1,6 @@
 import React from "react";
 import { IColorButtonProps } from "./types";
-import { useQRCode } from "@/app/hooks/useQRCode";
+import { useQRCode } from "@/hooks/useQRCode";
 
 const ColorButton = (props: IColorButtonProps) => {
   const {setQrCodeData} = useQRCode()

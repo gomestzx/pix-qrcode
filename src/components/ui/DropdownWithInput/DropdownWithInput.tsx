@@ -1,7 +1,8 @@
 import React, { ChangeEvent, useState } from "react";
-import TextInput from "@/app/components/ui/TextInput/TextInput";
-import { maskPhone, unmask, maskCPF, maskCNPJ } from "@/app/utils/inputMask";
-import { useQRCode } from "@/app/hooks/useQRCode";
+import { maskPhone, unmask, maskCPF, maskCNPJ } from "@/utils/inputMask";
+import { useQRCode } from "@/hooks/useQRCode";
+import TextInput from "../TextInput/TextInput";
+
 
 interface DropdownWithInputProps {}
 

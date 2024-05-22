@@ -1,7 +1,9 @@
-import { QRCodeProvider } from "./context/QRCodeContext";
+import Navbar from "@/components/Navbar/Navbar";
+import { QRCodeProvider } from "../context/QRCodeContext";
 import "./globals.css";
 import { Mulish } from "next/font/google";
 import "tailwindcss/tailwind.css";
+import Footer from "@/components/Footer/Footer";
 
 const mulish = Mulish({
   subsets: ["latin"],
@@ -53,7 +55,11 @@ export default function RootLayout({
         ></script>
       </head>
       <body className={`${mulish.variable} font-mulish`}>
-        <QRCodeProvider>{children}</QRCodeProvider>
+        <QRCodeProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </QRCodeProvider>
       </body>
     </html>
   );

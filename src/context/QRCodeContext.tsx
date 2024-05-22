@@ -1,5 +1,5 @@
 'use client';
-import React, { createContext, ReactNode, useState, useContext, Dispatch, SetStateAction } from 'react';
+import React, { createContext, ReactNode, useState, Dispatch, SetStateAction } from 'react';
 
 interface IQRCodeContext {
   qrcode: IQrCode;

@@ -6,13 +6,13 @@ import ColorButton from "../ui/ColorButton/ColorButton";
 import DropdownWithInput from "../ui/DropdownWithInput/DropdownWithInput";
 import NumberInput from "../ui/NumberInput/NumberInput";
 import TextInput from "../ui/TextInput/TextInput";
-import { downloadQRCode } from "@/app/utils/DownloadQRCode";
-import { generateDynamicPix } from "@/app/utils/GenerateQRCode";
+import { downloadQRCode } from "@/utils/DownloadQRCode";
+import { generateDynamicPix } from "@/utils/GenerateQRCode";
 import { FaFileImage } from "react-icons/fa6";
 import { HiPlus } from "react-icons/hi";
 import { IForm } from "./types";
 import ModalComponent from "../ModalComponent/ModalComponent";
-import { useQRCode } from "@/app/hooks/useQRCode";
+import { useQRCode } from "@/hooks/useQRCode";
 
 const Form = ({ isVisible, callback }: IForm) => {
   const qrCodeImageRef = useRef<HTMLImageElement>(null);

@@ -3,12 +3,12 @@ import React, { useRef, useState } from "react";
 import { Button } from "../ui/Button/Button";
 import ColorButton from "../ui/ColorButton/ColorButton";
 import Image from "next/image";
-import { downloadQRCode } from "@/app/utils/DownloadQRCode";
+import { downloadQRCode } from "@/utils/DownloadQRCode";
 import QRCode from "../QRCode/QRCode";
 import { HiPlus } from "react-icons/hi";
 import { ITemplateGenerator } from "./types";
 import { FaArrowLeft } from "react-icons/fa6";
-import { useQRCode } from "@/app/hooks/useQRCode";
+import { useQRCode } from "@/hooks/useQRCode";
 
 const TemplateGenerator = ({ isVisible, callback }: ITemplateGenerator) => {
   const placaPixImageRef = useRef<HTMLImageElement>(null);

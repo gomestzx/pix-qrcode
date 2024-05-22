@@ -1,19 +1,20 @@
+import Faq from "@/components/Faq/Faq";
+import PlateGenerator from "@/components/PlateGenerator/PlateGenerator";
+import PostPreview from "@/components/Posts/PostPreview";
+import Card from "@/components/ui/Card/Card";
+import Title from "@/components/ui/Title/Title";
 import "tailwindcss/tailwind.css";
-import Navbar from "@/app/components/Navbar/Navbar";
-import Title from "@/app/components/ui/Title/Title";
-import Accordion from "@/app/components/ui/Accordion/Accordion";
-import Card from "@/app/components/ui/Card/Card";
-import Footer from "@/app/components/Footer/Footer";
-import Image from "next/image";
-import PostPreview from "@/app/components/Posts/PostPreview";
-import PlateGenerator from "@/app/components/PlateGenerator/PlateGenerator";
-import Faq from "../components/Faq/Faq";
+
 
 export const metadata = {
   title: "Gerar Placa Personalizada para PIX",
   description:
     "O Pix QR Code é uma ferramenta online que gera QR Codes e placas personalizadas que facilitam o recebimento de pagamentos no sistema Pix.",
   keywords: [
+    "Gerar Placa Pix",
+    "Criar Placa Pix",
+    "Placa personalizada pix",
+    "Plaquinha pix",
     "QR Code PIX",
     "Placa PIX",
     "QR Code pix",
@@ -29,7 +30,7 @@ export const metadata = {
 function PlateGeneratorPage(): JSX.Element {
   return (
     <div className="font-montserrat">
-      <Navbar />
+      
       <Title
         title={
           <>
@@ -117,7 +118,7 @@ function PlateGeneratorPage(): JSX.Element {
           />
         </div>
       </div>
-      <Footer />
+    
     </div>
   );
 }

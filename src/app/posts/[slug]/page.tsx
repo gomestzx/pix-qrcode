@@ -2,10 +2,9 @@ import Markdown from 'markdown-to-jsx';
 import Head from 'next/head';
 import fs from 'fs';
 import matter from 'gray-matter';
-import getPostMetadata from "@/app/components/Posts/getPostMetadata";
-import Navbar from "@/app/components/Navbar/Navbar";
-import Footer from "@/app/components/Footer/Footer";
-import Banner from "@/app/components/Banner/Banner";
+import Banner from '@/components/Banner/Banner';
+import getPostMetadata from '@/components/Posts/getPostMetadata';
+
 
 const markdownOptions = {
   overrides: {
@@ -50,7 +49,7 @@ const PostPage = (props: any) => {
         <meta name="keywords" content={data.keywords} />
       </Head>
       <div className='font-montserrat'>
-        <Navbar />
+       
         <div className="flex justify-center">
           <div className="w-full p-4 md:px-8 md:py-8 lg:w-4/6 rounded flex flex-wrap shadow-lg bg-white flex-col">
             <div className="my-12 text-center">
@@ -63,7 +62,7 @@ const PostPage = (props: any) => {
             </article>
           </div>
         </div>
-        <Footer />
+       
       </div>
     </>
   );
