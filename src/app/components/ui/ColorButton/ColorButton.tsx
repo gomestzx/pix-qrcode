@@ -1,15 +1,15 @@
-import { useData } from "@/app/hooks/useData";
 import React from "react";
 import { IColorButtonProps } from "./types";
+import { useQRCode } from "@/app/hooks/useQRCode";
 
 const ColorButton = (props: IColorButtonProps) => {
-  const { colorQrCode, setColorQrCode } = useData();
+  const {setQrCodeData} = useQRCode()
   return (
     <button
       type="button"
       value={props.value}
       name="colorInput"
-      onClick={() => setColorQrCode(`#${props.value}`)}
+      onClick={() => setQrCodeData((prev) => ({...prev, colorQrCode: `#${props.value}`}))}
       defaultChecked={props.defaultChecked}
       className={`p-3 w-8 h-8 rounded-full`}
       style={{ backgroundColor: `#${props.value}` }}

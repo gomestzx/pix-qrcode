@@ -3,23 +3,23 @@ import Modal from "react-modal";
 import { downloadQRCode } from "@/app/utils/DownloadQRCode";
 import { IModalComponentProps } from "./types";
 import { QRCodeCanvas } from "qrcode.react";
-import { useData } from "@/app/hooks/useData";
 import { HiPlus } from "react-icons/hi";
 import { FaFileImage, FaXmark } from "react-icons/fa6";
 import Link from "next/link";
 import ColorButton from "../ui/ColorButton/ColorButton";
+import { useQRCode } from "@/app/hooks/useQRCode";
 
 const ModalComponent = (props: IModalComponentProps) => {
   const [showColorPicker, setShowColorPicker] = useState(false);
   const [logoUrl, setLogoUrl] = useState<string | null>(null);
+
+  const { qrcode, setQrCodeData } = useQRCode();
 
   const qrCodeImageRef = useRef<HTMLImageElement>(null);
 
   function HandleDownloadQRCode() {
     downloadQRCode(qrCodeImageRef);
   }
-
-  const { colorQrCode, rawPix, setColorQrCode } = useData();
 
   const handleLogoUpload = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -61,7 +61,10 @@ const ModalComponent = (props: IModalComponentProps) => {
               id="fileInput"
               className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
             />
-            <label htmlFor="fileInput" className="flex justify-center items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-700 text-sm">
+            <label
+              htmlFor="fileInput"
+              className="flex justify-center items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-700 text-sm"
+            >
               <FaFileImage />
               Upload Logo
             </label>
@@ -72,10 +75,10 @@ const ModalComponent = (props: IModalComponentProps) => {
             className="flex items-center justify-center relative p-4"
           >
             <QRCodeCanvas
-              value={rawPix}
+              value={qrcode.rawPix}
               size={210}
               bgColor={"#ffffff"}
-              fgColor={colorQrCode}
+              fgColor={qrcode.colorQrCode}
               level={"L"}
               includeMargin={false}
               imageSettings={{
@@ -97,13 +100,18 @@ const ModalComponent = (props: IModalComponentProps) => {
               <input
                 type="color"
                 id="colorPicker"
-                value={colorQrCode}
-                onChange={(e) => setColorQrCode(e.target.value)}
+                value={qrcode.colorQrCode}
+                onChange={(e) =>
+                  setQrCodeData((prev) => ({
+                    ...prev,
+                    colorQrCode: e.target.value,
+                  }))
+                }
                 className={`absolute opacity-0 ${
                   showColorPicker ? "block" : "hidden"
                 }`}
                 style={{ zIndex: 10 }}
-                onBlur={() => setShowColorPicker(false)} 
+                onBlur={() => setShowColorPicker(false)}
               />
               <label htmlFor="colorPicker">
                 <span

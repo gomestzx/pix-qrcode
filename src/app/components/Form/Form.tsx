@@ -6,13 +6,13 @@ import ColorButton from "../ui/ColorButton/ColorButton";
 import DropdownWithInput from "../ui/DropdownWithInput/DropdownWithInput";
 import NumberInput from "../ui/NumberInput/NumberInput";
 import TextInput from "../ui/TextInput/TextInput";
-import { useData } from "@/app/hooks/useData";
 import { downloadQRCode } from "@/app/utils/DownloadQRCode";
 import { generateDynamicPix } from "@/app/utils/GenerateQRCode";
 import { FaFileImage } from "react-icons/fa6";
 import { HiPlus } from "react-icons/hi";
 import { IForm } from "./types";
 import ModalComponent from "../ModalComponent/ModalComponent";
+import { useQRCode } from "@/app/hooks/useQRCode";
 
 const Form = ({ isVisible, callback }: IForm) => {
   const qrCodeImageRef = useRef<HTMLImageElement>(null);
@@ -20,45 +20,45 @@ const Form = ({ isVisible, callback }: IForm) => {
   const [showColorPicker, setShowColorPicker] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
-  const {
-    chave,
-    nome,
-    setNome,
-    cidade,
-    setCidade,
-    valor,
-    setValor,
-    identificador,
-    setIdentificador,
-    setQrCode,
-    rawPix,
-    setRawPix,
-    colorQrCode,
-    setColorQrCode,
-    qrCode,
-  } = useData();
+  const { qrcode, setQrCodeData } = useQRCode();
 
   useEffect(() => {
     async function fetchDynamicPix() {
       const { qrCodeBase64, rawQrCode } = await generateDynamicPix(
-        chave,
-        nome,
-        cidade,
-        identificador,
-        valor
+        qrcode.chave,
+        qrcode.nome,
+        qrcode.cidade,
+        qrcode.identificador,
+        qrcode.valor
       );
-      setQrCode(qrCodeBase64);
-      setRawPix(rawQrCode);
+      setQrCodeData((prevQrCode) => ({
+        ...prevQrCode,
+        qrCode: qrCodeBase64,
+        rawPix: rawQrCode,
+      }));
     }
 
     void fetchDynamicPix();
-  }, [chave, nome, cidade, identificador, valor]);
+  }, [
+    qrcode.chave,
+    qrcode.nome,
+    qrcode.cidade,
+    qrcode.identificador,
+    qrcode.valor,
+  ]);
+
+  useEffect(() => {
+    console.log(qrcode);
+  }, [qrcode]);
 
   const handleNumberValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     const formattedValue = parseFloat(inputValue).toFixed(2);
     const numberValue = parseFloat(formattedValue);
-    setValor(numberValue);
+    setQrCodeData((prevQrCode) => ({
+      ...prevQrCode,
+      valor: numberValue,
+    }));
   };
 
   const handleLogoUpload = (e: ChangeEvent<HTMLInputElement>) => {
@@ -82,43 +82,54 @@ const Form = ({ isVisible, callback }: IForm) => {
           <DropdownWithInput />
           <TextInput
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setNome(e.target.value)
+              setQrCodeData((prevQrCode) => ({
+                ...prevQrCode,
+                nome: e.target.value,
+              }))
             }
             label="Nome do beneficiario*"
             placeholder="Digite seu nome"
-            value={nome}
+            value={qrcode.nome}
           />
           <TextInput
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setCidade(e.target.value)
+              setQrCodeData((prevQrCode) => ({
+                ...prevQrCode,
+                cidade: e.target.value,
+              }))
             }
             label="Cidade do beneficiário ou da transação*"
             placeholder="Digite sua cidade"
-            value={cidade}
+            value={qrcode.cidade}
           />
           <NumberInput
             onChange={handleNumberValue}
-            value={valor === 0 ? undefined : valor}
+            value={qrcode.valor === 0 ? undefined : qrcode.valor}
             label="Valor (opcional)"
             placeholder="Digite o valor"
           />
           <TextInput
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setIdentificador(e.target.value)
+              setQrCodeData((prevQrCode) => ({
+                ...prevQrCode,
+                identificador: e.target.value,
+              }))
             }
             label="Código da transferência (opicional)"
             placeholder="PGMTO123"
-            value={identificador === "PGMTO123" ? "" : identificador}
+            value={
+              qrcode.identificador === "PGMTO123" ? "" : qrcode.identificador
+            }
           />
           <Button
             label="Gerar QR Code"
             onClick={() => setIsModalOpen((prev) => !prev)}
-            isDisabled={!chave || !nome || !cidade}
+            isDisabled={!qrcode.chave || !qrcode.nome || !qrcode.cidade}
             mobile
           />
           <Button
             label="Criar Placa Pix"
-            isDisabled={!chave || !nome || !cidade}
+            isDisabled={!qrcode.chave || !qrcode.nome || !qrcode.cidade}
             onClick={callback}
             background="bg-blue-600"
             mobile
@@ -143,10 +154,10 @@ const Form = ({ isVisible, callback }: IForm) => {
           <div className="w-ful flex justify-center items-center p-2 relative">
             <div className="p-1" ref={qrCodeImageRef} id="QRcode">
               <QRCodeCanvas
-                value={rawPix}
+                value={qrcode.rawPix}
                 size={210}
                 bgColor={"#ffffff"}
-                fgColor={colorQrCode}
+                fgColor={qrcode.colorQrCode}
                 level={"L"}
                 includeMargin={false}
                 imageSettings={{
@@ -171,8 +182,13 @@ const Form = ({ isVisible, callback }: IForm) => {
                 <input
                   type="color"
                   id="colorPicker"
-                  value={colorQrCode}
-                  onChange={(e) => setColorQrCode(e.target.value)}
+                  value={qrcode.colorQrCode}
+                  onChange={(e) =>
+                    setQrCodeData((prevQrCode) => ({
+                      ...prevQrCode,
+                      colorQrCode: e.target.value,
+                    }))
+                  }
                   className={`absolute opacity-0 ${
                     showColorPicker ? "block" : "hidden"
                   }`}
@@ -193,11 +209,11 @@ const Form = ({ isVisible, callback }: IForm) => {
           <Button
             label="Download PNG"
             onClick={() => downloadQRCode(qrCodeImageRef)}
-            isDisabled={!chave || !nome || !cidade}
+            isDisabled={!qrcode.chave || !qrcode.nome || !qrcode.cidade}
           />
           <Button
             label="Criar Placa Pix"
-            isDisabled={!chave || !nome || !cidade}
+            isDisabled={!qrcode.chave || !qrcode.nome || !qrcode.cidade}
             onClick={callback}
             background="bg-blue-600"
           />
@@ -205,11 +221,11 @@ const Form = ({ isVisible, callback }: IForm) => {
       </div>
       <ModalComponent
         closeModal={() => setIsModalOpen((prev) => !prev)}
-        valor={valor ?? 0}
-        nome={nome}
-        cidade={cidade}
-        chave={chave}
-        qrCode={qrCode}
+        valor={qrcode.valor ?? 0}
+        nome={qrcode.nome}
+        cidade={qrcode.cidade}
+        chave={qrcode.chave}
+        qrCode={qrcode.qrCode}
         isOpen={isModalOpen}
       />
     </>

@@ -1,22 +1,21 @@
 "use client";
 import React, { useRef, useState } from "react";
-import ModalComponent from "../ModalComponent/ModalComponent";
 import { Button } from "../ui/Button/Button";
 import ColorButton from "../ui/ColorButton/ColorButton";
-import { useData } from "@/app/hooks/useData";
 import Image from "next/image";
 import { downloadQRCode } from "@/app/utils/DownloadQRCode";
 import QRCode from "../QRCode/QRCode";
 import { HiPlus } from "react-icons/hi";
 import { ITemplateGenerator } from "./types";
 import { FaArrowLeft } from "react-icons/fa6";
+import { useQRCode } from "@/app/hooks/useQRCode";
 
 const TemplateGenerator = ({ isVisible, callback }: ITemplateGenerator) => {
   const placaPixImageRef = useRef<HTMLImageElement>(null);
   const [showColorPicker, setShowColorPicker] = useState<boolean>(false);
   const [imagemCarregada, setImagemCarregada] = useState<boolean>(false);
 
-  const { chave, rawPix, colorQrCode, template, setTemplate, setColorQrCode } = useData();
+  const { qrcode, setQrCodeData } = useQRCode();
 
   if (!isVisible) return null;
 
@@ -35,13 +34,13 @@ const TemplateGenerator = ({ isVisible, callback }: ITemplateGenerator) => {
           <div className="lg:w-3/6 w-full flex items-center justify-center flex-wrap">
             <div className="relative" id="placa-pix" ref={placaPixImageRef}>
               <img
-                src={`/templates/${template}.png`}
+                src={`/templates/${qrcode.template}.png`}
                 alt=""
                 onLoad={() => setImagemCarregada(true)}
               />
               {imagemCarregada && (
                 <div className="absolute inset-x-0 inset-y-0 flex items-center justify-center">
-                  <QRCode value={rawPix} color={colorQrCode} />
+                  <QRCode value={qrcode.rawPix} color={qrcode.colorQrCode} />
                 </div>
               )}
               <div className="absolute inset-x-0 bottom-0 mb-18 md:mb-28 lg:mb-14 xl:mb-20 md:text-xl lg:text-sm xl:text-lg text-base flex items-center justify-center">
@@ -49,7 +48,7 @@ const TemplateGenerator = ({ isVisible, callback }: ITemplateGenerator) => {
                   style={{ wordBreak: "break-word" }}
                   className="max-w-[80%] text-center flex items-center justify-center break-words"
                 >
-                  {chave}
+                  {qrcode.chave}
                 </h3>
               </div>
             </div>
@@ -59,9 +58,13 @@ const TemplateGenerator = ({ isVisible, callback }: ITemplateGenerator) => {
             <div className=" bg-gray-100 overflow-x-auto flex flex-wrap justify-center h-96 gap-2">
               <button
                 className={`${
-                  template === "1" ? "border-2 border-black rounded-sm" : ""
+                  qrcode.template === "1"
+                    ? "border-2 border-black rounded-sm"
+                    : ""
                 }`}
-                onClick={() => setTemplate("1")}
+                onClick={() =>
+                  setQrCodeData((prev) => ({ ...prev, template: "1" }))
+                }
               >
                 <Image
                   src="/previews/default.png"
@@ -72,9 +75,13 @@ const TemplateGenerator = ({ isVisible, callback }: ITemplateGenerator) => {
               </button>
               <button
                 className={`${
-                  template === "2" ? "border-2 border-black rounded-sm" : ""
+                  qrcode.template === "2"
+                    ? "border-2 border-black rounded-sm"
+                    : ""
                 }`}
-                onClick={() => setTemplate("2")}
+                onClick={() =>
+                  setQrCodeData((prev) => ({ ...prev, template: "2" }))
+                }
               >
                 <Image
                   src="/previews/blue.png"
@@ -85,9 +92,13 @@ const TemplateGenerator = ({ isVisible, callback }: ITemplateGenerator) => {
               </button>
               <button
                 className={`${
-                  template === "3" ? "border-2 border-black rounded-sm" : ""
+                  qrcode.template === "3"
+                    ? "border-2 border-black rounded-sm"
+                    : ""
                 }`}
-                onClick={() => setTemplate("3")}
+                onClick={() =>
+                  setQrCodeData((prev) => ({ ...prev, template: "3" }))
+                }
               >
                 <Image
                   src="/previews/logos.png"
@@ -98,9 +109,13 @@ const TemplateGenerator = ({ isVisible, callback }: ITemplateGenerator) => {
               </button>
               <button
                 className={`${
-                  template === "4" ? "border-2 border-black rounded-sm" : ""
+                  qrcode.template === "4"
+                    ? "border-2 border-black rounded-sm"
+                    : ""
                 }`}
-                onClick={() => setTemplate("4")}
+                onClick={() =>
+                  setQrCodeData((prev) => ({ ...prev, template: "4" }))
+                }
               >
                 <Image
                   src="/previews/pink.png"
@@ -111,9 +126,13 @@ const TemplateGenerator = ({ isVisible, callback }: ITemplateGenerator) => {
               </button>
               <button
                 className={`${
-                  template === "5" ? "border-2 border-black rounded-sm" : ""
+                  qrcode.template === "5"
+                    ? "border-2 border-black rounded-sm"
+                    : ""
                 }`}
-                onClick={() => setTemplate("5")}
+                onClick={() =>
+                  setQrCodeData((prev) => ({ ...prev, template: "5" }))
+                }
               >
                 <Image
                   src="/previews/pinkandblue.png"
@@ -124,9 +143,13 @@ const TemplateGenerator = ({ isVisible, callback }: ITemplateGenerator) => {
               </button>
               <button
                 className={`${
-                  template === "6" ? "border-2 border-black rounded-sm" : ""
+                  qrcode.template === "6"
+                    ? "border-2 border-black rounded-sm"
+                    : ""
                 }`}
-                onClick={() => setTemplate("6")}
+                onClick={() =>
+                  setQrCodeData((prev) => ({ ...prev, template: "6" }))
+                }
               >
                 <Image
                   src="/previews/paper.png"
@@ -149,8 +172,13 @@ const TemplateGenerator = ({ isVisible, callback }: ITemplateGenerator) => {
                 <input
                   type="color"
                   id="colorPicker"
-                  value={colorQrCode}
-                  onChange={(e) => setColorQrCode(e.target.value)}
+                  value={qrcode.colorQrCode}
+                  onChange={(e) =>
+                    setQrCodeData((prev) => ({
+                      ...prev,
+                      colorQrCode: e.target.value,
+                    }))
+                  }
                   className={`absolute opacity-0 ${
                     showColorPicker ? "block" : "hidden"
                   }`}
