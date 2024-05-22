@@ -1,70 +1,36 @@
 "use client";
-import React, { ChangeEvent, useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
+import ModalComponent from "../ModalComponent/ModalComponent";
 import { Button } from "../ui/Button/Button";
 import ColorButton from "../ui/ColorButton/ColorButton";
 import { useData } from "@/app/hooks/useData";
 import Image from "next/image";
 import { downloadQRCode } from "@/app/utils/DownloadQRCode";
 import QRCode from "../QRCode/QRCode";
-import DropdownWithInput from "../ui/DropdownWithInput/DropdownWithInput";
-import TextInput from "../ui/TextInput/TextInput";
-import { generateDynamicPix } from "@/app/utils/GenerateQRCode";
-import NumberInput from "../ui/NumberInput/NumberInput";
 import { HiPlus } from "react-icons/hi";
+import { ITemplateGenerator } from "./types";
+import { FaArrowLeft } from "react-icons/fa6";
 
-const PlateGenerator = () => {
+const TemplateGenerator = ({ isVisible, callback }: ITemplateGenerator) => {
   const placaPixImageRef = useRef<HTMLImageElement>(null);
-  const [showColorPicker, setShowColorPicker] = useState(false);
-  const [logoUrl, setLogoUrl] = useState<string | null>(null);
+  const [showColorPicker, setShowColorPicker] = useState<boolean>(false);
+  const [imagemCarregada, setImagemCarregada] = useState<boolean>(false);
 
-  const {
-    chave,
-    nome,
-    setNome,
-    cidade,
-    valor,
-    qrCode,
-    rawPix,
-    colorQrCode,
-    template,
-    setTemplate,
-    imagemCarregada,
-    setImagemCarregada,
-    identificador,
-    setQrCode,
-    setRawPix,
-    setValor,
-    setCidade,
-    setIdentificador,
-    setColorQrCode,
-  } = useData();
+  const { chave, rawPix, colorQrCode, template, setTemplate, setColorQrCode } = useData();
 
-  useEffect(() => {
-    async function fetchDynamicPix() {
-      const { qrCodeBase64, rawQrCode } = await generateDynamicPix(
-        chave,
-        nome,
-        cidade,
-        identificador,
-        valor
-      );
-      setQrCode(qrCodeBase64);
-      setRawPix(rawQrCode);
-    }
-
-    void fetchDynamicPix();
-  }, [chave, nome, cidade, identificador, valor]);
-
-  const handleNumberValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = e.target.value;
-    const formattedValue = parseFloat(inputValue).toFixed(2);
-    const numberValue = parseFloat(formattedValue);
-    setValor(numberValue);
-  };
+  if (!isVisible) return null;
 
   return (
     <>
       <div className="mt-4 w-full p-4 md:px-8 md:py-8 lg:w-4/6 rounded  shadow-lg bg-white">
+        <button
+          className="flex justify-center items-center mb-4 bg-gray-100 p-4 rounded-full"
+          onClick={callback}
+        >
+          <FaArrowLeft style={{ marginRight: "8px" }} />
+          <span>Voltar ao início</span>
+        </button>
+
         <div className="flex flex-wrap items-start">
           <div className="lg:w-3/6 w-full flex items-center justify-center flex-wrap">
             <div className="relative" id="placa-pix" ref={placaPixImageRef}>
@@ -73,9 +39,11 @@ const PlateGenerator = () => {
                 alt=""
                 onLoad={() => setImagemCarregada(true)}
               />
-              <div className="absolute inset-x-0 inset-y-0 flex items-center justify-center">
-                <QRCode value={rawPix} color={colorQrCode} />
-              </div>
+              {imagemCarregada && (
+                <div className="absolute inset-x-0 inset-y-0 flex items-center justify-center">
+                  <QRCode value={rawPix} color={colorQrCode} />
+                </div>
+              )}
               <div className="absolute inset-x-0 bottom-0 mb-18 md:mb-28 lg:mb-14 xl:mb-20 md:text-xl lg:text-sm xl:text-lg text-base flex items-center justify-center">
                 <h3
                   style={{ wordBreak: "break-word" }}
@@ -86,8 +54,8 @@ const PlateGenerator = () => {
               </div>
             </div>
           </div>
-          <div className=" bg-white w-full lg:w-3/6 px-4 flex-col justify-center flex mt-4">
-            <h3 className="mb-2">Escolha o template</h3>
+          <div className=" bg-white w-full lg:w-3/6 px-4 flex-col justify-center flex">
+            <h3 className="mb-2 mt-4 lg:mt-0">Escolha o template</h3>
             <div className=" bg-gray-100 overflow-x-auto flex flex-wrap justify-center h-96 gap-2">
               <button
                 className={`${
@@ -199,48 +167,16 @@ const PlateGenerator = () => {
                 </label>
               </div>
             </div>
+            <Button
+              background="bg-blue-600"
+              label="Download Placa Pix"
+              onClick={() => downloadQRCode(placaPixImageRef)}
+            />
           </div>
         </div>
-
-        <DropdownWithInput />
-        <TextInput
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setNome(e.target.value)
-          }
-          label="Nome do beneficiario*"
-          placeholder="Digite seu nome"
-          value={nome}
-        />
-        <TextInput
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setCidade(e.target.value)
-          }
-          label="Cidade do beneficiário ou da transação*"
-          placeholder="Digite sua cidade"
-          value={cidade}
-        />
-        <TextInput
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setIdentificador(e.target.value)
-          }
-          label="Código da transferência (opicional)"
-          placeholder="PGMTO123"
-          value={identificador === "PGMTO123" ? "" : identificador}
-        />
-        <NumberInput
-          onChange={handleNumberValue}
-          value={valor === 0 ? undefined : valor}
-          label="Valor (opcional)"
-          placeholder="Digite o valor"
-        />
-        <Button
-          label="Download Placa Pix"
-          onClick={() => downloadQRCode(placaPixImageRef)}
-          isDisabled={!chave || !nome || !cidade}
-        />
       </div>
     </>
   );
 };
 
-export default PlateGenerator;
+export default TemplateGenerator;

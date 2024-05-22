@@ -4,10 +4,9 @@ import Title from "@/app/components/ui/Title/Title";
 import Card from "@/app/components/ui/Card/Card";
 import Footer from "@/app/components/Footer/Footer";
 import PostPreview from "@/app/components/Posts/PostPreview";
-import Form from "./components/Form/Form";
-import CardGenerator from "./components/CardGenerator/CardGenerator";
 import Banner from "./components/Banner/Banner";
 import Faq from "./components/Faq/Faq";
+import FormContainer from "./components/FormContainer/FormContainer";
 
 function App(): JSX.Element {
   return (
@@ -43,8 +42,7 @@ function App(): JSX.Element {
         description="Crie seu QR Code PIX grátis – Rápido, fácil e seguro. Gere QR Codes personalizados para suas chaves PIX e facilite seus pagamentos instantâneos."
       />
       <div className="flex flex-wrap-reverse justify-center font-medium">
-        <Form />
-        <CardGenerator />
+        <FormContainer />
       </div>
 
       <div className="w-full md:w-4/6 mx-auto mt-8 flex justify-center md:justify-between flex-wrap mb-4">

@@ -68,6 +68,7 @@ const ModalComponent = (props: IModalComponentProps) => {
           </div>
           <div
             id="qrCode"
+            ref={qrCodeImageRef}
             className="flex items-center justify-center relative p-4"
           >
             <QRCodeCanvas

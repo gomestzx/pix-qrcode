@@ -1,11 +1,11 @@
-'use client';
+"use client";
 import {
   createContext,
   ReactNode,
   useState,
   Dispatch,
   SetStateAction,
-} from 'react';
+} from "react";
 
 interface IDataContext {
   chave: string;
@@ -26,12 +26,8 @@ interface IDataContext {
   setRawPix: Dispatch<SetStateAction<string>>;
   colorQrCode: string;
   setColorQrCode: Dispatch<SetStateAction<string>>;
-  openTemplate: boolean;
-  setOpenTemplate: Dispatch<SetStateAction<boolean>>;
   template: string;
   setTemplate: Dispatch<SetStateAction<string>>;
-  modalIsOpen: boolean;
-  setModalIsOpen: Dispatch<SetStateAction<boolean>>;
   imagemCarregada: boolean;
   setImagemCarregada: Dispatch<SetStateAction<boolean>>;
 }
@@ -43,17 +39,17 @@ interface IProvider {
 export const DataContext = createContext<IDataContext>({} as IDataContext);
 
 export function DataProvider({ children }: IProvider) {
-  const [chave, setChave] = useState('sua chave');
-  const [cidade, setCidade] = useState('');
-  const [nome, setNome] = useState('');
+  const [chave, setChave] = useState("sua chave");
+  const [cidade, setCidade] = useState("");
+  const [nome, setNome] = useState("");
   const [valor, setValor] = useState<number>(0);
-  const [identificador, setIdentificador] = useState('PGMTO123');
-  const [mensagem, setMensagem] = useState('');
-  const [qrCode, setQrCode] = useState('');
-  const [rawPix, setRawPix] = useState('');
-  const [colorQrCode, setColorQrCode] = useState('#000000');
+  const [identificador, setIdentificador] = useState("PGMTO123");
+  const [mensagem, setMensagem] = useState("");
+  const [qrCode, setQrCode] = useState("");
+  const [rawPix, setRawPix] = useState("");
+  const [colorQrCode, setColorQrCode] = useState("#000000");
   const [openTemplate, setOpenTemplate] = useState(false);
-  const [template, setTemplate] = useState('1');
+  const [template, setTemplate] = useState("1");
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [imagemCarregada, setImagemCarregada] = useState(false);
 
@@ -78,14 +74,10 @@ export function DataProvider({ children }: IProvider) {
         setRawPix,
         colorQrCode,
         setColorQrCode,
-        openTemplate,
-        setOpenTemplate,
         template,
         setTemplate,
-        modalIsOpen,
-        setModalIsOpen,
         imagemCarregada,
-        setImagemCarregada
+        setImagemCarregada,
       }}
     >
       {children}
