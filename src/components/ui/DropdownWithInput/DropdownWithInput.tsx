@@ -3,7 +3,6 @@ import { maskPhone, unmask, maskCPF, maskCNPJ } from "@/utils/inputMask";
 import { useQRCode } from "@/hooks/useQRCode";
 import TextInput from "../TextInput/TextInput";
 
-
 interface DropdownWithInputProps {}
 
 const DropdownWithInput: React.FC<DropdownWithInputProps> = () => {

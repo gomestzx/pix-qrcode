@@ -39,18 +39,20 @@ const TemplateGenerator = ({ isVisible, callback }: ITemplateGenerator) => {
                 onLoad={() => setImagemCarregada(true)}
               />
               {imagemCarregada && (
-                <div className="absolute inset-x-0 inset-y-0 flex items-center justify-center">
-                  <QRCode value={qrcode.rawPix} color={qrcode.colorQrCode} />
-                </div>
+                <>
+                  <div className="absolute inset-x-0 inset-y-0 flex items-center justify-center">
+                    <QRCode value={qrcode.rawPix} color={qrcode.colorQrCode} />
+                  </div>
+                  <div className="absolute inset-x-0 bottom-0 mb-18 md:mb-28 lg:mb-14 xl:mb-20 md:text-xl lg:text-sm xl:text-lg text-base flex items-center justify-center">
+                    <h3
+                      style={{ wordBreak: "break-word" }}
+                      className="max-w-[80%] text-center flex items-center justify-center break-words"
+                    >
+                      {qrcode.chave}
+                    </h3>
+                  </div>
+                </>
               )}
-              <div className="absolute inset-x-0 bottom-0 mb-18 md:mb-28 lg:mb-14 xl:mb-20 md:text-xl lg:text-sm xl:text-lg text-base flex items-center justify-center">
-                <h3
-                  style={{ wordBreak: "break-word" }}
-                  className="max-w-[80%] text-center flex items-center justify-center break-words"
-                >
-                  {qrcode.chave}
-                </h3>
-              </div>
             </div>
           </div>
           <div className=" bg-white w-full lg:w-3/6 px-4 flex-col justify-center flex">
