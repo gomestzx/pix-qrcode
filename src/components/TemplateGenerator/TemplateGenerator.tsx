@@ -13,7 +13,7 @@ import { useQRCode } from "@/hooks/useQRCode";
 const TemplateGenerator = ({ isVisible, callback }: ITemplateGenerator) => {
   const placaPixImageRef = useRef<HTMLImageElement>(null);
   const [showColorPicker, setShowColorPicker] = useState<boolean>(false);
-  const [imagemCarregada, setImagemCarregada] = useState<boolean>(false);
+  const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
 
   const { qrcode, setQrCodeData } = useQRCode();
 
@@ -36,9 +36,9 @@ const TemplateGenerator = ({ isVisible, callback }: ITemplateGenerator) => {
               <img
                 src={`/templates/${qrcode.template}.png`}
                 alt=""
-                onLoad={() => setImagemCarregada(true)}
+                onLoad={() => setIsImageLoaded(true)}
               />
-              {imagemCarregada && (
+              {isImageLoaded && (
                 <>
                   <div className="absolute inset-x-0 inset-y-0 flex items-center justify-center">
                     <QRCode value={qrcode.rawPix} color={qrcode.colorQrCode} />
