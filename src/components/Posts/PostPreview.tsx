@@ -2,21 +2,25 @@ import Link from "next/link";
 import { PostMetadata } from "./PostMetadata";
 import Image from "next/image";
 
-
 const PostPreview = (props: PostMetadata) => {
   return (
-    <div
-      className="w-full lg:w-2/4"
-    >
-      <div className="border border-slate-300 rounded-md shadow-sm bg-white flex m-2 items-center justify-center">
-        <Image className="" src={`/posts-previews/${props.img}`} width={200} height={200} alt="" />
-        <div className="ml-4 w-full h-full flex flex-col items-start justify-center">
-          <h2 className="font-semibold text-sm pr-4">{props.title}</h2>
-          <Link className="text-blue-600 text-sm hover:underline mb-4 font-medium" href={`/posts/${props.slug}`}>
-            Ler artigo
-          </Link>
+    <div className="w-full ">
+      <Link
+        href={`/posts/${props.slug}`}
+        className="bg-white p-4 md:p-0 flex m-2 items-center justify-center flex-wrap md:flex-nowrap"
+      >
+        <Image
+          className=""
+          src={`/posts-previews/${props.img}`}
+          width={200}
+          height={200}
+          alt=""
+        />
+        <div className="ml-4 w-full h-full mt-2 md:mt-0 flex flex-col items-start justify-center">
+          <h2 className="pr-4 text-base font-bold text-teal-600">{props.title}</h2>
+          <p className="text-sm pr-2">{props.subtitle}</p>
         </div>
-      </div>
+      </Link>
     </div>
   );
 };

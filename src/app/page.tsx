@@ -75,27 +75,42 @@ function App(): JSX.Element {
           description="Explore nossos artigos e descubra dicas, tutoriais e as últimas novidades sobre como utilizar nossa ferramenta"
         />
         <br />
-        <div className="flex flex-wrap">
-          <PostPreview
-            title="PIX: Entenda como funciona"
-            slug="pix-entenda-como-funciona"
-            img="1.png"
-          />
-          <PostPreview
-            title="Como gerar um QR Code para sua chave PIX"
-            slug="como-gerar-qr-code-pix"
-            img="2.png?version=2"
-          />
-          <PostPreview
-            title="Como gerar uma placa personalizada para sua chave PIX"
-            slug="como-gerar-placa-pix"
-            img="3.png?version="
-          />
-          <PostPreview
-            title="Aprenda como escanear um QR Code Pix"
-            slug="como-escanear-qr-code-pix"
-            img="4.png"
-          />
+        <div className=" flex flex-wrap">
+          <div>
+            <div className="flex flex-wrap">
+              <PostPreview
+                title="PIX: Entenda como funciona"
+                subtitle="Aprenda passo a passo como escanear um QR Code Pix usando seu smartphone e um aplicativo de banco ou carteira digital. Facilite suas transações financeiras com esta tecnologia inovadora"
+                slug="pix-entenda-como-funciona"
+                img="1.png"
+              />
+              <PostPreview
+                title="Como gerar um QR Code para sua chave PIX"
+                subtitle="Aprenda como criar uma placa personalizada para sua chave PIX de forma simples e rápida com o pix-qr-code.com"
+                slug="como-gerar-qr-code-pix"
+                img="2.png?version=2"
+              />
+              <PostPreview
+                title="Como gerar uma placa personalizada para sua chave PIX"
+                subtitle="Aprenda como criar um QR Code para sua chave PIX de forma simples e rápida com o pix-qr-code.com."
+                slug="como-gerar-placa-pix"
+                img="3.png?version="
+              />
+              <PostPreview
+                title="Aprenda como escanear um QR Code Pix"
+                subtitle="Confira o guia para aprender sobre o sistema Pix"
+                slug="como-escanear-qr-code-pix"
+                img="4.png"
+              />
+            </div>
+          </div>
+
+          {/* <div className=" p-4 bg-orange-600 w-[30%]">
+            <img
+              src="https://blog.rdstation.com/wp-content/uploads/2022/03/BBRD-StationC01-01.png"
+              alt=""
+            />
+          </div> */}
         </div>
       </div>
     </div>
