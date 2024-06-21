@@ -89,7 +89,7 @@ const PlateGenerator = () => {
               <button
                 className={`${
                   qrcode.template === "1"
-                    ? "border-2 border-black rounded-sm"
+                    ? "border-4 border-blue-600 rounded-sm"
                     : ""
                 }`}
                 onClick={() =>
@@ -106,7 +106,7 @@ const PlateGenerator = () => {
               <button
                 className={`${
                   qrcode.template === "2"
-                    ? "border-2 border-black rounded-sm"
+                    ? "border-4 border-blue-600 rounded-sm"
                     : ""
                 }`}
                 onClick={() =>
@@ -123,7 +123,7 @@ const PlateGenerator = () => {
               <button
                 className={`${
                   qrcode.template === "3"
-                    ? "border-2 border-black rounded-sm"
+                    ? "border-4 border-blue-600 rounded-sm"
                     : ""
                 }`}
                 onClick={() =>
@@ -140,7 +140,7 @@ const PlateGenerator = () => {
               <button
                 className={`${
                   qrcode.template === "4"
-                    ? "border-2 border-black rounded-sm"
+                    ? "border-4 border-blue-600 rounded-sm"
                     : ""
                 }`}
                 onClick={() =>
@@ -157,7 +157,7 @@ const PlateGenerator = () => {
               <button
                 className={`${
                   qrcode.template === "5"
-                    ? "border-2 border-black rounded-sm"
+                    ? "border-4 border-blue-600 rounded-sm"
                     : ""
                 }`}
                 onClick={() =>
@@ -174,7 +174,7 @@ const PlateGenerator = () => {
               <button
                 className={`${
                   qrcode.template === "6"
-                    ? "border-2 border-black rounded-sm"
+                    ? "border-4 border-blue-600 rounded-sm"
                     : ""
                 }`}
                 onClick={() =>
