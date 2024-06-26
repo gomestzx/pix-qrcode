@@ -65,15 +65,16 @@ function App(): JSX.Element {
         description="Encontre respostas para as dúvidas mais comuns sobre como usar nossa ferramenta, personalizar seus QR Codes e garantir a segurança de suas transações PIX"
       />
       <Faq />
+      <Title
+        title="Blog"
+        description="Explore nossos artigos e descubra dicas, tutoriais e as últimas novidades sobre como utilizar nossa ferramenta"
+      />
 
       <div
         className="w-full md:w-4/6 mx-auto mt-8 flex justify-center md:justify-between flex-wrap mb-4"
         id="blog"
       >
-        <Title
-          title="Blog"
-          description="Explore nossos artigos e descubra dicas, tutoriais e as últimas novidades sobre como utilizar nossa ferramenta"
-        />
+
         <br />
         <div className=" flex flex-wrap">
           <div>

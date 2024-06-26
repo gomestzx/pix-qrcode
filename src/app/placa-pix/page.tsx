@@ -63,21 +63,30 @@ function PlateGeneratorPage(): JSX.Element {
         <PlateGenerator />
       </div>
       <div className="w-full md:w-4/6 mx-auto mt-8 flex justify-center md:justify-between flex-wrap mb-4">
-        <Card
-          img="/img1.png"
-          titulo="Grátis"
-          conteudo="Crie quantos QR Codes quiser!"
-        />
-        <Card
-          img="/img2.png"
-          titulo="Design"
-          conteudo="Melhore sua forma de pagamentos via Pix"
-        />
-        <Card
-          img="/img3.png"
-          titulo="Seguro"
-          conteudo="Não armazenamos nenhum dado"
-        />
+      <PostPreview
+                title="PIX: Entenda como funciona"
+                subtitle="Aprenda passo a passo como escanear um QR Code Pix usando seu smartphone e um aplicativo de banco ou carteira digital. Facilite suas transações financeiras com esta tecnologia inovadora"
+                slug="pix-entenda-como-funciona"
+                img="1.png"
+              />
+              <PostPreview
+                title="Como gerar um QR Code para sua chave PIX"
+                subtitle="Aprenda como criar uma placa personalizada para sua chave PIX de forma simples e rápida com o pix-qr-code.com"
+                slug="como-gerar-qr-code-pix"
+                img="2.png?version=2"
+              />
+              <PostPreview
+                title="Como gerar uma placa personalizada para sua chave PIX"
+                subtitle="Aprenda como criar um QR Code para sua chave PIX de forma simples e rápida com o pix-qr-code.com."
+                slug="como-gerar-placa-pix"
+                img="3.png?version="
+              />
+              <PostPreview
+                title="Aprenda como escanear um QR Code Pix"
+                subtitle="Confira o guia para aprender sobre o sistema Pix"
+                slug="como-escanear-qr-code-pix"
+                img="4.png"
+              />
       </div>
       <Title
         customClassName="mt-8"
