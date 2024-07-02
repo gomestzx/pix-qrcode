@@ -87,11 +87,10 @@ const PlateGenerator = () => {
             <h3 className="mb-2">Escolha o template</h3>
             <div className=" bg-gray-100 overflow-x-auto flex flex-wrap justify-center h-96 gap-2">
               <button
-                className={`${
-                  qrcode.template === "1"
+                className={`${qrcode.template === "1"
                     ? "border-4 border-blue-600 rounded-sm"
                     : ""
-                }`}
+                  }`}
                 onClick={() =>
                   setQrCodeData((prev) => ({ ...prev, template: "1" }))
                 }
@@ -104,11 +103,10 @@ const PlateGenerator = () => {
                 />
               </button>
               <button
-                className={`${
-                  qrcode.template === "2"
+                className={`${qrcode.template === "2"
                     ? "border-4 border-blue-600 rounded-sm"
                     : ""
-                }`}
+                  }`}
                 onClick={() =>
                   setQrCodeData((prev) => ({ ...prev, template: "2" }))
                 }
@@ -121,11 +119,10 @@ const PlateGenerator = () => {
                 />
               </button>
               <button
-                className={`${
-                  qrcode.template === "3"
+                className={`${qrcode.template === "3"
                     ? "border-4 border-blue-600 rounded-sm"
                     : ""
-                }`}
+                  }`}
                 onClick={() =>
                   setQrCodeData((prev) => ({ ...prev, template: "3" }))
                 }
@@ -138,11 +135,10 @@ const PlateGenerator = () => {
                 />
               </button>
               <button
-                className={`${
-                  qrcode.template === "4"
+                className={`${qrcode.template === "4"
                     ? "border-4 border-blue-600 rounded-sm"
                     : ""
-                }`}
+                  }`}
                 onClick={() =>
                   setQrCodeData((prev) => ({ ...prev, template: "4" }))
                 }
@@ -155,11 +151,10 @@ const PlateGenerator = () => {
                 />
               </button>
               <button
-                className={`${
-                  qrcode.template === "5"
+                className={`${qrcode.template === "5"
                     ? "border-4 border-blue-600 rounded-sm"
                     : ""
-                }`}
+                  }`}
                 onClick={() =>
                   setQrCodeData((prev) => ({ ...prev, template: "5" }))
                 }
@@ -172,11 +167,10 @@ const PlateGenerator = () => {
                 />
               </button>
               <button
-                className={`${
-                  qrcode.template === "6"
+                className={`${qrcode.template === "6"
                     ? "border-4 border-blue-600 rounded-sm"
                     : ""
-                }`}
+                  }`}
                 onClick={() =>
                   setQrCodeData((prev) => ({ ...prev, template: "6" }))
                 }
@@ -209,9 +203,8 @@ const PlateGenerator = () => {
                       colorQrCode: e.target.value,
                     }))
                   }
-                  className={`absolute opacity-0 ${
-                    showColorPicker ? "block" : "hidden"
-                  }`}
+                  className={`absolute opacity-0 ${showColorPicker ? "block" : "hidden"
+                    }`}
                   style={{ zIndex: 10 }}
                   onBlur={() => setShowColorPicker(false)}
                 />
@@ -227,7 +220,7 @@ const PlateGenerator = () => {
             </div>
           </div>
         </div>
-
+        <br />
         <DropdownWithInput />
         <TextInput
           onChange={(e: ChangeEvent<HTMLInputElement>) =>

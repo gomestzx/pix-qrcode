@@ -6,7 +6,7 @@ export default function Navbar() {
   const [navbar, setNavbar] = useState(false);
   return (
     <nav className="w-full">
-      <div className="justify-between md:w-4/6  px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
+      <div className="justify-between md:w-5/6  px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
             <a href="/">
@@ -70,7 +70,7 @@ export default function Navbar() {
           >
             <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0 text-gray-600 font-semibold text-md">
               <li className="">
-                <Link href="#blog" className=" hover:text-blue-600">
+                <Link href="/blog" className=" hover:text-blue-600">
                   Blog
                 </Link>
               </li>

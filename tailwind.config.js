@@ -27,6 +27,9 @@ module.exports = {
       fontFamily: {
        
         mulish: ["var(--font-mulish)"],
+        darkerGrotesque: ["var(--font-darker-grotesque)"],
+        nunito: ["var(--font-nunito)"],
+        redHat: ["var(--font-red-hat-display)"]
        
       },
       colors: {
@@ -36,5 +39,7 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 };

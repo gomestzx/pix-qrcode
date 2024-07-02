@@ -6,7 +6,7 @@ const PostPreview = (props: PostMetadata) => {
   return (
     <div className="w-full ">
       <Link
-        href={`/posts/${props.slug}`}
+        href={`/blog/${props.slug}`}
         className="bg-white p-4 md:p-0 flex m-2 items-center justify-center flex-wrap md:flex-nowrap"
       >
         <Image

@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar/Navbar";
 import { QRCodeProvider } from "../context/QRCodeContext";
 import "./globals.css";
-import { Mulish } from "next/font/google";
+import { Mulish, Darker_Grotesque, Nunito_Sans, Red_Hat_Display } from "next/font/google";
 import "tailwindcss/tailwind.css";
 import Footer from "@/components/Footer/Footer";
 
@@ -10,6 +10,27 @@ const mulish = Mulish({
   display: "swap",
   weight: ["400", "500", "600", "700", "800", "900"],
   variable: "--font-mulish",
+});
+
+const darkerGrotesque = Darker_Grotesque({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-darker-grotesque",
+});
+
+const nunito = Nunito_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-nunito",
+});
+
+const redHatDisplay = Red_Hat_Display({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-red-hat-display",
 });
 
 export const metadata = {
@@ -54,7 +75,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         ></script>
       </head>
-      <body className={`${mulish.variable} font-mulish`}>
+      <body className={`${mulish.variable} ${darkerGrotesque.variable} ${nunito.variable} ${redHatDisplay.variable} font-mulish`}>
         <QRCodeProvider>
           <Navbar />
           {children}
