@@ -3,21 +3,58 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <div className='w-full  p-10 flex-wrap'>
-      <div className='flex justify-center font-semibold text-md'>
-        <Link href='/privacidade' className='text-black m-2'>
-          Privacidade
-        </Link>
-        <Link href='/termos-de-servico' className='text-black m-2'>
-          Termos de Serviço
-        </Link>
-        <Link href='mailto:contato@qr-code-pix.com.br' className='text-black m-2'>
-          Contato
-        </Link>
+    <div className='w-full lg:w-4/6 mx-auto  py-8'>
+      <div className='flex flex-col lg:flex-row px-8 lg:px-0 gap-8 lg:gap-2 flex-wrap justify-between'>
+        <div className='w-auto lg:w-1/4'>
+          <img
+            src="/logo.png"
+            alt="logo"
+            style={{ height: "40px", maxWidth: "100%" }}
+          />
+          <p className=' text-sm mt-2'>Gerador de QR Code e Placa personalizada PIX</p>
+        </div>
+        <div>
+          <h1 className=' font-mulish font-extrabold text-lg'>Ferramentas</h1>
+          <div className=' flex flex-col mt-2 gap-2'>
+            <Link href='/' className='text-sm text-gray-600'>
+              Gerador de QR Code PIX
+            </Link>
+            <Link href='/placa-pix' className='text-sm text-gray-600'>
+              Gerador de Placa Personalizada PIX
+            </Link>
+          </div>
+        </div>
+        <div>
+          <h1 className=' font-mulish font-extrabold text-lg'>Sobre</h1>
+          <div className=' flex flex-col mt-2 gap-2'>
+            <Link href='/sobre' className='text-sm text-gray-600'>
+              Sobre nós
+            </Link>
+            <Link href='/blog' className='text-sm text-gray-600'>
+              Blog
+            </Link>
+            <Link href='/#faq' className='text-sm text-gray-600'>
+              FAQ
+            </Link>
+            <Link href='mailto:contato@qr-code-pix.com.br' className='text-sm text-gray-600'>
+              Contato
+            </Link>
+          </div>
+        </div>
+        <div>
+          <h1 className=' font-mulish font-extrabold text-lg'>Legal</h1>
+          <div className=' flex flex-col mt-2 gap-2'>
+            <Link href='/privacidade' className='text-sm text-gray-600'>
+              Privacidade
+            </Link>
+            <Link href='/termos-de-servico' className='text-sm text-gray-600'>
+              Termos de Serviço
+            </Link>
+          </div>
+        </div>
       </div>
-
-      <h2 className=' text-white text-center text-sm'>
-        © 2023 qr-code-pix.com.br
+      <h2 className=' text-center text-sm text-gray-600 py-20'>
+        © 2024 qr-code-pix.com.br
       </h2>
     </div>
   );
