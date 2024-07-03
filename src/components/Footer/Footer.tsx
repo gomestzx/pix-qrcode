@@ -9,7 +9,7 @@ const Footer = () => {
           <img
             src="/logo.png"
             alt="logo"
-            style={{ height: "40px", maxWidth: "100%" }}
+            style={{ height: "30px", maxWidth: "100%" }}
           />
           <p className=' text-sm mt-2'>Gerador de QR Code e Placa personalizada PIX</p>
         </div>

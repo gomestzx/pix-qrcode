@@ -13,7 +13,7 @@ export default function Navbar() {
               <img
                 src="/logo.png"
                 alt="logo"
-                style={{ height: "50px", maxWidth: "100%" }}
+                style={{ height: "30px", maxWidth: "100%" }}
               />
             </a>
             <div className="md:hidden">
