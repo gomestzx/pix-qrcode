@@ -20,6 +20,10 @@ const Form = ({ isVisible, callback }: IForm) => {
   const [logoUrl, setLogoUrl] = useState<string | null>(null);
   const [showColorPicker, setShowColorPicker] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [nomeInputError, setNomeInputError] = useState<boolean>(false);
+  const [chaveInputError, setChaveInputError] = useState<boolean>(false);
+  const [cidadeInputError, setCidadeInputError] = useState<boolean>(false);
+
 
   const { qrcode, setQrCodeData } = useQRCode();
 
@@ -47,10 +51,6 @@ const Form = ({ isVisible, callback }: IForm) => {
     qrcode.identificador,
     qrcode.valor,
   ]);
-
-  useEffect(() => {
-    console.log(qrcode);
-  }, [qrcode]);
 
   const handleNumberValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
@@ -80,28 +80,37 @@ const Form = ({ isVisible, callback }: IForm) => {
     <>
       <div className="w-full p-4 md:px-8 md:py-8 lg:w-4/6 rounded flex flex-wrap items-center shadow-lg bg-white">
         <div id="inputs" className="lg:w-4/6 w-full">
-          <DropdownWithInput />
+          <DropdownWithInput error={chaveInputError} callback={() => setChaveInputError(false)} />
           <TextInput
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            onChange={(e: ChangeEvent<HTMLInputElement>) => {
               setQrCodeData((prevQrCode) => ({
                 ...prevQrCode,
                 nome: e.target.value,
-              }))
+              }));
+              setNomeInputError(false);
             }
+            }
+
             label="Nome do beneficiario*"
             placeholder="Digite seu nome"
             value={qrcode.nome}
+            error={nomeInputError}
+            errorLabel="Digite um nome válido"
           />
           <TextInput
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            onChange={(e: ChangeEvent<HTMLInputElement>) => {
               setQrCodeData((prevQrCode) => ({
                 ...prevQrCode,
                 cidade: e.target.value,
-              }))
+              }));
+              setCidadeInputError(false);
+            }
             }
             label="Cidade do beneficiário ou da transação*"
             placeholder="Digite sua cidade"
             value={qrcode.cidade}
+            error={cidadeInputError}
+            errorLabel="Digite uma cidade válida"
           />
           <NumberInput
             onChange={handleNumberValue}
@@ -110,6 +119,7 @@ const Form = ({ isVisible, callback }: IForm) => {
             placeholder="Digite o valor"
           />
           <TextInput
+
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
               setQrCodeData((prevQrCode) => ({
                 ...prevQrCode,
@@ -124,14 +134,41 @@ const Form = ({ isVisible, callback }: IForm) => {
           />
           <Button
             label="Gerar QR Code"
-            onClick={() => setIsModalOpen((prev) => !prev)}
+            onClick={() => {
+              if (qrcode.chave === 'semchave' || !qrcode.chave) {
+                setChaveInputError(true);
+              }
+              if (!qrcode.nome) {
+                setNomeInputError(true);
+              }
+              if (!qrcode.cidade) {
+                setCidadeInputError(true);
+              }
+              if (qrcode.chave && qrcode.chave !== 'semchave' && qrcode.nome && qrcode.cidade) {
+                setIsModalOpen((prev) => !prev)
+              }
+
+            }}
             isDisabled={!qrcode.chave || !qrcode.nome || !qrcode.cidade}
             mobile
           />
           <Button
             label="Criar Placa Pix"
-            isDisabled={!qrcode.chave || !qrcode.nome || !qrcode.cidade}
-            onClick={callback}
+            onClick={() => {
+              if (!qrcode.chave || qrcode.chave === 'semchave') {
+                setChaveInputError(true);
+              }
+              if (!qrcode.nome) {
+                setNomeInputError(true);
+              }
+              if (!qrcode.cidade) {
+                setCidadeInputError(true);
+              }
+              if (qrcode.chave && qrcode.nome && qrcode.cidade) {
+                callback()
+              }
+
+            }}
             background="bg-blue-600"
             mobile
           />
@@ -193,7 +230,7 @@ const Form = ({ isVisible, callback }: IForm) => {
                   className={`absolute opacity-0 ${showColorPicker ? "block" : "hidden"
                     }`}
                   style={{ zIndex: 10 }}
-                  onBlur={() => setShowColorPicker(false)} // Hide on blur
+                  onBlur={() => setShowColorPicker(false)}
                 />
                 <label htmlFor="colorPicker">
                   <span
@@ -208,14 +245,41 @@ const Form = ({ isVisible, callback }: IForm) => {
           </div>
           <Button
             label={<div className=" flex gap-2 justify-center items-center">Baixar QR Code<MdDownload /></div>}
-            isDisabled={!qrcode.chave || !qrcode.nome || !qrcode.cidade}
-            onClick={() => downloadQRCode(qrCodeImageRef)}
+            onClick={() => {
+              if (!qrcode.chave || qrcode.chave === 'semchave') {
+                setChaveInputError(true);
+              }
+              if (!qrcode.nome) {
+                setNomeInputError(true);
+              }
+              if (!qrcode.cidade) {
+                setCidadeInputError(true);
+              }
+              if (qrcode.chave && qrcode.chave !== 'semchave' && qrcode.nome && qrcode.cidade) {
+                downloadQRCode(qrCodeImageRef)
+              }
+
+            }
+            }
           />
           <Button
             label={<div className=" flex gap-2 justify-center items-center">Criar Placa Pix<MdImage /></div>}
-            isDisabled={!qrcode.chave || !qrcode.nome || !qrcode.cidade}
-            onClick={callback}
-            background="bg-blue-600"
+            onClick={() => {
+              if (!qrcode.chave || qrcode.chave === 'semchave') {
+                setChaveInputError(true);
+              }
+              if (!qrcode.nome) {
+                setNomeInputError(true);
+              }
+              if (!qrcode.cidade) {
+                setCidadeInputError(true);
+              }
+              if (qrcode.chave && qrcode.nome && qrcode.cidade) {
+                callback()
+              }
+
+            }
+            } background="bg-blue-600"
           />
         </div>
       </div>

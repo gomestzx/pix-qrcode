@@ -3,9 +3,15 @@ import { maskPhone, unmask, maskCPF, maskCNPJ } from "@/utils/inputMask";
 import { useQRCode } from "@/hooks/useQRCode";
 import TextInput from "../TextInput/TextInput";
 
-interface DropdownWithInputProps {}
+interface DropdownWithInputProps {
 
-const DropdownWithInput: React.FC<DropdownWithInputProps> = () => {
+  error?: boolean;
+  callback?: () => void;
+}
+
+
+
+const DropdownWithInput: React.FC<DropdownWithInputProps> = (props) => {
   const [selectedOption, setSelectedOption] = useState("Telefone");
 
   const handleOptionChange = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -18,50 +24,75 @@ const DropdownWithInput: React.FC<DropdownWithInputProps> = () => {
   const optionsMap: { [key: string]: JSX.Element } = {
     Telefone: (
       <TextInput
-        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          setQrCodeData((prev) => ({ ...prev, chave: unmask(e.target.value) }))
+        onChange={(e: ChangeEvent<HTMLInputElement>) => {
+          setQrCodeData((prev) => ({ ...prev, chave: unmask(e.target.value) }));
+          if (props.callback) {
+            props.callback();
+          }
+        }
         }
         placeholder="Digite seu telefone"
         value={maskPhone(qrcode.chave)}
         maxLength={15}
-      />
+        error={props.error} />
     ),
     Email: (
       <TextInput
-        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          setQrCodeData((prev) => ({ ...prev, chave: e.target.value }))
+        onChange={(e: ChangeEvent<HTMLInputElement>) => {
+          setQrCodeData((prev) => ({ ...prev, chave: e.target.value }));
+          if (props.callback) {
+            props.callback();
+          }
+        }
         }
         placeholder="Digite seu email"
         value={qrcode.chave}
+        error={props.error}
+
       />
     ),
     CPF: (
       <TextInput
-        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          setQrCodeData((prev) => ({ ...prev, chave: e.target.value }))
-        }
+        onChange={(e: ChangeEvent<HTMLInputElement>) => {
+          setQrCodeData((prev) => ({ ...prev, chave: e.target.value }));
+          if (props.callback) {
+            props.callback();
+          }
+        }}
         placeholder="Digite seu CPF"
         value={maskCPF(qrcode.chave)}
         maxLength={14}
+        error={props.error}
+
       />
     ),
     CNPJ: (
       <TextInput
-        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          setQrCodeData((prev) => ({ ...prev, chave: unmask(e.target.value) }))
-        }
+        onChange={(e: ChangeEvent<HTMLInputElement>) => {
+          setQrCodeData((prev) => ({ ...prev, chave: unmask(e.target.value) }));
+          if (props.callback) {
+            props.callback();
+          }
+        }}
         value={maskCNPJ(qrcode.chave)}
         placeholder="Digite seu CNPJ"
         maxLength={18}
+        error={props.error}
+
       />
     ),
     Outro: (
       <TextInput
-        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          setQrCodeData((prev) => ({ ...prev, chave: e.target.value }))
-        }
+        onChange={(e: ChangeEvent<HTMLInputElement>) => {
+          setQrCodeData((prev) => ({ ...prev, chave: e.target.value }));
+          if (props.callback) {
+            props.callback();
+          }
+        }}
         placeholder="Digite sua chave"
         value={qrcode.chave}
+        error={props.error}
+
       />
     ),
   };
@@ -88,6 +119,9 @@ const DropdownWithInput: React.FC<DropdownWithInputProps> = () => {
 
         {componenteRenderizado}
       </div>
+      {
+        props.error && <p className=" text-red-400 font-redHat font-extralight">Digite uma chave válida</p>
+      }
     </>
   );
 };

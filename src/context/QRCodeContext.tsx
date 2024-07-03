@@ -14,7 +14,7 @@ export const QRCodeContext = createContext<IQRCodeContext>({} as IQRCodeContext)
 
 export function QRCodeProvider({ children }: IProvider) {
   const [qrcode, setQrCodeData] = useState<IQrCode>({
-    chave: 'sua chave',
+    chave: 'semchave',
     cidade: '',
     nome: '',
     valor: 0,
