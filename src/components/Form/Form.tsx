@@ -13,6 +13,7 @@ import { HiPlus } from "react-icons/hi";
 import { IForm } from "./types";
 import ModalComponent from "../ModalComponent/ModalComponent";
 import { useQRCode } from "@/hooks/useQRCode";
+import { MdDownload, MdImage, MdQrCodeScanner } from "react-icons/md";
 
 const Form = ({ isVisible, callback }: IForm) => {
   const qrCodeImageRef = useRef<HTMLImageElement>(null);
@@ -189,9 +190,8 @@ const Form = ({ isVisible, callback }: IForm) => {
                       colorQrCode: e.target.value,
                     }))
                   }
-                  className={`absolute opacity-0 ${
-                    showColorPicker ? "block" : "hidden"
-                  }`}
+                  className={`absolute opacity-0 ${showColorPicker ? "block" : "hidden"
+                    }`}
                   style={{ zIndex: 10 }}
                   onBlur={() => setShowColorPicker(false)} // Hide on blur
                 />
@@ -207,12 +207,12 @@ const Form = ({ isVisible, callback }: IForm) => {
             </div>
           </div>
           <Button
-            label="Download PNG"
-            onClick={() => downloadQRCode(qrCodeImageRef)}
+            label={<div className=" flex gap-2 justify-center items-center">Baixar QR Code<MdDownload /></div>}
             isDisabled={!qrcode.chave || !qrcode.nome || !qrcode.cidade}
+            onClick={() => downloadQRCode(qrCodeImageRef)}
           />
           <Button
-            label="Criar Placa Pix"
+            label={<div className=" flex gap-2 justify-center items-center">Criar Placa Pix<MdImage /></div>}
             isDisabled={!qrcode.chave || !qrcode.nome || !qrcode.cidade}
             onClick={callback}
             background="bg-blue-600"
