@@ -150,6 +150,7 @@ const Form = ({ isVisible, callback }: IForm) => {
 
             }}
             mobile
+
           />
           <Button
             label="Criar Placa Pix"
@@ -168,7 +169,6 @@ const Form = ({ isVisible, callback }: IForm) => {
               }
 
             }}
-            background="bg-blue-600"
             mobile
           />
         </div>
@@ -257,9 +257,9 @@ const Form = ({ isVisible, callback }: IForm) => {
               if (qrcode.chave && qrcode.chave !== 'semchave' && qrcode.nome && qrcode.cidade) {
                 downloadQRCode(qrCodeImageRef)
               }
+            }
+            }
 
-            }
-            }
           />
           <Button
             label={<div className=" flex gap-2 justify-center items-center">Criar Placa Pix<MdImage /></div>}
@@ -276,9 +276,10 @@ const Form = ({ isVisible, callback }: IForm) => {
               if (qrcode.chave && qrcode.nome && qrcode.cidade) {
                 callback()
               }
-
             }
-            } background="bg-blue-600"
+            }
+            customClass="bg-black"
+
           />
         </div>
       </div>

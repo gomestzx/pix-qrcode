@@ -6,4 +6,5 @@ export interface IButtonProps {
   isDisabled?: boolean;
   mobile?: boolean;
   background?: string;
+  customClass?: string;
 }

@@ -5,7 +5,7 @@ const TextInput = ({ label, error, errorLabel, ...inputProps }: ITextInput) => {
   return (
     <>
       {label && (
-        <div className="w-full block mb-2 text-md text-gray-600 font-medium">
+        <div className="w-full block mb-2 text- text-gray-600 font-medium font-redHat">
           {label}
         </div>
       )}

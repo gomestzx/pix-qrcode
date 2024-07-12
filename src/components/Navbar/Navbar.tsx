@@ -74,7 +74,7 @@ export default function Navbar() {
               navbar ? "block" : "hidden"
             }`}
           >
-            <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0 text-gray-600 font-semibold text-md">
+            <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0 text-black text-base font-semibold font-redHat text-md">
               <li>
                 <Link href="/blog" className="hover:text-blue-600" onClick={handleLinkClick}>
                   Blog
@@ -91,7 +91,7 @@ export default function Navbar() {
               </li>
               <li>
                 <Link
-                  className="bg-blue-600 hover:bg-blue-700 py-2 px-6 rounded-full text-white font-dmSans hidden md:block"
+                  className="bg-blue-600 hover:bg-blue-700 py-2 px-6 rounded-md text-white font-dmSans hidden md:block"
                   href="/placa-pix"
                 >
                   Gerar Placa Pix

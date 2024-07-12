@@ -101,17 +101,17 @@ const DropdownWithInput: React.FC<DropdownWithInputProps> = (props) => {
 
   return (
     <>
-      <div className="w-full block mb-2 text-md text-gray-600 font-medium">
+      <div className="w-full block mb-2 text-md text-gray-600 font-medium font-redHat">
         Chave PIX*
       </div>
       <div className="w-full flex items-center justify-center">
         <select
-          className="mr-2 py-2 mb-3 text-md text-gray-600 bg-white focus:outline-none focus:ring-0 cursor-pointer font-medium"
+          className="mr-2 py-2 mb-3 text-md text-gray-600 bg-white focus:outline-none focus:ring-0 cursor-pointer font-medium font-redHat"
           value={selectedOption}
           onChange={handleOptionChange}
         >
           {Object.keys(optionsMap).map((option) => (
-            <option key={option} value={option} className="bg-red-500 px-6">
+            <option key={option} value={option} className="px-6">
               {option}
             </option>
           ))}

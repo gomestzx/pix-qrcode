@@ -34,7 +34,7 @@ export default function BlogPage() {
                                 )}
                                 <div className="ml-6 w-full md:w-2/3 flex flex-col mt-4 md:mt-0">
                                     <h2 className="text-2xl font-bold text-black mb-1 font-darkerGrotesque">{post.fields.title}</h2>
-                                    <div className="text-sm text-teal-600 mb-2">
+                                    <div className="text-sm text-blue-600 mb-2">
                                         <p>Postado em {new Date(post.fields.date).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' })}</p>
                                     </div>
                                     <p className="text-gray-700 text-base font-nunito">{post.fields.subtitle}</p>

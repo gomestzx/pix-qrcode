@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar/Navbar";
 import { QRCodeProvider } from "../context/QRCodeContext";
 import "./globals.css";
-import { Mulish, Darker_Grotesque, Nunito_Sans, Red_Hat_Display } from "next/font/google";
+import { Mulish, Darker_Grotesque, Nunito_Sans, Red_Hat_Display, Open_Sans } from "next/font/google";
 import "tailwindcss/tailwind.css";
 import Footer from "@/components/Footer/Footer";
 
@@ -31,6 +31,13 @@ const redHatDisplay = Red_Hat_Display({
   display: "swap",
   weight: ["400", "500", "600", "700", "800", "900"],
   variable: "--font-red-hat-display",
+});
+
+const sans = Open_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-sans",
 });
 
 export const metadata = {
@@ -75,7 +82,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         ></script>
       </head>
-      <body className={`${mulish.variable} ${darkerGrotesque.variable} ${nunito.variable} ${redHatDisplay.variable} font-mulish`}>
+      <body className={`${mulish.variable} ${darkerGrotesque.variable} ${nunito.variable} ${redHatDisplay.variable} ${sans.variable} font-redHat`}>
         <QRCodeProvider>
           <Navbar />
           {children}

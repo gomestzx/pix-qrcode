@@ -29,7 +29,8 @@ module.exports = {
         mulish: ["var(--font-mulish)"],
         darkerGrotesque: ["var(--font-darker-grotesque)"],
         nunito: ["var(--font-nunito)"],
-        redHat: ["var(--font-red-hat-display)"]
+        redHat: ["var(--font-red-hat-display)"],
+        sans: ["var(--font-sans)"]
        
       },
       colors: {
