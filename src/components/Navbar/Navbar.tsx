@@ -4,9 +4,14 @@ import { useState } from "react";
 
 export default function Navbar() {
   const [navbar, setNavbar] = useState(false);
+
+  const handleLinkClick = () => {
+    setNavbar(false);
+  };
+
   return (
     <nav className="w-full">
-      <div className="justify-between md:w-5/6  px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
+      <div className="justify-between md:w-5/6 px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
             <a href="/">
@@ -17,10 +22,11 @@ export default function Navbar() {
               />
             </a>
             <div className="md:hidden">
-              <div className=" flex justify-center items-center gap-2">
+              <div className="flex justify-center items-center gap-2">
                 <Link
-                  className=" bg-blue-600 hover:bg-blue-700 py-2 px-6 rounded-full text-white font-dmSans"
+                  className="bg-blue-600 hover:bg-blue-700 py-2 px-6 rounded-full text-white font-dmSans"
                   href="/placa-pix"
+                  onClick={handleLinkClick}
                 >
                   Gerar Placa Pix
                 </Link>
@@ -69,22 +75,23 @@ export default function Navbar() {
             }`}
           >
             <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0 text-gray-600 font-semibold text-md">
-              <li className="">
-                <Link href="/blog" className=" hover:text-blue-600">
+              <li>
+                <Link href="/blog" className="hover:text-blue-600" onClick={handleLinkClick}>
                   Blog
                 </Link>
               </li>
-              <li className="">
+              <li>
                 <Link
                   href="mailto:contato@qr-code-pix.com.br"
-                  className=" hover:text-blue-600"
+                  className="hover:text-blue-600"
+                  onClick={handleLinkClick}
                 >
                   Contato
                 </Link>
               </li>
-              <li className="">
+              <li>
                 <Link
-                  className=" bg-blue-600 hover:bg-blue-700 py-2 px-6 rounded-full text-white font-dmSans hidden md:block"
+                  className="bg-blue-600 hover:bg-blue-700 py-2 px-6 rounded-full text-white font-dmSans hidden md:block"
                   href="/placa-pix"
                 >
                   Gerar Placa Pix

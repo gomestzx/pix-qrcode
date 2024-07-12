@@ -1,10 +1,20 @@
 'use client'
+import { useEffect, useState } from "react";
 import { fetchEntries } from "@/utils/contentful";
 import Image from "next/image";
 import Link from "next/link";
 
-export default async function BlogPage() {
-    const posts = await fetchEntries();
+export default function BlogPage() {
+    const [posts, setPosts] = useState<any>([]);
+
+    useEffect(() => {
+        const getPosts = async () => {
+            const fetchedPosts = await fetchEntries();
+            setPosts(fetchedPosts);
+        };
+
+        getPosts();
+    }, []);
 
     return (
         <div className="w-full md:w-5/6 mx-auto max-w-7xl">
@@ -14,10 +24,16 @@ export default async function BlogPage() {
                         <div className="w-full p-4 md:p-2 flex items-center justify-start lg:flex-nowrap" key={post.sys.id}>
                             <Link href={`/blog/${post.fields.slug}`} className="flex items-center justify-center w-full flex-wrap md:flex-nowrap">
                                 {post.fields.image && (
-                                    <img src={`https:${post.fields.image.fields.file.url}`} alt={post.fields.title} className="w-full md:w-1/3 h-auto object-cover" />
+                                    <img 
+                                        src={`https:${post.fields.image.fields.file.url}`} 
+                                        alt={post.fields.title} 
+                                        className="w-full md:w-1/3 h-auto object-cover" 
+                                        width={300}
+                                        height={200}
+                                    />
                                 )}
-                                <div className="ml-6 w-full md:w-2/3 flex flex-col">
-                                    <h2 className="text-2xl font-bold text-black mb-1 font-darkerGrotesque mt-2 md:mt-0">{post.fields.title}</h2>
+                                <div className="ml-6 w-full md:w-2/3 flex flex-col mt-4 md:mt-0">
+                                    <h2 className="text-2xl font-bold text-black mb-1 font-darkerGrotesque">{post.fields.title}</h2>
                                     <div className="text-sm text-teal-600 mb-2">
                                         <p>Postado em {new Date(post.fields.date).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' })}</p>
                                     </div>

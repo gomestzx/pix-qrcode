@@ -149,7 +149,6 @@ const Form = ({ isVisible, callback }: IForm) => {
               }
 
             }}
-            isDisabled={!qrcode.chave || !qrcode.nome || !qrcode.cidade}
             mobile
           />
           <Button

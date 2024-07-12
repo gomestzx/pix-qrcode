@@ -105,13 +105,6 @@ function App(): JSX.Element {
               />
             </div>
           </div>
-
-          {/* <div className=" p-4 bg-orange-600 w-[30%]">
-            <img
-              src="https://blog.rdstation.com/wp-content/uploads/2022/03/BBRD-StationC01-01.png"
-              alt=""
-            />
-          </div> */}
         </div>
       </div>
     </div>
