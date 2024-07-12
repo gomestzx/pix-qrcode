@@ -27,7 +27,7 @@ export default function BlogPage() {
                                     <img 
                                         src={`https:${post.fields.image.fields.file.url}`} 
                                         alt={post.fields.title} 
-                                        className="w-full md:w-1/3 h-auto object-cover" 
+                                        className="w-full md:w-1/3 h-40 object-cover" 
                                         width={300}
                                         height={200}
                                     />
