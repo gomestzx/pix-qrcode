@@ -13,7 +13,12 @@ export const client = createClient({
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
 });
 
-export async function fetchEntries() {
-  const entries = await client.getEntries({ content_type: 'post' });
+export async function fetchEntries(limit = 10, skip = 0) {
+  const entries = await client.getEntries({ content_type: 'post', limit, skip });
   return entries.items;
+}
+
+export async function fetchTotalEntries() {
+  const entries = await client.getEntries({ content_type: 'post' });
+  return entries.total;
 }

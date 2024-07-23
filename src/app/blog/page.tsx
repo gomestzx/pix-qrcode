@@ -1,20 +1,46 @@
 'use client'
 import { useEffect, useState } from "react";
-import { fetchEntries } from "@/utils/contentful";
+import { fetchEntries, fetchTotalEntries } from "@/utils/contentful";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function BlogPage() {
     const [posts, setPosts] = useState<any>([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+    const postsPerPage = 8;
 
     useEffect(() => {
         const getPosts = async () => {
-            const fetchedPosts = await fetchEntries();
+            const fetchedPosts = await fetchEntries(postsPerPage, (currentPage - 1) * postsPerPage);
             setPosts(fetchedPosts);
+
+            const totalEntries = await fetchTotalEntries();
+            setTotalPages(Math.ceil(totalEntries / postsPerPage));
         };
 
         getPosts();
-    }, []);
+    }, [currentPage]);
+
+    const handlePageClick = (pageNumber: number) => {
+        setCurrentPage(pageNumber);
+    };
+
+    const renderPagination = () => {
+        const pages = [];
+        for (let i = 1; i <= totalPages; i++) {
+            pages.push(
+                <button
+                    key={i}
+                    onClick={() => handlePageClick(i)}
+                    className={` w-8 py-1 border-2  rounded-lg ${i === currentPage ? 'bg-blue-500 border-blue-500 text-white' : 'bg-white text-blue-500 border-gray-300'}`}
+                >
+                    {i}
+                </button>
+            );
+        }
+        return pages;
+    };
 
     return (
         <div className="w-full md:w-5/6 mx-auto max-w-7xl">
@@ -24,10 +50,10 @@ export default function BlogPage() {
                         <div className="w-full p-4 md:p-2 flex items-center justify-start lg:flex-nowrap" key={post.sys.id}>
                             <Link href={`/blog/${post.fields.slug}`} className="flex items-center justify-center w-full flex-wrap md:flex-nowrap">
                                 {post.fields.image && (
-                                    <img 
-                                        src={`https:${post.fields.image.fields.file.url}`} 
-                                        alt={post.fields.title} 
-                                        className="w-full md:w-1/3 h-40 object-cover" 
+                                    <img
+                                        src={`https:${post.fields.image.fields.file.url}`}
+                                        alt={post.fields.title}
+                                        className="w-full md:w-1/3 h-40 object-cover"
                                         width={300}
                                         height={200}
                                     />
@@ -50,6 +76,17 @@ export default function BlogPage() {
                         </Link>
                     </div>
                 </div>
+            </div>
+            <div className="flex justify-center mt-4 gap-2 items-center">
+                <span className=" text-sm">{`Página ${currentPage} de ${totalPages}`}</span>
+                {
+                    currentPage > 1 && <button className="bg-white text-gray-600 border-2 rounded-lg w-8 py-1 border-gray-300" onClick={() => setCurrentPage(currentPage - 1)}> {'<<'}</button>
+                }
+                <div className=" hidden md:flex gap-2"> {renderPagination()}</div>
+
+                {currentPage !== totalPages &&
+                    <button className="bg-white text-gray-600 border-2 rounded-lg w-8 py-1 border-gray-300" onClick={() => setCurrentPage(currentPage + 1)}> {'>>'}</button>
+                }
             </div>
         </div>
     );
