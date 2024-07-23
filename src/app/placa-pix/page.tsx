@@ -1,6 +1,6 @@
 import Faq from "@/components/Faq/Faq";
 import PlateGenerator from "@/components/PlateGenerator/PlateGenerator";
-import PostPreview from "@/components/Posts/PostPreview";
+import LatestPosts from "@/components/Posts/LatestPosts";
 import Card from "@/components/ui/Card/Card";
 import Title from "@/components/ui/Title/Title";
 import "tailwindcss/tailwind.css";
@@ -62,38 +62,18 @@ function PlateGeneratorPage(): JSX.Element {
       <div className="flex flex-wrap-reverse justify-center font-medium">
         <PlateGenerator />
       </div>
-      <div className="w-full md:w-4/6 mx-auto mt-8 flex justify-center md:justify-between flex-wrap mb-4">
-        <PostPreview
-          title="PIX: Entenda como funciona"
-          subtitle="Aprenda passo a passo como escanear um QR Code Pix usando seu smartphone e um aplicativo de banco ou carteira digital. Facilite suas transações financeiras com esta tecnologia inovadora"
-          slug="pix-entenda-como-funciona"
-          img="1.png"
-        />
-        <PostPreview
-          title="Como gerar um QR Code para sua chave PIX"
-          subtitle="Aprenda como criar uma placa personalizada para sua chave PIX de forma simples e rápida com o pix-qr-code.com"
-          slug="como-gerar-qr-code-pix"
-          img="2.png?version=2"
-        />
-        <PostPreview
-          title="Como gerar uma placa personalizada para sua chave PIX"
-          subtitle="Aprenda como criar um QR Code para sua chave PIX de forma simples e rápida com o pix-qr-code.com."
-          slug="como-gerar-placa-pix"
-          img="3.png?version="
-        />
-        <PostPreview
-          title="Aprenda como escanear um QR Code Pix"
-          subtitle="Confira o guia para aprender sobre o sistema Pix"
-          slug="como-escanear-qr-code-pix"
-          img="4.png"
-        />
-      </div>
       <Title
         customClassName="mt-8"
         title="Perguntas Frequentes"
         description="Encontre respostas para as dúvidas mais comuns sobre como usar nossa ferramenta, personalizar seus QR Codes e garantir a segurança de suas transações PIX"
       />
       <Faq />
+      <Title
+        title="Blog"
+        description="Explore nossos artigos e descubra dicas, tutoriais e as últimas novidades sobre como utilizar nossa ferramenta"
+      />
+      <LatestPosts />
+
 
     </div>
   );

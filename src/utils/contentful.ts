@@ -22,3 +22,13 @@ export async function fetchTotalEntries() {
   const entries = await client.getEntries({ content_type: 'post' });
   return entries.total;
 }
+
+// Nova função para buscar os últimos 4 posts
+export async function fetchLatestPosts() {
+  const entries = await client.getEntries({
+    content_type: 'post',
+    limit: 4,
+    order: ['-sys.createdAt'] // Ordena pelo campo de criação em ordem decrescente
+  });
+  return entries.items;
+}
