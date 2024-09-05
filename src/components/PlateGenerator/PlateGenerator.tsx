@@ -16,6 +16,9 @@ const PlateGenerator = () => {
   const placaPixImageRef = useRef<HTMLImageElement>(null);
   const [showColorPicker, setShowColorPicker] = useState<boolean>(false);
   const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
+  const [nomeInputError, setNomeInputError] = useState<boolean>(false);
+  const [chaveInputError, setChaveInputError] = useState<boolean>(false);
+  const [cidadeInputError, setCidadeInputError] = useState<boolean>(false);
   const [logoUrl, setLogoUrl] = useState<string | null>(null);
 
   const { qrcode, setQrCodeData } = useQRCode();
@@ -87,10 +90,11 @@ const PlateGenerator = () => {
             <h3 className="mb-2">Escolha o template</h3>
             <div className=" bg-gray-100 overflow-x-auto flex flex-wrap justify-center h-96 gap-2">
               <button
-                className={`${qrcode.template === "1"
+                className={`${
+                  qrcode.template === "1"
                     ? "border-4 border-blue-600 rounded-sm"
                     : ""
-                  }`}
+                }`}
                 onClick={() =>
                   setQrCodeData((prev) => ({ ...prev, template: "1" }))
                 }
@@ -103,10 +107,11 @@ const PlateGenerator = () => {
                 />
               </button>
               <button
-                className={`${qrcode.template === "2"
+                className={`${
+                  qrcode.template === "2"
                     ? "border-4 border-blue-600 rounded-sm"
                     : ""
-                  }`}
+                }`}
                 onClick={() =>
                   setQrCodeData((prev) => ({ ...prev, template: "2" }))
                 }
@@ -119,10 +124,11 @@ const PlateGenerator = () => {
                 />
               </button>
               <button
-                className={`${qrcode.template === "3"
+                className={`${
+                  qrcode.template === "3"
                     ? "border-4 border-blue-600 rounded-sm"
                     : ""
-                  }`}
+                }`}
                 onClick={() =>
                   setQrCodeData((prev) => ({ ...prev, template: "3" }))
                 }
@@ -135,10 +141,11 @@ const PlateGenerator = () => {
                 />
               </button>
               <button
-                className={`${qrcode.template === "4"
+                className={`${
+                  qrcode.template === "4"
                     ? "border-4 border-blue-600 rounded-sm"
                     : ""
-                  }`}
+                }`}
                 onClick={() =>
                   setQrCodeData((prev) => ({ ...prev, template: "4" }))
                 }
@@ -151,10 +158,11 @@ const PlateGenerator = () => {
                 />
               </button>
               <button
-                className={`${qrcode.template === "5"
+                className={`${
+                  qrcode.template === "5"
                     ? "border-4 border-blue-600 rounded-sm"
                     : ""
-                  }`}
+                }`}
                 onClick={() =>
                   setQrCodeData((prev) => ({ ...prev, template: "5" }))
                 }
@@ -167,10 +175,11 @@ const PlateGenerator = () => {
                 />
               </button>
               <button
-                className={`${qrcode.template === "6"
+                className={`${
+                  qrcode.template === "6"
                     ? "border-4 border-blue-600 rounded-sm"
                     : ""
-                  }`}
+                }`}
                 onClick={() =>
                   setQrCodeData((prev) => ({ ...prev, template: "6" }))
                 }
@@ -203,8 +212,9 @@ const PlateGenerator = () => {
                       colorQrCode: e.target.value,
                     }))
                   }
-                  className={`absolute opacity-0 ${showColorPicker ? "block" : "hidden"
-                    }`}
+                  className={`absolute opacity-0 ${
+                    showColorPicker ? "block" : "hidden"
+                  }`}
                   style={{ zIndex: 10 }}
                   onBlur={() => setShowColorPicker(false)}
                 />
@@ -221,28 +231,37 @@ const PlateGenerator = () => {
           </div>
         </div>
         <br />
-        <DropdownWithInput />
+        <DropdownWithInput
+          error={chaveInputError}
+          callback={() => setChaveInputError(false)}
+        />
         <TextInput
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+          onChange={(e: ChangeEvent<HTMLInputElement>) => {
             setQrCodeData((prevQrCode) => ({
               ...prevQrCode,
               nome: e.target.value,
-            }))
-          }
+            }));
+            setNomeInputError(false);
+          }}
           label="Nome do beneficiario*"
           placeholder="Digite seu nome"
           value={qrcode.nome}
+          error={nomeInputError}
+          errorLabel="Digite um nome válido"
         />
         <TextInput
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+          onChange={(e: ChangeEvent<HTMLInputElement>) => {
             setQrCodeData((prevQrCode) => ({
               ...prevQrCode,
               cidade: e.target.value,
-            }))
-          }
+            }));
+            setCidadeInputError(false);
+          }}
           label="Cidade do beneficiário ou da transação*"
           placeholder="Digite sua cidade"
           value={qrcode.cidade}
+          error={cidadeInputError}
+          errorLabel="Digite uma cidade válida"
         />
         <NumberInput
           onChange={handleNumberValue}
@@ -265,8 +284,20 @@ const PlateGenerator = () => {
         />
         <Button
           label="Download Placa Pix"
-          onClick={() => downloadQRCode(placaPixImageRef)}
-          isDisabled={!qrcode.chave || !qrcode.nome || !qrcode.cidade}
+          onClick={() => {
+            if (!qrcode.chave || qrcode.chave === "semchave") {
+              setChaveInputError(true);
+            }
+            if (!qrcode.nome) {
+              setNomeInputError(true);
+            }
+            if (!qrcode.cidade) {
+              setCidadeInputError(true);
+            }
+            if (qrcode.chave && qrcode.nome && qrcode.cidade) {
+              downloadQRCode(placaPixImageRef);
+            }
+          }}
         />
       </div>
     </>
