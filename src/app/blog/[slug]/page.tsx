@@ -1,6 +1,6 @@
 import { fetchEntries } from "@/utils/contentful";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { ResolvingMetadata, Metadata } from "next";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -11,27 +11,25 @@ type PostProps = {
 };
 
 export async function generateMetadata(
-    { params }: PostProps,
-    parent?: ResolvingMetadata
-  ): Promise<Metadata> {
-    const posts = await fetchEntries();
-    const post: any = posts.find((p: any) => p.fields.slug === params.slug);
-    const previousImages = (await parent)?.openGraph?.images || [];
-  
-    return {
-      title: `${post.fields.title} | Pix QR Code`,
+  { params }: PostProps
+): Promise<Metadata> {
+  const posts = await fetchEntries();
+  const post: any = posts.find((p: any) => p.fields.slug === params.slug);
+
+  return {
+    title: `${post.fields.title} | Pix QR Code`,
+    description: post.fields.subtitle,
+    openGraph: {
+      url: `https://pix-qr-code.com/posts/${params.slug}`,
+      type: 'article',
+    },
+    twitter: {
+      title: post.fields.title,
       description: post.fields.subtitle,
-      openGraph: {
-        images: [post.fields.image?.fields.file.url, ...previousImages],
-        url: `https://pix-qr-code.com/posts/${params.slug}`,
-        type: 'article',
-      },
-      twitter: {
-        title: post.fields.title,
-        description: post.fields.subtitle,
-      },
-    };
-  }
+    },
+  };
+}
+
 
 export default async function PostPage({ params }: PostProps) {
   const posts = await fetchEntries();
