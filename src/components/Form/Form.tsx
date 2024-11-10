@@ -1,4 +1,6 @@
 "use client";
+import { useRouter } from "next/navigation";
+
 import { QRCodeCanvas } from "qrcode.react";
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import { Button } from "../ui/Button/Button";
@@ -15,9 +17,10 @@ import ModalComponent from "../ModalComponent/ModalComponent";
 import { useQRCode } from "@/hooks/useQRCode";
 import { MdDownload, MdImage, MdQrCodeScanner } from "react-icons/md";
 
+
 const Form = ({ isVisible, callback }: IForm) => {
   const qrCodeImageRef = useRef<HTMLImageElement>(null);
-  const [logoUrl, setLogoUrl] = useState<string | null>(null);
+  
   const [showColorPicker, setShowColorPicker] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [nomeInputError, setNomeInputError] = useState<boolean>(false);
@@ -25,7 +28,8 @@ const Form = ({ isVisible, callback }: IForm) => {
   const [cidadeInputError, setCidadeInputError] = useState<boolean>(false);
 
 
-  const { qrcode, setQrCodeData } = useQRCode();
+  const { qrcode, setQrCodeData, logoUrl, setLogoUrl } = useQRCode();
+  const router = useRouter();
 
   useEffect(() => {
     async function fetchDynamicPix() {
@@ -34,7 +38,7 @@ const Form = ({ isVisible, callback }: IForm) => {
         qrcode.nome,
         qrcode.cidade,
         qrcode.identificador,
-        qrcode.valor
+        qrcode.valor,
       );
       setQrCodeData((prevQrCode) => ({
         ...prevQrCode,
@@ -243,7 +247,7 @@ const Form = ({ isVisible, callback }: IForm) => {
             </div>
           </div>
           <Button
-            label={<div className=" flex gap-2 justify-center items-center">Baixar QR Code<MdDownload /></div>}
+            label={<div className=" flex gap-2 justify-center items-center">Gerar QR Code<MdDownload /></div>}
             onClick={() => {
               if (!qrcode.chave || qrcode.chave === 'semchave') {
                 setChaveInputError(true);
@@ -255,7 +259,8 @@ const Form = ({ isVisible, callback }: IForm) => {
                 setCidadeInputError(true);
               }
               if (qrcode.chave && qrcode.chave !== 'semchave' && qrcode.nome && qrcode.cidade) {
-                downloadQRCode(qrCodeImageRef)
+                // downloadQRCode(qrCodeImageRef)
+                router.push('pix-qr-code-gerado')
               }
             }
             }
